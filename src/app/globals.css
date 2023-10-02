@@ -2,9 +2,57 @@
 @tailwind components;
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,300;6..12,500;6..12,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap');
 
-* {
-  font-family: 'Nunito Sans', sans-serif;
+:root {
+  background: hsla(141, 36%, 91%, 1);
+  background: linear-gradient(180deg, hsla(141, 36%, 91%, 1) 0%, hsla(60, 39%, 95%, 1) 100%);
+
+  background: -moz-linear-gradient(90deg, hsla(141, 36%, 91%, 1) 0%, hsla(60, 39%, 95%, 1) 100%);
+
+  background: -webkit-linear-gradient(90deg, hsla(141, 36%, 91%, 1) 0%, hsla(60, 39%, 95%, 1) 100%);
+
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#DFF0E5", endColorstr="#F8F8EF", GradientType=1 );
+
 }
+
+body {
+  min-height: 100vh
+}
+* {
+  font-family: 'Inter', 'Nunito Sans', sans-serif;
+}
+
+.heading-lg {
+  font-size: 4.5em;
+  color: rgb(20, 20, 20);
+  font-weight: 650;
+}
+ .heading {
+  font-size: 2.5em;
+ }
+.socials {
+  margin: auto;
+  display: flex;
+  width: fit-content;
+  flex-direction: column;
+  gap: 1.2em;
+  background-color: rgb(8, 8, 8);
+  border-radius: 5px;
+  height: fit-content;
+}
+.socials div {
+  padding: 0.5em;
+  border-radius: 4px;
+}
+.socials div:hover {
+  background: rgba(151, 151, 151, 0.26);
+} 
+.socials  div img {
+  min-height: 15px;
+  min-width: 15px;
+  cursor: pointer;
+}
+
 
 

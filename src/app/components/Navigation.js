@@ -27,14 +27,14 @@ export default function Navigation() {
 							variants={navVariants}
 							initial="hidden"
 							animate="visible">
-							Projects
+							<b>Projects</b>
 						</motion.li>
 
 						<motion.li
 							variants={navVariants}
 							initial="hidden"
 							animate="visible">
-							About Me
+							<b>About Me</b>
 						</motion.li>
 
 					</ul>
