@@ -24,11 +24,11 @@ export default function Home() {
 				<div className="w-[70%] max-[430px]:w-[80%]">
 					<h3 className="heading"><b>About Me</b></h3>
 					<p className="py-4 w-[80%] max-[430px]:w-[100%] ">
-						Hi, {`I'm`} <b>Iyanu</b>, and I really enjoy technology and coding. {`I'm`} currently learning how to use React and Next.js, which help me make websites look great and work smoothly.
+						Hi, {`I'm`} <b>Iyanu</b>, and I really enjoy technology and coding. {`I'm`} currently learning how to use React and Next.js, to build websites that look great and work smoothly.
 						<br /><br />
-						{`I'm`} also a student at ALX, where {`I'm`} learning more about software engineering. {`I'm`}still in the process of learning and growing in the tech world.
+						{`I'm`} also a student at ALX, where {`I'm`} learning more about software engineering. {`I'm`} still in the process of learning and growing in the tech world.
 						<br />
-						Whether {`I'm`}writing code or working on web projects, I love making things that can make a positive difference. I believe that every project is a chance to learn and make the world a bit better.
+						Whether {`I'm`} writing code or working on web projects, I love making things that can make a positive difference. I believe that every project is a chance to learn and make the world a bit better.
 						<br /><br/>If {`you're`} into tech and coding too, {`let's`} chat about some cool projects we can work on together! You can check out my portfolio to see my work.
 					</p>
 				</div>
