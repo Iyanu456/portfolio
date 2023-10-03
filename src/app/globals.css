@@ -1,35 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,300;6..12,500;6..12,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;500;700;800&display=swap');
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,300;6..12,500;6..12,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap');
 
 :root {
-  background: hsla(141, 36%, 91%, 1);
-  background: linear-gradient(180deg, hsla(141, 36%, 91%, 1) 0%, hsla(60, 39%, 95%, 1) 100%);
-
-  background: -moz-linear-gradient(90deg, hsla(141, 36%, 91%, 1) 0%, hsla(60, 39%, 95%, 1) 100%);
-
-  background: -webkit-linear-gradient(90deg, hsla(141, 36%, 91%, 1) 0%, hsla(60, 39%, 95%, 1) 100%);
-
-  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#DFF0E5", endColorstr="#F8F8EF", GradientType=1 );
-
+  background:  #071222;
+  color: rgb(236, 236, 236)
 }
 
 body {
-  min-height: 100vh
+  min-height: 100vh;
+  
 }
 * {
-  font-family: 'Inter', 'Nunito Sans', sans-serif;
+  font-family:  'Inter', 'Jost', 'Nunito Sans', sans-serif;
+  
 }
 
+p {
+  font-size: 1.2em;
+  font-family: "Jost";
+  letter-spacing: 1.06px;
+}
+header {width: 100%;
+  padding: 2em 3em;
+  
+  backdrop-filter: blur(1px); 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(44, 44, 44, 0.1);
+}
+
+
+.lg-heading-section p {
+  font-size: 1.2em;
+  letter-spacing: 1.06px;
+  font-family: 'Jost';
+  width: 75%;
+  color: #c0c0c0;
+}
 .heading-lg {
-  font-size: 4.5em;
-  color: rgb(20, 20, 20);
+  font-size: 3.6em;
   font-weight: 650;
 }
  .heading {
-  font-size: 2.5em;
+  font-family: "Inter";
+  font-size: 1.8em;
  }
 .socials {
   margin: auto;
@@ -37,8 +56,8 @@ body {
   width: fit-content;
   flex-direction: column;
   gap: 1.2em;
-  background-color: rgb(8, 8, 8);
-  border-radius: 5px;
+  background-color: rgba(8, 8, 8, 0);
+  border-radius: 1em;
   height: fit-content;
 }
 .socials div {
@@ -54,5 +73,35 @@ body {
   cursor: pointer;
 }
 
+ .mobile {
+  display: none;
+ }
 
+@media screen and (max-width: 920px) {
+  .heading-lg {
+    font-size: 2.6em;
+   }
+   .lg-heading-section {
+    padding: 0 3em 0 4em;
+    width: fit-content;
+  }
+   .web{
+    display: none;
+   }
+   .mobile {
+    display: block;
+   }
+}
+@media screen and (max-width: 520px) {
+  .heading-lg {
+    font-size: 2em;
+   }
+   .lg-heading-section {
+    padding: 0 1.2em 0 2em;
+    width: fit-content;
+  }
+  .lg-heading-section > p {
+    width: 80%;
+  }
+  }
 

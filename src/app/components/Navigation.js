@@ -11,7 +11,7 @@ export default function Navigation() {
 		},
 	};
     return (
-        <header className="py-4 px-10 m-4 drop-shadow-[10px]">
+        <header className="fixed top-0 left-0 right-0 py-6 px-22">
 				<nav className="flex ml-0 mr-auto">
 
 					<motion.div
@@ -26,15 +26,17 @@ export default function Navigation() {
 						<motion.li
 							variants={navVariants}
 							initial="hidden"
-							animate="visible">
-							<b>Projects</b>
+							animate="visible"
+							style={{cursor: "pointer", fontFamily: "Jost", letterSpacing: "1.06px"}}>
+							Projects
 						</motion.li>
 
 						<motion.li
 							variants={navVariants}
 							initial="hidden"
-							animate="visible">
-							<b>About Me</b>
+							animate="visible"
+							style={{cursor: "pointer", fontFamily: "Jost", letterSpacing: "1.06px"}}>
+							About Me
 						</motion.li>
 
 					</ul>
