@@ -31,7 +31,7 @@ export default function Home() {
 						{`I'm`} a student at ALX, where {`I'm`} immersing myself in the world of software engineering. Each day brings new knowledge and opportunities for growth as I expand my skills in web development.
 
 
-						If you share my enthusiasm for technology and coding, let's connect! {`I'm`} always open to discussions about exciting projects and collaborations that push the boundaries of web development.
+						If you share my enthusiasm for technology and coding, {`let's`} connect! {`I'm`} always open to discussions about exciting projects and collaborations that push the boundaries of web development.
 
 						Explore my portfolio to see my work in action and feel free to reach out. Together, we can bring innovative digital ideas to life.
 					</p>
