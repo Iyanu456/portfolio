@@ -14,7 +14,7 @@ export default function Home() {
 					<div><Image src={LinkedInImage} alt="Linkedin icon" /></div>
 					<div><Image src={TwitterXImage} alt="X -formerly twitter icon" /></div>
 				</div>
-				<div className="grid w-[70%] max-[430px]:w-[80%] my-auto pl-3">
+				<div className="grid w-[70%] max-[430px]:w-[80%] my-auto">
 					<h1 className="heading-lg"><b>Hi 👋, {`I'm`} Iyanu</b>
 						<br /><span style={{ color: "rgb(154, 154, 154)" }}>I build things for the web</span></h1>
 					<p className="py-3 w-[80%]">Welcome to my portfolio website! {`I'm`} passionate about technology and always eager to learn more. Whether {`it's`} coding, designing websites, or working on other projects, {`I'm`} always excited to dive in and see what I can create.</p>
@@ -22,6 +22,7 @@ export default function Home() {
 			</section>
 
 			<section className="grid place-items-center w-100">
+
 				<div className="flex flex-wrap align-content-center justify-content-center w-[70%] max-[430px]:w-[80%]">
 					<div>
 						<h3 className="heading"><b>About Me</b></h3>
@@ -34,7 +35,8 @@ export default function Home() {
 							<br /><br/>If {`you're`} into tech and coding too, {`let's`} chat about some cool projects we can work on together! You can check out my portfolio to see my work.
 						</p>
 					</div>
-					<Image className="w-[250px] h-[250px] object-cover" src={ProfileImage} alt="my profile picture" />
+					<Image className="max-w-[250px] max-h-[250px] object-cover" src={ProfileImage} alt="my profile picture" />
+
 				</div>
 			</section>
 		</main>

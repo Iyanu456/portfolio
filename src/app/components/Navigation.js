@@ -4,7 +4,7 @@ import { motion } from "framer";
 
 export default function Navigation() {
 
-	const [scrollingUp, setScrollingUp] = useState(false);
+	const [scrollingUp, setScrollingUp] = useState(true);
 
 	useEffect(() => {
 		let prevScrollPos = window.pageYOffset;
