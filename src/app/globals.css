@@ -80,11 +80,7 @@ header {width: 100%;
 @media screen and (max-width: 920px) {
   .heading-lg {
     font-size: 2.6em;
-   }
-   .lg-heading-section {
-    padding: 0 3em 0 4em;
-    width: fit-content;
-  }
+   } 
    .web{
     display: none;
    }
@@ -96,12 +92,7 @@ header {width: 100%;
   .heading-lg {
     font-size: 2em;
    }
-   .lg-heading-section {
-    padding: 0 1.2em 0 2em;
-    width: fit-content;
-  }
-  .lg-heading-section > p {
-    width: 80%;
-  }
+   
+
   }
 

@@ -1,7 +1,26 @@
 "use client"
+import { useState, useEffect } from "react";
 import { motion } from "framer";
 
 export default function Navigation() {
+
+	const [scrollingUp, setScrollingUp] = useState(false);
+
+	useEffect(() => {
+		let prevScrollPos = window.pageYOffset;
+
+		const handleScroll = () => {
+		const currentScrollPos = window.pageYOffset;
+		setScrollingUp(prevScrollPos > currentScrollPos);
+		prevScrollPos = currentScrollPos;
+		};
+
+		window.addEventListener('scroll', handleScroll);
+		return () => {
+		window.removeEventListener('scroll', handleScroll);
+		};
+	}, []);
+
     const navVariants = {
 		hidden: {
 			opacity: 0,
@@ -11,24 +30,27 @@ export default function Navigation() {
 		},
 	};
     return (
-        <header className="fixed top-0 left-0 right-0 py-6 px-22">
+        <header className={`fixed top-0 left-0 right-0 py-6 z-20 px-22 transition-transform transform duration-300 ${
+        scrollingUp ? 'translate-y-0' : '-translate-y-[70%]'
+      } text-white py-4`}>
 				<nav className="flex ml-0 mr-auto">
 
 					<motion.div
 						variants={navVariants}
 						initial="hidden"
-						animate="visible">
-						logo
+						animate="visible"
+						style={{border: "1px solid rgb(156, 156, 156)", padding: "0.2em 0.5em"}}>
+						<b>Iy</b>
 					</motion.div>
 
-					<ul className="flex ml-auto mr-0 gap-10">
+					<ul className="flex ml-auto mr-0 gap-10 web">
 
 						<motion.li
 							variants={navVariants}
 							initial="hidden"
 							animate="visible"
 							style={{cursor: "pointer", fontFamily: "Jost", letterSpacing: "1.06px"}}>
-							Projects
+							About me
 						</motion.li>
 
 						<motion.li
@@ -36,7 +58,7 @@ export default function Navigation() {
 							initial="hidden"
 							animate="visible"
 							style={{cursor: "pointer", fontFamily: "Jost", letterSpacing: "1.06px"}}>
-							About Me
+							Projects
 						</motion.li>
 
 					</ul>
