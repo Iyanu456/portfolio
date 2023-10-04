@@ -12,6 +12,10 @@
   color: rgb(236, 236, 236)
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   min-height: 100vh;
   
@@ -29,19 +33,11 @@ p {
 header {width: 100%;
   padding: 2em 3em;
   
-  backdrop-filter: blur(1px); 
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    box-shadow: 0 4px 6px rgba(44, 44, 44, 0.1);
+  backdrop-filter: blur(3px); 
+  /*box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(44, 44, 44, 0.1);*/
 }
 
-
-.lg-heading-section p {
-  font-size: 1.2em;
-  letter-spacing: 1.06px;
-  font-family: 'Jost';
-  width: 75%;
-  color: #c0c0c0;
-}
 .heading-lg {
   font-size: 3.6em;
   font-weight: 650;
@@ -61,8 +57,9 @@ header {width: 100%;
   height: fit-content;
 }
 .socials div {
-  padding: 0.5em;
-  border-radius: 4px;
+  padding: 0.7em;
+  border-radius: 50%;
+  cursor: pointer;
 }
 .socials div:hover {
   background: rgba(151, 151, 151, 0.26);
@@ -72,11 +69,22 @@ header {width: 100%;
   min-width: 15px;
   cursor: pointer;
 }
-
  .mobile {
   display: none;
  }
-
+ .about-me-grid {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  gap: 2em;
+ }
+.coffee-btn {
+  font-family: 'Inter';
+  padding: 0.8em 1.2em;
+  border-radius: 10px;
+  border: 2px solid rgb(0, 252, 252);
+  color: white;
+  text-shadow: #c5c5c5;
+}
 @media screen and (max-width: 920px) {
   .heading-lg {
     font-size: 2.6em;
@@ -86,6 +94,14 @@ header {width: 100%;
    }
    .mobile {
     display: block;
+   }
+}
+@media screen and (max-width: 860px) {
+  .about-me-grid {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column-reverse;
+    gap: 2em;
    }
 }
 @media screen and (max-width: 520px) {

@@ -21,21 +21,20 @@ export default function Home() {
 				</div>
 			</section>
 
-			<section className="grid place-items-center w-100">
-
-				<div className="flex flex-wrap align-content-center justify-content-center w-[70%] max-[430px]:w-[80%]">
-					<div>
+			<section className="grid place-items-center w-100 h-[100vh]" id="about-me">
+				<div className="about-me-grid w-[70%] max-[430px]:w-[80%] py-4">
+					<div className="my-auto ">
 						<h3 className="heading"><b>About Me</b></h3>
-						<p className="py-4 w-[50%] max-[430px]:w-[100%] ">
+						<p className="py-4 w-auto">
 							Hi, {`I'm`} <b>Iyanu</b>, and I really enjoy technology and coding. {`I'm`} currently learning how to use React and Next.js, which help me make websites that look great and work smoothly.
 							<br /><br />
-							{`I'm`} also a student at ALX, where {`I'm`} learning more about software engineering. {`I'm`}still in the process of learning and growing in the tech world.
+							{`I'm`} also a student at ALX, where {`I'm`} learning more about software engineering. {`I'm`} still in the process of learning and growing in the tech world.
 							<br />
-							Whether {`I'm`}writing code or working on web projects, I love making things that can make a positive difference. I believe that every project is a chance to learn and make the world a bit better.
-							<br /><br/>If {`you're`} into tech and coding too, {`let's`} chat about some cool projects we can work on together! You can check out my portfolio to see my work.
+							Whether {`I'm`} writing code or working on web projects, I love making things that can make a positive difference. I believe that every project is a chance to learn and make the world a bit better.
 						</p>
+						<button className="coffee-btn">Buy me a coffee</button>
 					</div>
-					<Image className="max-w-[250px] max-h-[250px] object-cover" src={ProfileImage} alt="my profile picture" />
+					<Image className="max-h-[90%] max-w-[80%] my-auto object-cover rounded-full" src={ProfileImage} alt="my profile picture" />
 
 				</div>
 			</section>

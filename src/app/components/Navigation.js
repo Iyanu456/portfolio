@@ -1,5 +1,6 @@
 "use client"
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { motion } from "framer";
 
 export default function Navigation() {
@@ -44,14 +45,15 @@ export default function Navigation() {
 					</motion.div>
 
 					<ul className="flex ml-auto mr-0 gap-10 web">
-
-						<motion.li
-							variants={navVariants}
-							initial="hidden"
-							animate="visible"
-							style={{cursor: "pointer", fontFamily: "Jost", letterSpacing: "1.06px"}}>
-							About me
-						</motion.li>
+	  					<Link href="#about-me">
+							<motion.li
+								variants={navVariants}
+								initial="hidden"
+								animate="visible"
+								style={{cursor: "pointer", fontFamily: "Jost", letterSpacing: "1.06px"}}>
+								About me
+							</motion.li>
+						</Link>
 
 						<motion.li
 							variants={navVariants}
