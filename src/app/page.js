@@ -25,14 +25,14 @@ export default function Home() {
 					<h3 className="heading"><b>About Me</b></h3>
 					<p className="py-4">
 						{`I'm`} a tech enthusiast with a deep love for coding and web development. Currently, {`I'm`} on an exciting journey of self-discovery in the world of technology.
-						<br />
+						<br /><br />
 						{`I'm`} actively learning and experimenting with React and Next.js, two powerful tools that allow me to craft visually stunning and seamlessly functioning websites. My goal is to create digital experiences that captivate and engage users.
-
+						<br /><br />
 						{`I'm`} a student at ALX, where {`I'm`} immersing myself in the world of software engineering. Each day brings new knowledge and opportunities for growth as I expand my skills in web development.
-
+						<br /><br />
 
 						If you share my enthusiasm for technology and coding, let's connect! {`I'm`} always open to discussions about exciting projects and collaborations that push the boundaries of web development.
-
+						<br /><br />
 						Explore my portfolio to see my work in action and feel free to reach out. Together, we can bring innovative digital ideas to life.
 					</p>
 				</div>
