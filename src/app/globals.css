@@ -1,10 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,300;6..12,500;6..12,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;500;700;800&display=swap');
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,300;6..12,500;6..12,700&display=swap');
 
-* {
-  font-family: 'Nunito Sans', sans-serif;
+:root {
+  background:  #071222;
+  color: rgb(236, 236, 236)
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  
+}
+* {
+  font-family:  'Inter', 'Jost', 'Nunito Sans', sans-serif;
+  
+}
+
+p {
+  font-size: 1.08em;
+  font-family: "Jost";
+  letter-spacing: 1.06px;
+}
+header {width: 100%;
+  padding: 2em 3em;
+  
+  backdrop-filter: blur(3px); 
+  /*box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(44, 44, 44, 0.1);*/
+}
+
+.heading-lg {
+  font-size: 3.6em;
+  font-weight: 650;
+}
+ .heading {
+  font-family: "Inter";
+  font-size: 1.8em;
+ }
+.socials {
+  margin: auto;
+  display: flex;
+  width: fit-content;
+  flex-direction: column;
+  gap: 1.2em;
+  background-color: rgba(8, 8, 8, 0);
+  border-radius: 1em;
+  height: fit-content;
+}
+.socials div {
+  padding: 0.7em;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.socials div:hover {
+  background: rgba(151, 151, 151, 0.26);
+} 
+.socials  div img {
+  min-height: 15px;
+  min-width: 15px;
+  cursor: pointer;
+}
+ .mobile {
+  display: none;
+ }
+ .about-me-grid {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  gap: 2em;
+ }
+.coffee-btn {
+  font-family: 'Inter';
+  padding: 0.8em 1.2em;
+  border-radius: 10px;
+  border: 2px solid rgb(248, 248, 248);
+  color: white;
+  text-shadow: #c5c5c5;
+}
+@media screen and (max-width: 920px) {
+  .heading-lg {
+    font-size: 2.6em;
+   } 
+   .web{
+    display: none;
+   }
+   .mobile {
+    display: block;
+   }
+}
+@media screen and (max-width: 860px) {
+  .about-me-grid {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column-reverse;
+    gap: 2em;
+   }
+}
+@media screen and (max-width: 520px) {
+  .heading-lg {
+    font-size: 2em;
+   }
+   
+
+  }
 
