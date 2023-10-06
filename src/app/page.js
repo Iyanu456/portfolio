@@ -9,7 +9,7 @@ import { motion } from "framer";
 export default function Home() {
 	return (
 		<main>
-			<section className="relative z-0  top-[2em] hero grid place-items-center w-100 h-[100vh]">
+			<section className="relative z-0  top-[2em] hero grid place-items-center w-100 min-h-[100vh]">
 				<div className="fixed top-[50vh] bottom-auto left-[2em] right-auto socials p-2 mr-[-2em] web w-10">
 					<div><Image src={LinkedInImage} alt="Linkedin icon" /></div>
 					<div><Image src={TwitterXImage} alt="X -formerly twitter icon" /></div>
@@ -21,7 +21,7 @@ export default function Home() {
 				</div>
 			</section>
 
-			<section className="grid place-items-center w-100 h-[100vh]" id="about-me">
+			<section className="grid place-items-center w-100 min-h-[100vh]" id="about-me">
 				<div className="about-me-grid w-[70%] max-[430px]:w-[80%] py-4">
 					<div className="my-auto ">
 						<h3 className="heading"><b>About Me</b></h3>
