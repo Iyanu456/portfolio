@@ -3,7 +3,9 @@ import React from "react";
 import LinkedInImage from "./assets/icons/Linkedin.svg"
 import TwitterXImage from "./assets/icons/Twitter.svg"
 import ProfileImage from "./assets/profile.jpg"
+import Coffee from "./assets/icons/bmc-icon.svg"
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer";
 
 export default function Home() {
@@ -32,7 +34,13 @@ export default function Home() {
 							<br />
 							Whether {`I'm`} writing code or working on web projects, I love making things that can make a positive difference. I believe that every project is a chance to learn and make the world a bit better.
 						</p>
-						<button className="coffee-btn">Buy me a coffee</button>
+						<Link href="https://www.buymeacoffee.com/oyerindei1e" target="blank">
+							<button className=" flex coffee-btn mt-2">
+								<div className="my-auto"><p >Buy me a coffee</p></div>
+								<Image className="my-auto max-w-[40px] ml-2" src={Coffee} alt="coffee icon" />
+							</button>
+						</Link>
+						
 					</div>
 					<Image className="max-h-[90%] max-w-[80%] my-auto object-cover rounded-full" src={ProfileImage} alt="my profile picture" />
 
