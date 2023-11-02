@@ -7,6 +7,7 @@ import htmlIcon from "./assets/icons/html.svg"
 import cssIcon from "./assets/icons/css.svg"
 import jsIcon from "./assets/icons/js.svg"
 import reactIcon from "./assets/icons/react.svg"
+import nextIcon from "./assets/icons/next.svg"
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer";
@@ -51,6 +52,7 @@ export default function Home() {
 					<Image src={cssIcon} alt="css icon" />
 					<Image src={jsIcon} alt="javascript icon" />
 					<Image src={reactIcon} alt="react icon" />
+					<Image src={nextIcon} alt="next icon" />
 				</div>
 			</section>
 		</main>
