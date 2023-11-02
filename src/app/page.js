@@ -3,7 +3,9 @@ import React from "react";
 import LinkedInImage from "./assets/icons/Linkedin.svg"
 import TwitterXImage from "./assets/icons/Twitter.svg"
 import ProfileImage from "./assets/profile.jpg"
+import htmlIcon from "./assets/icons/html.svg"
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer";
 
 export default function Home() {
@@ -17,7 +19,7 @@ export default function Home() {
 				</div>
 				<div className="grid w-[70%] max-[430px]:w-[80%] my-auto">
 					<h1 className="heading-lg"><b>Hi 👋, {`I'm`} Iyanu</b>
-						<br /><span style={{ color: "rgb(154, 154, 154)" }}>I build things for the web</span></h1>
+						<br /><span style={{ color: "rgb(154, 154, 154)" }}>I build things for the web.</span></h1>
 					<p className="py-3 w-[80%]">Welcome to my portfolio website! {`I'm`} passionate about technology and always eager to learn more. Whether {`it's`} coding, designing websites, or working on other projects, {`I'm`} always excited to dive in and see what I can create.</p>
 				</div>
 			</section>
@@ -33,9 +35,19 @@ export default function Home() {
 							<br />
 							Whether {`I'm`} writing code or working on web projects, I love making things that can make a positive difference. I believe that every project is a chance to learn and make the world a bit better.
 						</p>
+						
 					</div>
 					<Image className="max-h-[90%] max-w-[80%] my-auto object-cover rounded-full" src={ProfileImage} alt="my profile picture" />
+				</div>
+			</section>
 
+			<section className="grid place-items-center pb-5">
+				{/*<h3 className="heading">Skills</h3>*/}
+				<div className="flex gap-1 max-w-[68vw] grid-cols-2">
+					<Image src={htmlIcon} alt="html icon" />
+					<Image src={htmlIcon} alt="html icon" />
+					<Image src={htmlIcon} alt="html icon" />
+					<Image src={htmlIcon} alt="html icon" />
 				</div>
 			</section>
 		</main>
