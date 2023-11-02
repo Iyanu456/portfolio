@@ -4,6 +4,9 @@ import LinkedInImage from "./assets/icons/Linkedin.svg"
 import TwitterXImage from "./assets/icons/Twitter.svg"
 import ProfileImage from "./assets/profile.jpg"
 import htmlIcon from "./assets/icons/html.svg"
+import cssIcon from "./assets/icons/css.svg"
+import jsIcon from "./assets/icons/js.svg"
+import reactIcon from "./assets/icons/react.svg"
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer";
@@ -43,11 +46,11 @@ export default function Home() {
 
 			<section className="grid place-items-center pb-5">
 				{/*<h3 className="heading">Skills</h3>*/}
-				<div className="flex gap-1 max-w-[68vw] grid-cols-2">
+				<div className="flex gap-3 flex-wrap max-w-[68vw] grid-cols-2">
 					<Image src={htmlIcon} alt="html icon" />
-					<Image src={htmlIcon} alt="html icon" />
-					<Image src={htmlIcon} alt="html icon" />
-					<Image src={htmlIcon} alt="html icon" />
+					<Image src={cssIcon} alt="css icon" />
+					<Image src={jsIcon} alt="javascript icon" />
+					<Image src={reactIcon} alt="react icon" />
 				</div>
 			</section>
 		</main>
