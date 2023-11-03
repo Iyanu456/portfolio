@@ -8,11 +8,82 @@ import cssIcon from "./assets/icons/css.svg"
 import jsIcon from "./assets/icons/js.svg"
 import reactIcon from "./assets/icons/react.svg"
 import nextIcon from "./assets/icons/next.svg"
+import tailwindIcon from "./assets/icons/tailwind.svg"
+import githubIcon from "./assets/icons/github.svg"
+import nodeIcon from "./assets/icons/node.svg"
+import gitIcon from "./assets/icons/git.svg"
+import flaskIcon from "./assets/icons/flask.svg"
+import figmaIcon from "./assets/icons/figma.svg"
+import mysqlIcon from "./assets/icons/mysql.svg"
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer";
 
 export default function Home() {
+
+	const icons = [
+	{
+		icon: htmlIcon,
+		alt: "html icon",
+		name: "HTML",
+	},
+	{
+		icon: cssIcon,
+		alt: "css icon",
+		name: "CSS",
+	},
+	{
+		icon: jsIcon,
+		alt: "javascript icon",
+		name: "JavaScript",
+	},
+	{
+		icon: reactIcon,
+		alt: "react icon",
+		name: "React",
+	},
+	{
+		icon: nextIcon,
+		alt: "next icon",
+		name: "Nextjs",
+	},
+	{
+		icon: tailwindIcon,
+		alt: "tailwind css icon",
+		name: "Tailwind",
+	},
+	{
+		icon: nodeIcon,
+		alt: "node icon",
+		name: "Nodejs",
+	},
+	{
+		icon: gitIcon,
+		alt: "git icon",
+		name: "Git"
+	},
+	{
+		icon: githubIcon,
+		alt: "github icon",
+		name: "GitHub",
+
+	},
+	{
+		icon: mysqlIcon,
+		alt: "mysql icon",
+		name: "MySQL",
+	},
+	{
+		icon: figmaIcon,
+		alt: "git icon",
+		name: "Figma",
+	},
+	{
+		icon: flaskIcon,
+		alt: "flask icon",
+		name: "Flask",
+	},
+	]
 	return (
 		<main>
 				{/*<script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="oyerindei1e" data-description="Support me on Buy me a coffee!" data-message="" data-color="#5F7FFF" data-position="Right" data-x_margin="18" data-y_margin="18"></script>*/}
@@ -45,14 +116,15 @@ export default function Home() {
 				</div>
 			</section>
 
-			<section className="grid place-items-center pb-5">
-				{/*<h3 className="heading">Skills</h3>*/}
-				<div className="flex gap-3 flex-wrap max-w-[68vw] grid-cols-2">
-					<Image src={htmlIcon} alt="html icon" />
-					<Image src={cssIcon} alt="css icon" />
-					<Image src={jsIcon} alt="javascript icon" />
-					<Image src={reactIcon} alt="react icon" />
-					<Image src={nextIcon} alt="next icon" />
+			<section className="grid place-items-center pb-5 min-h-[100vh]">
+				<h3 className="heading"><b>Technologies</b></h3>
+				<div className="tech-stack">
+					{icons.map((item, index) => (
+						<div key={index}>
+							<Image src={item.icon} alt={item.alt} />
+							<p>{item.name}</p>
+						</div>)
+					)}
 				</div>
 			</section>
 		</main>

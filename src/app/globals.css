@@ -85,6 +85,26 @@ header {width: 100%;
   color: white;
   text-shadow: #c5c5c5;
 }
+
+.tech-stack {
+  padding-left: 1.2em;
+  padding-right: 1.2em; 
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 1em;
+}
+.tech-stack > div {
+  max-width: 70vw;
+  background: rgba(180, 180, 180, 0.1);
+  display: grid;
+  place-items: center;
+  padding: 1.4em;
+  cursor: pointer;
+}
+.tech-stack > div > img {
+  height: 70px;
+  width: 70px;
+}
 @media screen and (max-width: 920px) {
   .heading-lg {
     font-size: 2.6em;
@@ -95,6 +115,16 @@ header {width: 100%;
    .mobile {
     display: block;
    }
+   .tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    justify-content: center;
+   }
+   .tech-stack > div {
+    width: 130px;
+    height: 130px;
+   }
 }
 @media screen and (max-width: 860px) {
   .about-me-grid {
@@ -103,12 +133,22 @@ header {width: 100%;
     flex-direction: column-reverse;
     gap: 2em;
    }
+
+   .tech-stack > div {
+    width: 100px;
+    height: 100px;
+    padding: 1em;
+   }
+
+   .tech-stack > div > img {
+    height: 50px;
+    width: 50px;
+   }
 }
 @media screen and (max-width: 520px) {
   .heading-lg {
     font-size: 2em;
    }
-   
 
   }
 
