@@ -102,7 +102,9 @@ export default function Home() {
 			<section className="grid place-items-center w-100 min-h-[100vh]" id="about-me">
 				<div className="about-me-grid w-[70%] max-[430px]:w-[80%] py-4">
 					<div className="my-auto ">
-						<h3 className="heading"><b>About Me</b></h3>
+						<div className="heading-grp" >
+							<h3 className="heading"><b>About Me</b></h3><div className="line"></div>
+						</div>
 						<p className="py-4 w-auto">
 							Hi, {`I'm`} <b>Iyanu</b>, and I really enjoy technology and coding. {`I'm`} currently learning how to use React and Next.js, which help me make websites that look great and work smoothly.
 							<br /><br />
@@ -127,6 +129,16 @@ export default function Home() {
 					)}
 				</div>
 			</section>
+			<section className="grid place-items-center w-100 min-h-[100vh]">
+				<div className="w-[70%] max-[430px]:w-[80%] py-4">
+					<div className="my-auto ">
+						<div className="grid min-[680px]:grid-cols-[20em,auto] gap-[1.4em]" >
+							<h3 className="heading"><b>Some Things {`I've`} Built</b></h3><div className="line"></div>
+						</div>
+					</div>
+				</div>
+			</section>
+
 		</main>
 	);
 }
