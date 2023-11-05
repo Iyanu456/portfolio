@@ -50,7 +50,7 @@ export default function Home() {
 	{
 		icon: nextIcon,
 		alt: "next icon",
-		name: "Nextjs",
+		name: "Next.js",
 	},
 	{
 		icon: tailwindIcon,
