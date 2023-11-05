@@ -1,9 +1,11 @@
 "use client"
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image"
 import { motion } from "framer";
+import menuIcon from "../assets/icons/menu-1.svg"
 
-export default function Navigation() {
+export default function Navigation(props) {
 
 	const [scrollingUp, setScrollingUp] = useState(true);
 
@@ -40,29 +42,37 @@ export default function Navigation() {
 						variants={navVariants}
 						initial="hidden"
 						animate="visible"
-						style={{border: "1px solid rgb(156, 156, 156)", padding: "0.2em 0.5em"}}>
+						className="my-auto py-[0.3em] px-[0.5em] cursor-pointer"
+						style={{border: "1px solid rgb(156, 156, 156)",}}>
 						<b>Iy</b>
 					</motion.div>
 
-					<ul className="flex ml-auto mr-0 gap-10 web">
+					<ul className="flex ml-auto mr-0 gap-10 my-auto">
 	  					<Link href="#about-me">
 							<motion.li
 								variants={navVariants}
 								initial="hidden"
 								animate="visible"
+								className="web my-auto px-3 py-2"
 								style={{cursor: "pointer", fontFamily: "Jost", letterSpacing: "1.06px"}}>
 								About me
 							</motion.li>
 						</Link>
 
-						<motion.li
-							variants={navVariants}
-							initial="hidden"
-							animate="visible"
-							style={{cursor: "pointer", fontFamily: "Jost", letterSpacing: "1.06px"}}>
-							Projects
-						</motion.li>
-
+						<Link href="#projects">
+							<motion.li
+								variants={navVariants}
+								initial="hidden"
+								animate="visible"
+								className="web my-auto px-3 py-2"
+								style={{cursor: "pointer", fontFamily: "Jost", letterSpacing: "1.06px"}}>
+								Projects
+							</motion.li>
+						</Link>
+						<div onClick={() => {
+							props.sidebarOpen ? props.setSidebarOpen(false) : props.setSidebarOpen(true)
+							console.log("clicked on nav");
+							}}><Image src={menuIcon} alt="X -formerly twitter icon" className="cursor-pointer mobile max-h-[25px] max-w-[25px]" /></div>
 					</ul>
 				</nav>
 			</header>

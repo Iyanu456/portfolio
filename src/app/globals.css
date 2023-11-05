@@ -8,7 +8,9 @@
 @tailwind utilities;
 
 :root {
-  background:  #071222;
+  /*background:  #071222;*/
+  background: rgb(19,48,125);
+  background: radial-gradient(circle, rgba(19,48,125,1) 0%, rgba(7,18,34,1) 100%);
   color: rgb(236, 236, 236)
 }
 
@@ -36,6 +38,17 @@ header {width: 100%;
   backdrop-filter: blur(3px); 
   /*box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     box-shadow: 0 4px 6px rgba(44, 44, 44, 0.1);*/
+}
+
+header > nav > ul > a > li {
+  border: 1px solid rgba(0, 0, 0, 0);
+}
+header > nav > ul > a > li:hover {
+  background: rgba(140, 140, 140, 0.1);
+  border: 1px solid rgba(225, 225, 225, 0.2);
+  box-shadow: rgba(15, 15, 15, 0.12) 12px 20px 8px 6px;
+  backdrop-filter: blur(3px);
+
 }
 
 .heading-lg {
@@ -75,13 +88,18 @@ header {width: 100%;
   padding: 0.7em;
   border-radius: 50%;
   cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 .socials div:hover {
-  background: rgba(151, 151, 151, 0.26);
+  /*background: rgba(151, 151, 151, 0.26);*/
+  background: rgba(140, 140, 140, 0.1);
+  border: 1px solid rgba(225, 225, 225, 0.2);
+  box-shadow: rgba(15, 15, 15, 0.12) 12px 20px 8px 6px;
+  backdrop-filter: blur(3px);
 } 
 .socials  div img {
-  min-height: 15px;
-  min-width: 15px;
+  height: 22px;
+  width: 22px;
   cursor: pointer;
 }
  .mobile {
@@ -109,18 +127,60 @@ header {width: 100%;
   gap: 1em;
 }
 .tech-stack > div {
-  max-width: 70vw;
-  background: rgba(180, 180, 180, 0.1);
+  border-radius: 5px;
+  /*max-width: 70vw;*/
+  background: rgba(140, 140, 140, 0.1);
+  border: 1px solid rgba(225, 225, 225, 0.2);
+  box-shadow: rgba(15, 15, 15, 0.12) 12px 20px 8px 6px;
+  backdrop-filter: blur(6px); 
   display: grid;
   place-items: center;
   padding: 1.4em;
   cursor: pointer;
 }
 .tech-stack > div > img {
+  filter: drop-shadow(rgba(15, 15, 15, 0.5) 12px 12px 8px);
   height: 70px;
   width: 70px;
 }
-@media screen and (max-width: 920px) {
+
+.sidebar {
+          position: fixed;
+          top: 0;
+          right: -250px; /* Start with the sidebar hidden */
+          width: 250px;
+          height: 70%;
+          z-index: 80;
+          transition: right 0.3s ease;
+          background: #071222;
+          color: white;
+          /*box-shadow: rgba(50, 50, 50, 0.09) 10px 10px 12px;*/
+          border-radius: 0 0 0 15px;
+          border: 2px solid rgba(100, 100, 100, 0.15);
+          padding: 2em;
+          display: grid;
+          place-items: center;
+        }
+
+.sidebar > div {
+  display: grid;
+  place-items: center;
+  padding: 0.8em 0;
+  cursor: pointer;
+}
+.sidebar > div.sidebar-item:hover {
+  border-radius: 5px;
+  background: rgba(80, 80, 80, 0.18);
+}
+.sidebar > div:first-child {
+  padding: 0;
+}
+        .sidebar.open {
+          right: 0; /* Slide in when 'open' class is present */
+        }
+
+
+@media screen and (max-width: 720px) {
   .heading-lg {
     font-size: 2.6em;
    } 
@@ -140,8 +200,9 @@ header {width: 100%;
     width: 130px;
     height: 130px;
    }
+   
 }
-@media screen and (max-width: 860px) {
+@media screen and (max-width: 720px) {
   .about-me-grid {
     display: flex;
     flex-wrap: wrap;
@@ -162,6 +223,9 @@ header {width: 100%;
    }
 }
 @media screen and (max-width: 520px) {
+  .mobile {
+    display: block;
+  }
   .heading-lg {
     font-size: 2em;
    }

@@ -1,5 +1,9 @@
 "use client";
 import React from "react";
+import { useState } from "react"
+import Navigation from "./components/Navigation";
+import Sidebar from "./components/Sidebar"
+import Image from "next/image"
 import LinkedInImage from "./assets/icons/Linkedin.svg"
 import TwitterXImage from "./assets/icons/Twitter.svg"
 import ProfileImage from "./assets/profile.jpg"
@@ -15,11 +19,12 @@ import gitIcon from "./assets/icons/git.svg"
 import flaskIcon from "./assets/icons/flask.svg"
 import figmaIcon from "./assets/icons/figma.svg"
 import mysqlIcon from "./assets/icons/mysql.svg"
-import Image from "next/image";
-import Link from "next/link";
+import menuIcon from "./assets/icons/menu.svg"
 import { motion } from "framer";
 
 export default function Home() {
+
+	const [sidebarOpen, setSidebarOpen] = useState(false);
 
 	const icons = [
 	{
@@ -85,12 +90,16 @@ export default function Home() {
 	},
 	]
 	return (
+		<>
+		<Navigation sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen}/>
+		<Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} /> 
 		<main>
 				{/*<script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="oyerindei1e" data-description="Support me on Buy me a coffee!" data-message="" data-color="#5F7FFF" data-position="Right" data-x_margin="18" data-y_margin="18"></script>*/}
 			<section className="relative z-0  top-[2em] hero grid place-items-center w-100 min-h-[100vh]">
 				<div className="fixed top-[50vh] bottom-auto left-[2em] right-auto socials p-2 mr-[-2em] web w-10">
 					<div><Image src={LinkedInImage} alt="Linkedin icon" /></div>
 					<div><Image src={TwitterXImage} alt="X -formerly twitter icon" /></div>
+					<div><Image src={githubIcon} alt="X -formerly twitter icon" /></div>
 				</div>
 				<div className="grid w-[70%] max-[430px]:w-[80%] my-auto">
 					<h1 className="heading-lg"><b>Hi 👋, {`I'm`} Iyanu</b>
@@ -114,31 +123,35 @@ export default function Home() {
 						</p>
 						
 					</div>
-					<Image className="max-h-[90%] max-w-[80%] my-auto object-cover rounded-full" src={ProfileImage} alt="my profile picture" />
+					<Image className="max-h-[90%] max-w-[80%] max-[860px]:max-h-[55%] max-[860px]:max-w-[55%] my-auto object-cover rounded-full" src={ProfileImage} alt="my profile picture" />
 				</div>
 			</section>
 
-			<section className="grid place-items-center pb-5 min-h-[100vh]">
-				<h3 className="heading"><b>Technologies</b></h3>
+			<section className="grid place-items-center py-[3em]">
+				<h3 className="heading pb-[1em]"><b>Technologies</b></h3>
 				<div className="tech-stack">
 					{icons.map((item, index) => (
 						<div key={index}>
 							<Image src={item.icon} alt={item.alt} />
-							<p>{item.name}</p>
+							<p className="pt-2">{item.name}</p>
 						</div>)
 					)}
 				</div>
 			</section>
-			<section className="grid place-items-center w-100 min-h-[100vh]">
+			<section className="grid place-items-center w-100 py-[3em]" id="projects">
 				<div className="w-[70%] max-[430px]:w-[80%] py-4">
 					<div className="my-auto ">
-						<div className="grid min-[680px]:grid-cols-[20em,auto] gap-[1.4em]" >
-							<h3 className="heading"><b>Some Things {`I've`} Built</b></h3><div className="line"></div>
+						<div className="grid min-[680px]:grid-cols-[8em,auto] gap-[1.4em]" >
+							<h3 className="heading"><b>Projects</b></h3><div className="line"></div>
+							<div className="grid place-items-center">
+								<div></div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</section>
 
 		</main>
+		</>
 	);
 }
