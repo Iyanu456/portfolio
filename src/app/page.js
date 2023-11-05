@@ -143,17 +143,16 @@ export default function Home() {
 					<div className="my-auto ">
 						<div className="grid" >
 							<h3 className="heading mb-4"><b>Projects</b></h3><div className="line mb-4"></div>
-							<div className="project grid grid-cols-[350px,auto] gap-[1em] py-[1em] w-[100%]">
+							<div className="project grid grid-cols-[340px,auto] gap-[1em] py-[1em] w-[100%]">
 								<div className="grid place-items-center">[Picture]</div>
 								<div>
-									<div className="grid ml-auto mr-0 w-[100%]">
-									<small className="ml-auto mr-0">Featured Projects</small>
-									</div>
-									<h2 className="heading ml-auto mr-0 pt-1 pb-[1.5em]"><b>LlamaGPT</b></h2>
+									<small className="">Featured Projects</small>
+									<h2 className="heading pt-1 pb-[1.2em]"><b>LlamaGPT</b></h2>
 									<div className="project-card">A minimal, dark blue theme for VS Code, Sublime Text, Atom, iTerm, and more. Available on Visual Studio Marketplace, Package Control, Atom Package Manager, and npm.</div>
-									<div className="grid w-100">
-									<div className="flex gap-[2em] mt-[2em] project-stack mr-0 ml-auto"><p>React</p><p>Nextjs</p><p>Replicate API</p>
-									</div>
+									<div className="flex gap-[2em] mt-[2em] project-stack">
+										<p>React</p>
+										<p>Nextjs</p>
+										<p>Replicate API</p>
 									</div>
 								</div>
 							</div>

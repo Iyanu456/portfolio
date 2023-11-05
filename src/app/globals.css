@@ -191,6 +191,13 @@ header {width: 100%;
   text-align: right;
 }
 
+@media screen and (max-width: 920px) {
+     .project {
+    display: flex;
+    flex-wrap: wrap;
+   }
+}
+
 @media screen and (max-width: 780px) {
   .heading-lg {
     font-size: 2.6em;
@@ -212,11 +219,7 @@ header {width: 100%;
     height: 130px;
    }
 
-   .project {
-    display: flex;
-    flex-wrap: wrap;
-   }
-   
+
 }
 @media screen and (max-width: 720px) {
   .about-me-grid {
