@@ -42,7 +42,7 @@ export default function Navigation(props) {
 						variants={navVariants}
 						initial="hidden"
 						animate="visible"
-						className="my-auto py-[0.3em] px-[0.5em] cursor-pointer"
+						className="icon my-auto py-[0.3em] px-[0.5em] cursor-pointer"
 						style={{border: "1px solid rgb(156, 156, 156)",}}>
 						<b>Iy</b>
 					</motion.div>
@@ -53,7 +53,7 @@ export default function Navigation(props) {
 								variants={navVariants}
 								initial="hidden"
 								animate="visible"
-								className="web my-auto px-3 py-2"
+								className="icon web my-auto px-3 py-2"
 								style={{cursor: "pointer", fontFamily: "Jost", letterSpacing: "1.06px"}}>
 								About me
 							</motion.li>
@@ -64,7 +64,7 @@ export default function Navigation(props) {
 								variants={navVariants}
 								initial="hidden"
 								animate="visible"
-								className="web my-auto px-3 py-2"
+								className="icon web my-auto px-3 py-2"
 								style={{cursor: "pointer", fontFamily: "Jost", letterSpacing: "1.06px"}}>
 								Projects
 							</motion.li>

@@ -40,10 +40,11 @@ header {width: 100%;
     box-shadow: 0 4px 6px rgba(44, 44, 44, 0.1);*/
 }
 
-header > nav > ul > a > li {
+.icon {
   border: 1px solid rgba(0, 0, 0, 0);
 }
-header > nav > ul > a > li:hover {
+
+.icon:hover {
   background: rgba(140, 140, 140, 0.1);
   border: 1px solid rgba(225, 225, 225, 0.2);
   box-shadow: rgba(15, 15, 15, 0.12) 12px 20px 8px 6px;
@@ -70,7 +71,6 @@ header > nav > ul > a > li:hover {
  .line{
   content: "";
   background: rgba(150, 150, 150, 0.1);
-  margin: auto;
   height: 2px;
   width: 100%;
  }
@@ -85,18 +85,11 @@ header > nav > ul > a > li:hover {
   height: fit-content;
 }
 .socials div {
-  padding: 0.7em;
+  padding: 0.6em;
   border-radius: 50%;
   cursor: pointer;
-  border: 1px solid rgba(0, 0, 0, 0.1);
 }
-.socials div:hover {
-  /*background: rgba(151, 151, 151, 0.26);*/
-  background: rgba(140, 140, 140, 0.1);
-  border: 1px solid rgba(225, 225, 225, 0.2);
-  box-shadow: rgba(15, 15, 15, 0.12) 12px 20px 8px 6px;
-  backdrop-filter: blur(3px);
-} 
+
 .socials  div img {
   height: 22px;
   width: 22px;
@@ -161,7 +154,7 @@ header > nav > ul > a > li:hover {
           display: grid;
           place-items: center;
           background: rgba(10, 13, 30, 0.95);
-          border: 1px solid rgba(225, 225, 225, 0.2);
+          border-left: 1px solid rgba(225, 225, 225, 0.2);
           box-shadow: rgba(15, 15, 15, 0.12) 12px 20px 8px 6px;
           backdrop-filter: blur(3px);
 
@@ -185,7 +178,20 @@ header > nav > ul > a > li:hover {
         }
 
 
-@media screen and (max-width: 720px) {
+.project-card {
+  background: rgba(140, 140, 140, 0.1);
+  border: 1px solid rgba(225, 225, 225, 0.2);
+  box-shadow: rgba(15, 15, 15, 0.12) 12px 20px 8px 6px;
+  backdrop-filter: blur(3px);
+  border-radius: 5px;
+  padding: 0.8em;
+}
+
+.project-stack {
+  text-align: right;
+}
+
+@media screen and (max-width: 780px) {
   .heading-lg {
     font-size: 2.6em;
    } 
@@ -204,6 +210,11 @@ header > nav > ul > a > li:hover {
    .tech-stack > div {
     width: 130px;
     height: 130px;
+   }
+
+   .project {
+    display: flex;
+    flex-wrap: wrap;
    }
    
 }

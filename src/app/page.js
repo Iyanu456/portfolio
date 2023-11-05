@@ -97,9 +97,9 @@ export default function Home() {
 				{/*<script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="oyerindei1e" data-description="Support me on Buy me a coffee!" data-message="" data-color="#5F7FFF" data-position="Right" data-x_margin="18" data-y_margin="18"></script>*/}
 			<section className="relative z-0  top-[2em] hero grid place-items-center w-100 min-h-[100vh]">
 				<div className="fixed top-[50vh] bottom-auto left-[2em] right-auto socials p-2 mr-[-2em] web w-10">
-					<div><Image src={LinkedInImage} alt="Linkedin icon" /></div>
-					<div><Image src={TwitterXImage} alt="X -formerly twitter icon" /></div>
-					<div><Image src={githubIcon} alt="X -formerly twitter icon" /></div>
+					<div className="icon"><Image src={LinkedInImage} alt="Linkedin" /></div>
+					<div className="icon"><Image src={TwitterXImage} alt="X -formerly twitter" /></div>
+					<div className="icon"><Image src={githubIcon} alt="X -formerly twitter" /></div>
 				</div>
 				<div className="grid w-[70%] max-[430px]:w-[80%] my-auto">
 					<h1 className="heading-lg"><b>Hi 👋, {`I'm`} Iyanu</b>
@@ -112,7 +112,7 @@ export default function Home() {
 				<div className="about-me-grid w-[70%] max-[430px]:w-[80%] py-4">
 					<div className="my-auto ">
 						<div className="heading-grp" >
-							<h3 className="heading"><b>About Me</b></h3><div className="line"></div>
+							<h3 className="heading"><b>About Me</b></h3><div className="line m-auto"></div>
 						</div>
 						<p className="py-4 w-auto">
 							Hi, {`I'm`} <b>Iyanu</b>, and I really enjoy technology and coding. {`I'm`} currently learning how to use React and Next.js, which help me make websites that look great and work smoothly.
@@ -139,12 +139,23 @@ export default function Home() {
 				</div>
 			</section>
 			<section className="grid place-items-center w-100 py-[3em]" id="projects">
-				<div className="w-[70%] max-[430px]:w-[80%] py-4">
+				<div className="w-[70%] max-[430px]:w-[80%] py-[2em]">
 					<div className="my-auto ">
-						<div className="grid min-[680px]:grid-cols-[8em,auto] gap-[1.4em]" >
-							<h3 className="heading"><b>Projects</b></h3><div className="line"></div>
-							<div className="grid place-items-center">
-								<div></div>
+						<div className="grid" >
+							<h3 className="heading mb-4"><b>Projects</b></h3><div className="line mb-4"></div>
+							<div className="project grid grid-cols-[350px,auto] gap-[1em] py-[1em] w-[100%]">
+								<div className="grid place-items-center">[Picture]</div>
+								<div>
+									<div className="grid ml-auto mr-0 w-[100%]">
+									<small className="ml-auto mr-0">Featured Projects</small>
+									</div>
+									<h2 className="heading ml-auto mr-0 pt-1 pb-[1.5em]"><b>LlamaGPT</b></h2>
+									<div className="project-card">A minimal, dark blue theme for VS Code, Sublime Text, Atom, iTerm, and more. Available on Visual Studio Marketplace, Package Control, Atom Package Manager, and npm.</div>
+									<div className="grid w-100">
+									<div className="flex gap-[2em] mt-[2em] project-stack mr-0 ml-auto"><p>React</p><p>Nextjs</p><p>Replicate API</p>
+									</div>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
