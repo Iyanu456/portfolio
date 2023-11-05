@@ -146,10 +146,9 @@ export default function Home() {
 							<div className="project grid grid-cols-[340px,auto] gap-[1em] py-[1em] w-[100%]">
 								<div className="grid place-items-center">[Picture]</div>
 								<div>
-									<small className="">Featured Projects</small>
-									<h2 className="heading pt-1 pb-[1.2em]"><b>LlamaGPT</b></h2>
+									<h2 className="heading pt-1 pb-[1em]"><b>LlamaGPT</b></h2>
 									<div className="project-card">A minimal, dark blue theme for VS Code, Sublime Text, Atom, iTerm, and more. Available on Visual Studio Marketplace, Package Control, Atom Package Manager, and npm.</div>
-									<div className="flex gap-[2em] mt-[2em] project-stack">
+									<div className="flex gap-[2em] mt-[2em] project-stack grey">
 										<p>React</p>
 										<p>Nextjs</p>
 										<p>Replicate API</p>

@@ -26,7 +26,9 @@ body {
   font-family:  'Inter', 'Jost', 'Nunito Sans', sans-serif;
   
 }
-
+.grey {
+  color: rgb(154, 154, 154);
+}
 p {
   font-size: 1.08em;
   font-family: "Jost";
