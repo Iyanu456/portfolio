@@ -147,28 +147,33 @@ header > nav > ul > a > li:hover {
 .sidebar {
           position: fixed;
           top: 0;
-          right: -250px; /* Start with the sidebar hidden */
-          width: 250px;
-          height: 70%;
+          right: -280px; /* Start with the sidebar hidden */
+          width: 280px;
+          height: 100%;
           z-index: 80;
           transition: right 0.3s ease;
           background: #071222;
           color: white;
           /*box-shadow: rgba(50, 50, 50, 0.09) 10px 10px 12px;*/
-          border-radius: 0 0 0 15px;
+          /*border-radius: 0 0 0 15px;*/
           border: 2px solid rgba(100, 100, 100, 0.15);
           padding: 2em;
           display: grid;
           place-items: center;
+          background: rgba(10, 13, 30, 0.95);
+          border: 1px solid rgba(225, 225, 225, 0.2);
+          box-shadow: rgba(15, 15, 15, 0.12) 12px 20px 8px 6px;
+          backdrop-filter: blur(3px);
+
         }
 
-.sidebar > div {
+.sidebar > div, .sidebar-item {
   display: grid;
   place-items: center;
   padding: 0.8em 0;
   cursor: pointer;
 }
-.sidebar > div.sidebar-item:hover {
+.sidebar > a > div.sidebar-item:hover {
   border-radius: 5px;
   background: rgba(80, 80, 80, 0.18);
 }
