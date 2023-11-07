@@ -20,6 +20,7 @@ import flaskIcon from "./assets/icons/flask.svg"
 import figmaIcon from "./assets/icons/figma.svg"
 import mysqlIcon from "./assets/icons/mysql.svg"
 import menuIcon from "./assets/icons/menu.svg"
+import LlamaScreenshot from "./assets/icons/llama2.jpg"
 import { motion } from "framer";
 
 export default function Home() {
@@ -143,14 +144,17 @@ export default function Home() {
 					<div className="my-auto ">
 						<div className="grid" >
 							<h3 className="heading mb-4"><b>Projects</b></h3><div className="line mb-4"></div>
-							<div className="project grid grid-cols-[340px,auto] gap-[1em] py-[1em] w-[100%]">
-								<div className="grid place-items-center">[Picture]</div>
+							<div className="project grid grid-cols-[340px,auto] gap-[2em] py-[1em] w-[100%]">
+								<div className="grid place-items-center">
+									<Image className="object-fit-cover h-[100%] w-[100%] rounded-[10px]" src={LlamaScreenshot} alt="project screenshot" />
+								</div>
 								<div>
 									<h2 className="heading pt-1 pb-[1em]"><b>LlamaGPT</b></h2>
 									<div className="project-card">A minimal, dark blue theme for VS Code, Sublime Text, Atom, iTerm, and more. Available on Visual Studio Marketplace, Package Control, Atom Package Manager, and npm.</div>
 									<div className="flex gap-[2em] mt-[2em] project-stack grey">
 										<p>React</p>
-										<p>Nextjs</p>
+										<p>Next.js</p>
+										<p>Tailwind CSS</p>
 										<p>Replicate API</p>
 									</div>
 								</div>

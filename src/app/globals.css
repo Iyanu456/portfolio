@@ -132,14 +132,61 @@ header {width: 100%;
   place-items: center;
   padding: 1.4em;
   cursor: pointer;
+  transition: 80ms ease-in;
 }
+
+/*.tech-stack > div:hover {
+  scale: 1.02;
+}*/
 .tech-stack > div > img {
-  filter: drop-shadow(rgba(15, 15, 15, 0.5) 12px 12px 8px);
+  /*filter: drop-shadow(rgba(15, 15, 15, 0.5) 12px 12px 8px);*/
   height: 70px;
   width: 70px;
 }
 
-.sidebar {
+
+
+.project-card {
+  background: rgba(140, 140, 240, 0.1);
+  border: 1px solid rgba(225, 225, 225, 0.2);
+  box-shadow: rgba(15, 15, 15, 0.12) 12px 20px 8px 5px;
+  backdrop-filter: blur(2px);
+  border-radius: 5px;
+  padding: 0.8em;
+}
+
+.project-stack {
+  text-align: right;
+}
+
+@media screen and (max-width: 920px) {
+     .project {
+    display: flex;
+    flex-wrap: wrap;
+   }
+}
+
+@media screen and (max-width: 780px) {
+  .heading-lg {
+    font-size: 2.6em;
+   } 
+   .web{
+    display: none;
+   }
+   .mobile {
+    display: block;
+   }
+   .tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    justify-content: center;
+   }
+   .tech-stack > div {
+    width: 130px;
+    height: 130px;
+   }
+   .sidebar {
           position: fixed;
           top: 0;
           right: -280px; /* Start with the sidebar hidden */
@@ -179,47 +226,6 @@ header {width: 100%;
           right: 0; /* Slide in when 'open' class is present */
         }
 
-
-.project-card {
-  background: rgba(140, 140, 140, 0.1);
-  border: 1px solid rgba(225, 225, 225, 0.2);
-  box-shadow: rgba(15, 15, 15, 0.12) 12px 20px 8px 6px;
-  backdrop-filter: blur(3px);
-  border-radius: 5px;
-  padding: 0.8em;
-}
-
-.project-stack {
-  text-align: right;
-}
-
-@media screen and (max-width: 920px) {
-     .project {
-    display: flex;
-    flex-wrap: wrap;
-   }
-}
-
-@media screen and (max-width: 780px) {
-  .heading-lg {
-    font-size: 2.6em;
-   } 
-   .web{
-    display: none;
-   }
-   .mobile {
-    display: block;
-   }
-   .tech-stack {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1em;
-    justify-content: center;
-   }
-   .tech-stack > div {
-    width: 130px;
-    height: 130px;
-   }
 
 
 }
