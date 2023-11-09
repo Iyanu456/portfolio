@@ -86,14 +86,14 @@ const icons = [
 	const projects = [
 		{
 			name: "LlamaGPT",
-			description: "LlamaGPT is a modern web app showcasing realistic chatbot interactions powered by the advanced Llama2 AI model. Built with React and Next.js, it seamlessly integrates with the Replicate platform for optimal performance. Explore the future of AI-driven conversations. ",
+			description: "LlamaGPT is a conversational AI chatbot powered by Meta's Llama2 AI model. LlamaGPT is capable of answering questions on almost any topic",
 			techStack: ["React", "Next.js", "Tailwind CSS", "Replicate API"],
 			image: LlamaScreenshot,
 		},
 
 		{
 			name: "GetLinked Registration Site",
-			description: "Crafted during the GetLinked pre-hackathon, this website mirrors a Figma design for an elegant touch. Its purpose? Streamlining the registration process, making it effortless for participants to sign up and dive into the hackathon experience. Explore a seamless entry into the world of GetLinked.",
+			description: "Crafted during the GetLinked pre-hackathon, this hackathon registration website mirrors a Figma design for an elegant touch.",
 			techStack: ["React", "Next.js", "Tailwind CSS",],
 			image: getlinkedScreenshot,
 		}

@@ -62,31 +62,27 @@ export default function Home() {
 				</div>
 			</section>
 			<section className="grid place-items-center w-100 py-[3em]" id="projects">
-				<div className="w-[70%] max-[430px]:w-[80%] py-[2em]">
-					<div className="my-auto ">
-						<div className="grid place-items-center" >
-							<h3 className="heading mb-4"><b>Projects</b></h3><div className="line mb-4"></div>
+					<div className="my-auto w-[80%]">
+							<h3 className="heading mb-4"><b>Projects</b></h3><div className="line mb-[2em]"></div>
 							{projects.map(({ name, image, description, techStack }, index) => (
-								<div key={index} className="project flex gap-[2em] py-[1em] w-[100%] mb-[2em]">
-								<h2 className="heading pt-1 pb-[1em] min-[930px]:hidden">{name}</h2>
+								<div key={index} className="project">
+								<h2 className="heading mobile">{name}</h2>
 									<div className="grid place-items-center">
-										<Image className="object-cover max-h-[300px] max-w-[300px] rounded-[10px]" src={image} alt="project screenshot" />
+										<Image src={image} alt="project screenshot" />
 									</div>
 									<div>
-										<h2 className="heading pt-1 pb-[1em] max-[930px]:hidden">{name}</h2>
+										<h2 className="heading pt-1 pb-[1em] web">{name}</h2>
 										<div className="project-card">{description}
 										</div>
-										<div className="flex gap-[2em] mt-[2em] project-stack grey">
+										<div className="flex-wrap flex mt-[2em] project-stack">
 										{techStack.map((stack, index) => (
-											<p key={index}>{stack}</p>
+											<p key={index} className="pr-[1.2em]">{stack}</p>
 										))}
 										</div>
 									</div>
 								</div>
 							))}
-						</div>
 					</div>
-				</div>
 			</section>
 
 		</main>
