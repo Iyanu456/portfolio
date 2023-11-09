@@ -4,92 +4,14 @@ import { useState } from "react"
 import Navigation from "./components/Navigation";
 import Sidebar from "./components/Sidebar"
 import Image from "next/image"
-import LinkedInImage from "./assets/icons/Linkedin.svg"
-import TwitterXImage from "./assets/icons/Twitter.svg"
-import ProfileImage from "./assets/profile.jpg"
-import htmlIcon from "./assets/icons/html.svg"
-import cssIcon from "./assets/icons/css.svg"
-import jsIcon from "./assets/icons/js.svg"
-import reactIcon from "./assets/icons/react.svg"
-import nextIcon from "./assets/icons/next.svg"
-import tailwindIcon from "./assets/icons/tailwind.svg"
-import githubIcon from "./assets/icons/github.svg"
-import nodeIcon from "./assets/icons/node.svg"
-import gitIcon from "./assets/icons/git.svg"
-import flaskIcon from "./assets/icons/flask.svg"
-import figmaIcon from "./assets/icons/figma.svg"
-import mysqlIcon from "./assets/icons/mysql.svg"
-import menuIcon from "./assets/icons/menu.svg"
-import LlamaScreenshot from "./assets/icons/llama2.jpg"
+import { LinkedInImage, TwitterXImage, githubIcon, ProfileImage, icons, projects } from "./images.js"
 import { motion } from "framer";
 
 export default function Home() {
 
 	const [sidebarOpen, setSidebarOpen] = useState(false);
 
-	const icons = [
-	{
-		icon: htmlIcon,
-		alt: "html icon",
-		name: "HTML",
-	},
-	{
-		icon: cssIcon,
-		alt: "css icon",
-		name: "CSS",
-	},
-	{
-		icon: jsIcon,
-		alt: "javascript icon",
-		name: "JavaScript",
-	},
-	{
-		icon: reactIcon,
-		alt: "react icon",
-		name: "React",
-	},
-	{
-		icon: nextIcon,
-		alt: "next icon",
-		name: "Next.js",
-	},
-	{
-		icon: tailwindIcon,
-		alt: "tailwind css icon",
-		name: "Tailwind",
-	},
-	{
-		icon: nodeIcon,
-		alt: "node icon",
-		name: "Nodejs",
-	},
-	{
-		icon: gitIcon,
-		alt: "git icon",
-		name: "Git"
-	},
-	{
-		icon: githubIcon,
-		alt: "github icon",
-		name: "GitHub",
-
-	},
-	{
-		icon: mysqlIcon,
-		alt: "mysql icon",
-		name: "MySQL",
-	},
-	{
-		icon: figmaIcon,
-		alt: "git icon",
-		name: "Figma",
-	},
-	{
-		icon: flaskIcon,
-		alt: "flask icon",
-		name: "Flask",
-	},
-	]
+	
 	return (
 		<>
 		<Navigation sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen}/>
@@ -142,23 +64,26 @@ export default function Home() {
 			<section className="grid place-items-center w-100 py-[3em]" id="projects">
 				<div className="w-[70%] max-[430px]:w-[80%] py-[2em]">
 					<div className="my-auto ">
-						<div className="grid" >
+						<div className="grid place-items-center" >
 							<h3 className="heading mb-4"><b>Projects</b></h3><div className="line mb-4"></div>
-							<div className="project grid grid-cols-[340px,auto] gap-[2em] py-[1em] w-[100%]">
-								<div className="grid place-items-center">
-									<Image className="object-fit-cover h-[100%] w-[100%] rounded-[10px]" src={LlamaScreenshot} alt="project screenshot" />
-								</div>
-								<div>
-									<h2 className="heading pt-1 pb-[1em]"><b>LlamaGPT</b></h2>
-									<div className="project-card">A minimal, dark blue theme for VS Code, Sublime Text, Atom, iTerm, and more. Available on Visual Studio Marketplace, Package Control, Atom Package Manager, and npm.</div>
-									<div className="flex gap-[2em] mt-[2em] project-stack grey">
-										<p>React</p>
-										<p>Next.js</p>
-										<p>Tailwind CSS</p>
-										<p>Replicate API</p>
+							{projects.map(({ name, image, description, techStack }, index) => (
+								<div key={index} className="project flex gap-[2em] py-[1em] w-[100%] mb-[2em]">
+								<h2 className="heading pt-1 pb-[1em] min-[930px]:hidden">{name}</h2>
+									<div className="grid place-items-center">
+										<Image className="object-cover max-h-[300px] max-w-[300px] rounded-[10px]" src={image} alt="project screenshot" />
+									</div>
+									<div>
+										<h2 className="heading pt-1 pb-[1em] max-[930px]:hidden">{name}</h2>
+										<div className="project-card">{description}
+										</div>
+										<div className="flex gap-[2em] mt-[2em] project-stack grey">
+										{techStack.map((stack, index) => (
+											<p key={index}>{stack}</p>
+										))}
+										</div>
 									</div>
 								</div>
-							</div>
+							))}
 						</div>
 					</div>
 				</div>
