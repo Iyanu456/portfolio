@@ -62,7 +62,7 @@ export default function Home() {
 				</div>
 			</section>
 			<section className="grid place-items-center w-100 py-[3em]" id="projects">
-					<div className="my-auto w-[70%] max-[520]:w-[90%]">
+					<div className="my-auto w-[70%] max-[520px]:w-[90%]">
 							<h3 className="heading mb-4"><b>Projects</b></h3><div className="line mb-[2em]"></div>
 							{projects.map(({ name, image, description, techStack }, index) => (
 								<div key={index} className="project">
