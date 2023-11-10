@@ -26,8 +26,8 @@ export default function Home() {
 				</div>
 				<div className="grid w-[70%] max-[430px]:w-[80%] my-auto">
 					<h1 className="heading-lg"><b>Hi 👋, {`I'm`} Iyanu</b>
-						<br /><span style={{ color: "rgb(154, 154, 154)" }}>I build things for the web.</span></h1>
-					<p className="py-3 w-[80%]">Welcome to my portfolio website! {`I'm`} passionate about technology and always eager to learn more. Whether {`it's`} coding, designing websites, or working on other projects, {`I'm`} always excited to dive in and see what I can create.</p>
+						<br /><span className="mute">I build things for the web.</span></h1>
+					<p className="py-3 w-[80%] mute">Welcome to my portfolio website! {`I'm`} passionate about technology and always eager to learn more. Whether {`it's`} coding, designing websites, or working on other projects, {`I'm`} always excited to dive in and see what I can create.</p>
 				</div>
 			</section>
 
@@ -62,19 +62,19 @@ export default function Home() {
 				</div>
 			</section>
 			<section className="grid place-items-center w-100 py-[3em]" id="projects">
-					<div className="my-auto w-[80%]">
+					<div className="my-auto w-[70%]">
 							<h3 className="heading mb-4"><b>Projects</b></h3><div className="line mb-[2em]"></div>
 							{projects.map(({ name, image, description, techStack }, index) => (
 								<div key={index} className="project">
-								<h2 className="heading mobile">{name}</h2>
+								<h2 className="heading project-heading-mobile">{name}</h2>
 									<div className="grid place-items-center">
 										<Image src={image} alt="project screenshot" />
 									</div>
 									<div>
-										<h2 className="heading pt-1 pb-[1em] web">{name}</h2>
+										<h2 className="heading pt-1 pb-[1em] project-heading-web">{name}</h2>
 										<div className="project-card">{description}
 										</div>
-										<div className="flex-wrap flex mt-[2em] project-stack">
+										<div className="flex-wrap flex mt-[1em] project-stack">
 										{techStack.map((stack, index) => (
 											<p key={index} className="pr-[1.2em]">{stack}</p>
 										))}
