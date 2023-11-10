@@ -277,10 +277,10 @@ header {width: 100%;
           padding: 2em;
           display: grid;
           place-items: center;
-          background: rgba(10, 13, 30, 0.95);
+          background: rgba(10, 13, 30, 0.05);
           border-left: 1px solid rgba(225, 225, 225, 0.2);
           box-shadow: rgba(15, 15, 15, 0.12) 12px 20px 8px 6px;
-          backdrop-filter: blur(3px);
+          backdrop-filter: blur(1px);
 
         }
 
@@ -319,7 +319,7 @@ header {width: 100%;
     font-size: 0.85em;
    }
 
-   .tech-stack > a > div > img {
+   .tech-stack > div > img {
     height: 30px;
     width: 30px;
    }
