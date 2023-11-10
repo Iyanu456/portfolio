@@ -225,7 +225,7 @@ header {width: 100%;
   flex-direction: column;
 }
   .project > div > img {
-  max-width: 33vw;
+  max-width: 60vw;
   max-height: 320px;
   border-radius: 10px;
   object-fit: cover;
@@ -329,6 +329,14 @@ header {width: 100%;
   padding-left: 0;
   padding-right: 0;
   } 
+
+  .project > div > img {
+  max-width: 45vw;
+  max-height: 320px;
+  border-radius: 10px;
+  object-fit: cover;
+  border: 1.2px solid rgba(225, 225, 225, 0.1);
+}
 
   }
 
