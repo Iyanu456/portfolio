@@ -301,6 +301,11 @@ header {width: 100%;
           right: 0; /* Slide in when 'open' class is present */
         }
 
+        .sidebar > div:last-child {
+          display: flex;
+          gap: 1.8em;
+        }
+
 
 
 }
