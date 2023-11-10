@@ -30,12 +30,13 @@ body {
   color: rgb(154, 154, 154);
 }
 .mute {
-  color: rgb(160, 160, 160);
+  color: rgb(190, 190, 190);
 }
 p {
-  font-size: 1.1em;
+  font-size: 1.12em;
   /*font-family: "Jost";*/
-  letter-spacing: 1.06px;
+  /*letter-spacing: 1.06px;*/
+  color: rgb(200, 200, 200);
 }
 header {width: 100%;
   padding: 2em 3em;
@@ -174,7 +175,7 @@ header {width: 100%;
   filter: none;
 }
 .project-card {
-  background: rgba(140, 140, 140, 0.1);
+  background: rgba(140, 140, 240, 0.1);
   border: 1px solid rgba(225, 225, 225, 0.2);
   box-shadow: rgba(15, 15, 15, 0.12) 12px 20px 8px 5px;
   backdrop-filter: blur(2px);
@@ -194,10 +195,15 @@ header {width: 100%;
   margin-top: 1em;
   color: #48cae4;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .project-heading-mobile {
     display: none;
+  }
+
+  .project-grp {
+    width: 70%;
   }
 @media screen and (max-width: 1100px) {
   .project-stack {
@@ -220,12 +226,13 @@ header {width: 100%;
   }
      .project {
     flex-direction: column;
+    gap: 1em;
    }
    .project:nth-child(even) {
   flex-direction: column;
 }
   .project > div > img {
-  max-width: 60vw;
+  max-width: 61vw;
   max-height: 320px;
   border-radius: 10px;
   object-fit: cover;
@@ -331,12 +338,29 @@ header {width: 100%;
   } 
 
   .project > div > img {
-  max-width: 45vw;
+  max-width: 100%;
   max-height: 320px;
   border-radius: 10px;
   object-fit: cover;
   border: 1.2px solid rgba(225, 225, 225, 0.1);
 }
+
+.project-grp {
+  width: 95%;
+}
+
+.project-card {
+  padding: 1em 1.2em;
+  font-size: 0.84em;
+}
+
+.project-stack > p {
+  font-size: 0.8em;
+}
+
+.project-grp > .heading {
+  margin-left: 0.8em;
+} 
 
   }
 

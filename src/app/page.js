@@ -38,7 +38,7 @@ export default function Home() {
 							<h3 className="heading"><b>About Me</b></h3><div className="line m-auto"></div>
 						</div>
 						<p className="py-4 w-auto">
-							Hi, {`I'm`} <b>Iyanu</b>, and I really enjoy technology and coding. {`I'm`} currently learning how to use React and Next.js, which help me make websites that look great and work smoothly.
+							Hi, {`I'm`} Iyanu, and I really enjoy technology and coding. {`I'm`} currently learning how to use React and Next.js, which help me make websites that look great and work smoothly.
 							<br /><br />
 							{`I'm`} also a student at ALX, where {`I'm`} learning more about software engineering. {`I'm`} still in the process of learning and growing in the tech world.
 							<br />
@@ -50,23 +50,25 @@ export default function Home() {
 				</div>
 			</section>
 
-			<section className="grid place-items-center py-[3em]">
+			<section className="min-h-[80vh] py-[3em]">
+			<div className="grid place-items-center" >
 				<h3 className="heading pb-[1em]"><b>Technologies</b></h3>
 				<div className="tech-stack">
 					{icons.map((item, index) => (
 						<div key={index}>
 							<Image src={item.icon} alt={item.alt} />
-							<p className="pt-2">{item.name}</p>
+							<p className="pt-2 text-white">{item.name}</p>
 						</div>)
 					)}
 				</div>
+			</div>
 			</section>
 			<section className="grid place-items-center w-100 py-[3em]" id="projects">
-					<div className="my-auto w-[70%] max-[520px]:w-[90%]">
+					<div className="my-auto project-grp">
 							<h3 className="heading mb-4"><b>Projects</b></h3><div className="line mb-[2em]"></div>
 							{projects.map(({ name, image, description, techStack }, index) => (
 								<div key={index} className="project">
-								<h2 className="heading project-heading-mobile">{name}</h2>
+								<h2 className="heading project-heading-mobile mb-0">{name}</h2>
 									<div className="grid place-items-center">
 										<Image src={image} alt="project screenshot" />
 									</div>

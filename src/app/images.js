@@ -92,7 +92,7 @@ const icons = [
 		},
 
 		{
-			name: "GetLinked Registration Site",
+			name: "GetLinked Hackathon Challenge",
 			description: "Crafted during the GetLinked pre-hackathon, this hackathon registration website mirrors a Figma design for an elegant touch.",
 			techStack: ["React", "Next.js", "Tailwind CSS",],
 			image: getlinkedScreenshot,
