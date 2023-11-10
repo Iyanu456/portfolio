@@ -178,7 +178,7 @@ header {width: 100%;
   background: rgba(140, 140, 240, 0.1);
   border: 1px solid rgba(225, 225, 225, 0.2);
   box-shadow: rgba(15, 15, 15, 0.12) 10px 18px 2px 3px;
-  backdrop-filter: blur(1.8px);
+  /*backdrop-filter: blur(1.8px);*/
   border-radius: 5px;
   padding: 1.2em 1.8em;
   min-width: 150px;
@@ -351,11 +351,11 @@ header {width: 100%;
 
 .project-card {
   padding: 1em 1.2em;
-  font-size: 0.85em;
+  font-size: 0.9em;
 }
 
 .project-stack > p {
-  font-size: 0.845em;
+  font-size: 0.9em;
 }
 
 .project-grp > .heading {
