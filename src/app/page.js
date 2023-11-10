@@ -4,7 +4,8 @@ import { useState } from "react"
 import Navigation from "./components/Navigation";
 import Sidebar from "./components/Sidebar"
 import Image from "next/image"
-import { LinkedInImage, TwitterXImage, githubIcon, ProfileImage, icons, projects } from "./images.js"
+import Link from "next/link"
+import { ProfileImage, socials, icons, projects } from "./images.js"
 import { motion } from "framer";
 
 export default function Home() {
@@ -20,9 +21,13 @@ export default function Home() {
 				{/*<script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="oyerindei1e" data-description="Support me on Buy me a coffee!" data-message="" data-color="#5F7FFF" data-position="Right" data-x_margin="18" data-y_margin="18"></script>*/}
 			<section className="relative z-0  top-[2em] hero grid place-items-center w-100 min-h-[100vh]">
 				<div className="fixed top-[40vh] bottom-auto left-[2em] right-auto socials p-2 mr-[-2em] web w-10">
-					<div className="icon"><Image src={LinkedInImage} alt="Linkedin" /></div>
-					<div className="icon"><Image src={TwitterXImage} alt="X -formerly twitter" /></div>
-					<div className="icon"><Image src={githubIcon} alt="X -formerly twitter" /></div>
+					{socials.map(({ image, link, alt }, index) => (
+						<div className="icon" key={index}>
+							<Link href={link} target="blank" >
+								<Image src={image} alt={alt} />
+							</Link>
+						</div>
+					))}
 				</div>
 				<div className="grid w-[70%] max-[430px]:w-[80%] my-auto">
 					<h1 className="heading-lg"><b>Hi 👋, {`I'm`} Iyanu</b>
@@ -66,12 +71,14 @@ export default function Home() {
 			<section className="grid place-items-center w-100 py-[3em]" id="projects">
 					<div className="my-auto project-grp">
 							<h3 className="heading mb-4"><b>Projects</b></h3><div className="line mb-[2em]"></div>
-							{projects.map(({ name, image, description, techStack }, index) => (
+							{projects.map(({ name, image, description, techStack, link }, index) => (
 								<div key={index} className="project">
 								<h2 className="heading project-heading-mobile mb-0">{name}</h2>
+									<Link href={link} target="blank">
 									<div className="grid place-items-center">
 										<Image src={image} alt="project screenshot" />
 									</div>
+									</Link>
 									<div>
 										<h2 className="heading pt-1 pb-[1em] project-heading-web">{name}</h2>
 										<div className="project-card">{description}
