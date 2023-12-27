@@ -9,6 +9,7 @@
 
 :root {
   background:  #071222;
+  background: radial-gradient(circle, rgb(9, 30, 87) 0%, rgba(7,18,34,1) 100%);
   color: rgb(236, 236, 236)
 }
 
@@ -110,7 +111,8 @@ header {width: 100%;
 }
 @media screen and (max-width: 520px) {
   .heading-lg {
-    font-size: 2em;
+    padding-top: 2em;
+    font-size: 2.4em;
    }
    
 

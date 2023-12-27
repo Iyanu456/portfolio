@@ -16,10 +16,10 @@ export default function Home() {
 					<div><Image src={LinkedInImage} alt="Linkedin icon" /></div>
 					<div><Image src={TwitterXImage} alt="X -formerly twitter icon" /></div>
 				</div>
-				<div className="grid w-[70%] max-[430px]:w-[80%] my-auto">
+				<div className="grid w-full max-[430px]:w-[80%] max-[430px]:max-w-[82%] my-auto place-items-center text-center">
 					<h1 className="heading-lg"><b>Hi 👋, {`I'm`} Iyanu</b>
-						<br /><span style={{ color: "rgb(154, 154, 154)" }}>I build things for the web</span></h1>
-					<p className="py-3 w-[80%]">Welcome to my portfolio website! {`I'm`} passionate about technology and always eager to learn more. Whether {`it's`} coding, designing websites, or working on other projects, {`I'm`} always excited to dive in and see what I can create.</p>
+						<br /><span style={{ color: "rgb(200, 200, 200)" }}>I build things for the web</span></h1>
+					<p className="py-3 max-w-[60%] max-[430px]:max-w-[84%] heading-caption">Welcome to my portfolio website! {`I'm`} passionate about technology and always eager to learn more. Whether {`it's`} coding, designing websites, or working on other projects, {`I'm`} always excited to dive in and see what I can create.</p>
 				</div>
 			</section>
 
