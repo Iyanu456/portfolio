@@ -78,12 +78,16 @@ header {width: 100%;
   gap: 2em;
  }
 .coffee-btn {
+  font-size: 0.85em;
   font-family: 'Inter';
-  padding: 0.5em 1.2em;
+  padding: 0.4em 0.6em 0.4em 0.9em;
   border-radius: 10px;
   border: 2px solid rgb(248, 248, 248);
   color: white;
   text-shadow: #c5c5c5;
+}
+.coffee-btn:hover {
+  background: rgba(186, 176, 176, 0.05);
 }
 @media screen and (max-width: 920px) {
   .heading-lg {

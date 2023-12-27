@@ -37,7 +37,7 @@ export default function Home() {
 						<Link href="https://www.buymeacoffee.com/oyerindei1e" target="blank">
 							<button className=" flex coffee-btn mt-2">
 								<div className="my-auto"><p >Buy me a coffee</p></div>
-								<Image className="my-auto max-w-[40px] ml-2" src={Coffee} alt="coffee icon" />
+								<Image className="my-auto max-w-[30px] ml-2" src={Coffee} alt="coffee icon" />
 							</button>
 						</Link>
 						
