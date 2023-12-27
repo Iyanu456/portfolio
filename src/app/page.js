@@ -29,10 +29,10 @@ export default function Home() {
 						</div>
 					))}
 				</div>
-				<div className="grid w-[70%] max-[430px]:w-[80%] my-auto">
+				<div className="grid w-full max-[430px]:w-[80%] m-auto place-items-center text-center">
 					<h1 className="heading-lg"><b>Hi 👋, {`I'm`} Iyanu</b>
 						<br /><span className="mute">I build things for the web.</span></h1>
-					<p className="py-3 w-[80%] mute">Welcome to my portfolio website! {`I'm`} passionate about technology and always eager to learn more. Whether {`it's`} coding, designing websites, or working on other projects, {`I'm`} always excited to dive in and see what I can create.</p>
+					<p className="py-3 w-[60%] mute">Welcome to my portfolio website! {`I'm`} passionate about technology and always eager to learn more. Whether {`it's`} coding, designing websites, or working on other projects, {`I'm`} always excited to dive in and see what I can create.</p>
 				</div>
 			</section>
 

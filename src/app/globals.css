@@ -9,8 +9,8 @@
 
 :root {
   /*background:  #071222;*/
-  background: rgb(19,48,125);
-  background: radial-gradient(circle, rgba(19,48,125,1) 0%, rgba(7,18,34,1) 100%);
+  background: #191e29;
+  background: radial-gradient(circle, #132d46 0%, rgba(7,18,34,1) 100%);
   color: rgb(236, 236, 236)
 }
 
@@ -30,10 +30,10 @@ body {
   color: rgb(154, 154, 154);
 }
 .mute {
-  color: rgb(190, 190, 190);
+  color: rgb(210, 210, 210);
 }
 p {
-  font-size: 1.12em;
+  font-size: 0.98em;
   /*font-family: "Jost";*/
   /*letter-spacing: 1.06px;*/
   color: rgb(200, 200, 200);
@@ -59,8 +59,11 @@ header {width: 100%;
 }
 
 .heading-lg {
-  font-size: 3.6em;
+  font-size: 3.7em;
   font-weight: 650;
+}
+.mute-green {
+  color: #01c38d;
 }
 
 .heading-grp {
