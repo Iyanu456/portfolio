@@ -21,63 +21,63 @@ import getlinkedScreenshot from "./assets/icons/getlinked.png"
 
 const icons = [
 	{
-		icon: htmlIcon,
+		icon: "/icons/html.svg",
 		alt: "html icon",
 		name: "HTML",
 	},
 	{
-		icon: cssIcon,
+		icon: "/icons/css.svg",
 		alt: "css icon",
 		name: "CSS",
 	},
 	{
-		icon: jsIcon,
+		icon: "/icons/js.svg",
 		alt: "javascript icon",
 		name: "JavaScript",
 	},
 	{
-		icon: reactIcon,
+		icon: "icons/react.svg",
 		alt: "react icon",
 		name: "React",
 	},
 	{
-		icon: nextIcon,
+		icon: "/icons/next.svg",
 		alt: "next icon",
 		name: "Next.js",
 	},
 	{
-		icon: tailwindIcon,
+		icon: "/icons/tailwind.svg",
 		alt: "tailwind css icon",
 		name: "Tailwind",
 	},
 	{
-		icon: nodeIcon,
+		icon: "/icons/node.svg",
 		alt: "node icon",
 		name: "Nodejs",
 	},
 	{
-		icon: gitIcon,
+		icon: "/icons/git.svg",
 		alt: "git icon",
 		name: "Git"
 	},
 	{
-		icon: githubIcon,
+		icon: "/icons/github.svg",
 		alt: "github icon",
 		name: "GitHub",
 
 	},
 	{
-		icon: mysqlIcon,
+		icon: "/icons/mysql.svg",
 		alt: "mysql icon",
 		name: "MySQL",
 	},
 	{
-		icon: figmaIcon,
+		icon: "/icons/figma.svg",
 		alt: "git icon",
 		name: "Figma",
 	},
 	{
-		icon: flaskIcon,
+		icon: "/icons/flask.svg",
 		alt: "flask icon",
 		name: "Flask",
 	},

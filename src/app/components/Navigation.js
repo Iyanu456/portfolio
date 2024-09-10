@@ -48,19 +48,21 @@ export default function Navigation(props) {
 					</motion.div>
 
 					<ul className="w-[fit-content] hidden md:flex ml-auto mr-0 gap-8 my-auto">
+					<Link href="#about-me" className="w-[fit-content]">
 					<motion.li
 					variants={navVariants}
 					initial="hidden"
 					animate="visible"
 					className="hover:translate-y-[-5px] transition-transform duration-300 icon w-[fit-content] px-3 py-2"
 					style={{cursor: "pointer", fontFamily: "Jost", letterSpacing: "1.06px"}}>
-	  					<Link href="#about-me" className="w-[fit-content]">
+	  					
 							
 								
-						  <span className="text-[#05f0dc]">01. </span> About me
+						  <span className="text-[#05f0dc]">01. </span> About
 							
-						</Link>
+						
 						</motion.li>
+						</Link>
 
 						
 							<motion.li
@@ -70,7 +72,19 @@ export default function Navigation(props) {
 								className="hover:translate-y-[-5px] transition-transform duration-300 icon my-auto px-3 py-2"
 								style={{cursor: "pointer", fontFamily: "Jost", letterSpacing: "1.06px"}}>
 									<Link href="#projects">
-								<span className="text-[#05f0dc]">02. </span> Projects
+								<span className="text-[#05f0dc]">02. </span> Work
+								</Link>
+							</motion.li>
+
+							
+							<motion.li
+								variants={navVariants}
+								initial="hidden"
+								animate="visible"
+								className="hover:translate-y-[-5px] transition-transform duration-300 icon my-auto px-3 py-2"
+								style={{cursor: "pointer", fontFamily: "Jost", letterSpacing: "1.06px"}}>
+									<Link href="#projects">
+								<span className="text-[#05f0dc]">03. </span> Contact
 								</Link>
 							</motion.li>
 						
