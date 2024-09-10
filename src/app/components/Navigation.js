@@ -33,47 +33,54 @@ export default function Navigation(props) {
 		},
 	};
     return (
-        <header className={`fixed top-0 left-0 right-0 py-6 z-20 px-22 transition-transform transform duration-300 ${
+        <header className={`w-full grid fixed top-0 left-0 right-0 py-6 z-20 px-[2em] md:px-[3em] py-[2em] transition-transform transform duration-300 ${
         scrollingUp ? 'translate-y-0' : '-translate-y-[70%]'
       } text-white py-4`}>
-				<nav className="flex ml-0 mr-auto">
+				<nav className="flex">
 
 					<motion.div
 						variants={navVariants}
 						initial="hidden"
 						animate="visible"
-						className="icon my-auto py-[0.3em] px-[0.5em] cursor-pointer"
-						style={{border: "1px solid rgb(156, 156, 156)",}}>
-						<b>Iy</b>
+						className="hover:translate-y-[-5px] transition-transform duration-300 font-bold icon border border-5 border-white my-auto border py-[0.3em] ml-0 mr-auto px-[0.5em] cursor-pointer"
+						>
+						Iyanu
 					</motion.div>
 
-					<ul className="flex ml-auto mr-0 gap-10 my-auto">
-	  					<Link href="#about-me">
-							<motion.li
-								variants={navVariants}
-								initial="hidden"
-								animate="visible"
-								className="icon web my-auto px-3 py-2"
-								style={{cursor: "pointer", fontFamily: "Jost", letterSpacing: "1.06px"}}>
-								About me
-							</motion.li>
+					<ul className="w-[fit-content] hidden md:flex ml-auto mr-0 gap-8 my-auto">
+					<motion.li
+					variants={navVariants}
+					initial="hidden"
+					animate="visible"
+					className="hover:translate-y-[-5px] transition-transform duration-300 icon w-[fit-content] px-3 py-2"
+					style={{cursor: "pointer", fontFamily: "Jost", letterSpacing: "1.06px"}}>
+	  					<Link href="#about-me" className="w-[fit-content]">
+							
+								
+						  <span className="text-[#05f0dc]">01. </span> About me
+							
 						</Link>
+						</motion.li>
 
-						<Link href="#projects">
+						
 							<motion.li
 								variants={navVariants}
 								initial="hidden"
 								animate="visible"
-								className="icon web my-auto px-3 py-2"
+								className="hover:translate-y-[-5px] transition-transform duration-300 icon my-auto px-3 py-2"
 								style={{cursor: "pointer", fontFamily: "Jost", letterSpacing: "1.06px"}}>
-								Projects
+									<Link href="#projects">
+								<span className="text-[#05f0dc]">02. </span> Projects
+								</Link>
 							</motion.li>
-						</Link>
-						<div onClick={() => {
+						
+					</ul>
+
+					
+					<button className="w-[fit-content] grid md:hidden" onClick={() => {
 							props.sidebarOpen ? props.setSidebarOpen(false) : props.setSidebarOpen(true)
 							console.log("clicked on nav");
-							}}><Image src={menuIcon} alt="X -formerly twitter icon" className="cursor-pointer mobile max-h-[25px] max-w-[25px]" /></div>
-					</ul>
+							}}><Image src={menuIcon} alt="X -formerly twitter icon" className="icon cursor-pointer  max-h-[25px] max-w-[25px]" /></button>
 				</nav>
 			</header>
     )

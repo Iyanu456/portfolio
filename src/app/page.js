@@ -15,12 +15,15 @@ export default function Home() {
 	
 	return (
 		<>
+		
+
+		
 		<Navigation sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen}/>
 		<Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} /> 
-		<main>
+		
 				{/*<script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="oyerindei1e" data-description="Support me on Buy me a coffee!" data-message="" data-color="#5F7FFF" data-position="Right" data-x_margin="18" data-y_margin="18"></script>*/}
-			<section className="relative z-0  top-[2em] hero grid place-items-center w-100 min-h-[100vh]">
-				<div className="fixed top-[40vh] bottom-auto left-[2em] right-auto socials p-2 mr-[-2em] web w-10">
+			<section className="relative z-0  top-[2em] grid min-h-[100vh]">
+				<div className="md:flex hidden flex-col gap-3 fixed top-[40vh] bottom-auto left-[2em] right-auto socials p-2 mr-[-2em] w-[fit-content]">
 					{socials.map(({ image, link, alt }, index) => (
 						<div className="icon" key={index}>
 							<Link href={link} target="blank" >
@@ -29,21 +32,21 @@ export default function Home() {
 						</div>
 					))}
 				</div>
-				<div className="grid w-[70%] max-[430px]:w-[80%] my-auto">
-					<h1 className="heading-lg max-[430px]:pt-[-1em]"><b>Hi 👋, {`I'm`} Iyanu</b>
-						<br /><span className="mute">I build things for the web.</span></h1>
+				<div className="grid w-screen my-auto ">
+					<h1 className="md:text-[4.2em] w-[5em] text-[1.8em] max-[430px]:pt-[-1em] leading-[1.3em]"><b>Hi 👋, {`I'm`} Iyanu</b>
+						<br /><span className="text-[rgb(210,210,210)]  font-semibold">I build things for the web.</span></h1>
 					{/*<p className="py-3 w-[60%] max-[430px]:w-[80%] mute">Welcome to my portfolio website! {`I'm`} passionate about technology and always eager to learn more. Whether {`it's`} coding, designing websites, or working on other projects, {`I'm`} always excited to dive in and see what I can create.</p>*/}
-					<p className="py-3 w-[60%] max-[430px]:w-[80%] mute">I create solid and scalable products with great user experience</p>
+					<p className="text-[1.08em] w-[5em] py-3 mute leading-[1.6em]">{`I’m a software engineer specializing in building (and occasionally designing) exceptional digital experiences. Currently, I’m focused on building accessible, human-centered products for startups and web3 projects.`}</p>
 				</div>
 			</section>
 
-			<section className="grid place-items-center w-100 min-h-[100vh]" id="about-me">
-				<div className="about-me-grid w-[70%] max-[430px]:w-[80%] py-4">
+			<section className="grid place-items-center w-[5em]  min-h-[100vh]" id="about-me">
+				<div className="about-me-grid py-4">
 					<div className="my-auto ">
 						<div className="heading-grp" >
-							<h3 className="heading"><b>About Me</b></h3><div className="line m-auto"></div>
+							<h3 className="heading"><b>About Me</b></h3><div className="line m-auto pr-[2em] "></div>
 						</div>
-						<p className="py-4 w-auto">
+						<p className="py-4 ">
 							Hi, {`I'm`} Iyanu, and I really enjoy technology and coding. {`I'm`} currently learning how to use React and Next.js, which help me make websites that look great and work smoothly.
 							<br /><br />
 							{`I'm`} also a student at ALX, where {`I'm`} learning more about software engineering. {`I'm`} still in the process of learning and growing in the tech world.
@@ -52,11 +55,11 @@ export default function Home() {
 						</p>
 						
 					</div>
-					<Image className="max-h-[90%] max-w-[80%] max-[860px]:max-h-[55%] max-[860px]:max-w-[55%] my-auto object-cover rounded-full" src={ProfileImage} alt="my profile picture" />
+					<Image className="max-h-[90%]  max-[860px]:max-h-[55%]  my-auto object-cover " src={ProfileImage} alt="my profile picture" />
 				</div>
 			</section>
 
-			<section className="min-h-[80vh] py-[3em]">
+			<section className="min-h-[80vh] w-[5em] py-[3em]">
 			<div className="grid place-items-center" >
 				<h3 className="heading pb-[1em]"><b>Technologies</b></h3>
 				<div className="tech-stack">
@@ -69,7 +72,7 @@ export default function Home() {
 				</div>
 			</div>
 			</section>
-			<section className="grid place-items-center w-100 py-[3em]" id="projects">
+			<section className="grid place-items-center w-[5em] py-[3em]" id="projects">
 					<div className="my-auto project-grp">
 							<h3 className="heading mb-4"><b>Projects</b></h3><div className="line mb-[2em]"></div>
 							{projects.map(({ name, image, description, techStack, link }, index) => (
@@ -95,7 +98,7 @@ export default function Home() {
 					</div>
 			</section>
 
-		</main>
+		
 		</>
 	);
 }
