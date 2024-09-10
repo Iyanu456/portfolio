@@ -16,7 +16,7 @@ export default function Page() {
       opacity: 1,
       y: 0,
       transition: {
-        delay: 0.9,
+        delay: 1.4,
         ease: "easeOut",
       },
     },
