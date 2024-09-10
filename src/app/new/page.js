@@ -5,7 +5,7 @@ import Link from "next/link";
 import { ProfileImage, socials, icons, projects } from "../images";
 import { animate, delay, motion } from "framer-motion";
 
-export default function () {
+export default function Page() {
   const aboutMeAnimation = {
     initial: {
       opacity: 0,
