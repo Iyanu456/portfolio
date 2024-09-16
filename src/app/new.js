@@ -2,7 +2,7 @@
 import Navigation from "../components/Navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { ProfileImage, socials, icons, projects } from "../images";
+import { ProfileImage, socials, icons, projects } from "./images";
 import { animate, delay, motion } from "framer-motion";
 
 export default function Page() {
@@ -136,8 +136,11 @@ export default function Page() {
          
           className="flex flex-col md:grid md:grid-cols-[50%,30%] place-items-center gap-[2.5em]"
         >
-          <div 
-           
+          <motion.div 
+           variants={aboutMeAnimation}
+          initial="initial"
+          whileInView="animate"
+          viewport={{once: true}}
           className="my-auto">
             <div className="grid grid-cols-[13em,auto]">
               <h3 className="heading flex w-[fit-content]">
@@ -148,12 +151,7 @@ export default function Page() {
               </h3>
               <div className="line m-auto pr-[2em] "></div>
             </div>
-            <motion.p 
-            variants={aboutMeAnimation}
-          initial="initial"
-          whileInView="animate"
-          //viewport={{once: true}}
-            className="py-2">{`
+            <p className="py-2">{`
               Hello! My name is Iyanu. I’m a passionate software engineer with a
               strong drive to create innovative and user-centered digital
               experiences. With a background in web development, I specialize in
@@ -165,13 +163,13 @@ export default function Page() {
               making things that can make a positive difference. I believe that
               every project is a chance to learn and make the world a bit
               better.`}
-            </motion.p>
-          </div>
+            </p>
+          </motion.div>
           <motion.div 
            variants={profileAnimation}
            initial="initial"
            whileInView="animate"
-           viewport={{once: true}}
+           //viewport={{once: true}}
           className="my-auto duration-300 transform hover:-translate-y-[0px] hover:-translate-x-[0px] transition-transform grid place-items-center relative h-[10em] w-[10em] md:h-[16em] md:w-[16em] group">
             <div className="grid rounded-md z-20 absolute duration-300 transform group-hover:-translate-y-[5px] group-hover:-translate-x-[5px] transition-transform h-[10em] w-[10em] md:h-[16em] md:w-[16em]  my-auto bg-[#05f0dc] ">
               <Image
@@ -189,13 +187,13 @@ export default function Page() {
       </section>
 
 
-      <section className="grid my-auto pt-[2em] pl-[2.5em] md:pl-[4em] pr-[2em] min-h-[102vh] place-items-center">
-			<div className="grid place-items-center w-[fit-content] mx-auto " >
-				<h3 className="mx-auto text-[2em] mb-3 text-center font-bold pb-[1em]"><b>Technologies</b></h3>
+      <section className="grid my-auto pt-[2em] pl-[2.5em] md:pl-[12em] pr-[2em] min-h-[102vh] place-items-center">
+			<div className="grid place-items-center w-[60%] mx-auto" >
+				<h3 className="mx-auto text-[2em] mb-3 text-center font-bold pb-[1em] ml-[-2.8em]"><b>Technologies</b></h3>
 				<div 
          
          //viewport={{once: true}}
-        className="grid grid-cols-[8em,8em,8em,8em] gap-4 ">
+        className="grid grid-cols-[8em,8em,8em,8em] gap-4 ml-[-2.5em]">
 					{icons.map((item, index) => (
 						<motion.div 
             whileHover={{ scale: 1.08}}
@@ -206,7 +204,7 @@ export default function Page() {
          whileInView="animate"
          viewport={{once: true}}
             key={index} 
-            className="hover:translate-y-[-10px]  grid place-items-center w-[100%] h-[100%] md:min-h-[8em] rounded-[5px] bg-[rgba(140,140,140,0.1)] border border-[rgba(225,225,225,0.2)] shadow-[12px_20px_8px_6px_rgba(15,15,15,0.12)]  grid place-items-center p-[1.4em] cursor-pointer">
+            className="hover:translate-y-[-10px]  grid place-items-center h-[8em] rounded-[5px] bg-[rgba(140,140,140,0.1)] border border-[rgba(225,225,225,0.2)] shadow-[12px_20px_8px_6px_rgba(15,15,15,0.12)]  grid place-items-center p-[1.4em] cursor-pointer">
 							<Image src={item.icon} alt={item.alt} width="15" height="15" className="max-h-[2.2em] max-w-[2.2em]"/>
 							<p className="pt-2 text-white text-center">{item.name}</p>
 						</motion.div>)
@@ -216,46 +214,28 @@ export default function Page() {
 			</section>
 
       <section
-        className="grid my-auto place-items-center min-h-[103vh] pt-[5em] pl-[2.5em] md:pl-[4.7em] pr-[2em] "
-        id="projects"
+        className="grid my-auto place-items-center min-h-[103vh] pt-[2em] pl-[2.5em] md:pl-[12em] pr-[2em] "
+        id="about-me"
       >
+        <div
+         
+          className="grid  place-items-center gap-[2.5em]"
+        >
           <motion.div 
            variants={aboutMeAnimation}
           initial="initial"
           whileInView="animate"
           viewport={{once: true}}
-          className="grid my-auto w-[80%]">
+          className="grid my-auto ">
+            <div className="grid">
               <h3 className="heading flex w-[fit-content]">
                 <span className="text-[#05f0dc] w-[fit-content] jost text-[0.75em] mt-[0.3em] pr-3">
-                  02.{" "}
+                  03.{" "}
                 </span>
-                <b>Projects</b>
+                <b>Some things I've built</b>
               </h3>
-              
-              <div className="line m-auto pr-[2em] mb-[3em]"></div>
-              <div className="flex flex-col gap-[3em]">
-              {projects.map(({ name, image, description, techStack, link }, index) => (
-								<div key={index} className="flex gap-[2em]">
-								<h2 className="heading project-heading-mobile mb-0">{name}</h2>
-									<Link href={link} target="blank" className="max-w-[360px] max-h-[240px] ">
-									
-										<Image src={image} className="cover max-w-[360px] max-h-[240px] rounded-md" alt="project screenshot" width="100" height="100" />
-									
-									</Link>
-									<div>
-										<h2 className="heading pt-1 pb-[1em] project-heading-web">{name}</h2>
-										<div className="project-card">{description}
-										</div>
-										<div className=" flex mt-[1em] gap-2">
-										{techStack.map((stack, index) => (
-											<div key={index} className="w-[fit-content] pr-[1.2em]">{stack}</div>
-										))}
-										</div>
-									</div>
-								</div>
-							))}
-              </div>
-        
+              <div className="line m-auto pr-[2em] "></div>
+            </div>
             
           </motion.div>
           <motion.div 
@@ -266,7 +246,7 @@ export default function Page() {
           className="my-auto duration-300 transform hover:-translate-y-[0px] hover:-translate-x-[0px] transition-transform grid place-items-center relative h-[16em] w-[16em] group">
             
           </motion.div>
-      
+        </div>
       </section>
     </div>
   );

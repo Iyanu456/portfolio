@@ -88,7 +88,7 @@ const icons = [
 			name: "LlamaGPT",
 			description: "LlamaGPT is a conversational AI chatbot powered by Meta's Llama2 AI model. LlamaGPT is capable of answering questions on almost any topic",
 			techStack: ["React", "Next.js", "Tailwind CSS", "Replicate API"],
-			image: LlamaScreenshot,
+			image: "/images/llama2.jpg",
 			link: "https://llama-gpt.vercel.app/login"
 		},
 
@@ -96,7 +96,7 @@ const icons = [
 			name: "GetLinked Hackathon Challenge",
 			description: "Crafted during the GetLinked pre-hackathon, this hackathon registration website mirrors a Figma design for an elegant touch.",
 			techStack: ["React", "Next.js", "Tailwind CSS",],
-			image: getlinkedScreenshot,
+			image: "/images/getlinked.png",
 			link: "http://getlinked-hackathon-six.vercel.app/"
 
 		}
