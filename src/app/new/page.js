@@ -232,11 +232,17 @@ export default function Page() {
       </section>
 
       <section
-        className="grid my-auto pt-[2em] pl-[2.5em] md:pl-[12em] pr-[2em] min-h-[102vh] md:place-items-center"
+        className="grid my-auto pt-[2em] pl-[2.5em] md:pl-[12em] md:pr-[5em] mr-[2em] min-h-[102vh] md:place-items-center"
         id="projects"
       >
 
-<div className="grid md:grid-cols-[11em,auto] grid-cols-[9em,auto] mb-[1.5em]">
+        <div className="grid">
+
+
+        
+          
+          <div className="flex flex-col gap-3 md:max-w-[85%]">
+          <div className="grid md:grid-cols-[11em,auto] grid-cols-[9em,auto] mb-[1em]">
               <h3 className="heading md:text-[1.8em] text-[1.5em] flex w-[fit-content] my-auto">
                 <span className="text-[#05f0dc] w-[fit-content] jost text-[0.75em] md:mt-[0.3em] mt-[0.4em] pr-3">
                   02.{" "}
@@ -245,29 +251,27 @@ export default function Page() {
               </h3>
               <div className="line m-auto md:pr-[2em] "></div>
             </div>
-        
-          
-          
             {projects.map(
               ({ name, image, description, techStack, link }, index) => (
-                <div key={index} className="flex max-sm:flex-col gap-[2em]">
+                <>
+                <div key={index} className="grid grid-cols-[40%,50%] gap-[3em] mb-[2em]">
                   <h2 className="heading project-heading-mobile mb-0">
                     {name}
                   </h2>
                   <Link
                     href={link}
                     target="blank"
-                    className="max-w-[60%] max-sm:grid max-sm:place-items-center md:max-w-[360px] md:max-h-[240px] "
+                    className=" w-[80%] "
                   >
                     <Image
                       src={image}
-                      className="cover max-w[80%] md:max-w-[160px] md:max-h-[140px] rounded-md"
+                      className="cover w-[80%] rounded-md"
                       alt="project screenshot"
                       width="100"
                       height="100"
                     />
                   </Link>
-                  <div className="grid">
+                  <div className="my-auto">
                     <h2 className="heading pt-1 pb-[1em] project-heading-web">
                       {name}
                     </h2>
@@ -275,8 +279,10 @@ export default function Page() {
                     
                   </div>
                 </div>
+               
+                </>
               )
-            )}
+            )}</div></div>
           
         
       </section>
