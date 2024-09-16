@@ -33,7 +33,7 @@ export default function Navigation(props) {
 		},
 	};
     return (
-        <header className={`w-full grid fixed top-0 left-0 right-0 pt-6 pb-3 z-20 px-[2em] md:px-[3em] py-[2em] transition-transform transform duration-300 ${
+        <header className={`grid fixed top-0 left-0 right-0 pt-6 pb-3 z-20 px-[2em] md:px-[3em] py-[2em] transition-transform transform duration-300 ${
         scrollingUp ? 'translate-y-0' : '-translate-y-[70%]'
       } text-white py-4`}>
 				<nav className="flex">
