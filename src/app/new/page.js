@@ -133,9 +133,9 @@ export default function Page() {
       >
         <div className="flex flex-col md:grid md:grid-cols-[50%,30%] place-items-center gap-[2.7em]">
           <div className="my-auto">
-            <div className="grid grid-cols-[13em,auto]">
-              <h3 className="heading md:text-[1.8em] text-[1.2em] flex w-[fit-content]">
-                <span className="text-[#05f0dc] w-[fit-content] jost text-[0.75em] mt-[0.3em] pr-3">
+            <div className="grid md:grid-cols-[13em,auto] grid-cols-[10.5em,auto]">
+              <h3 className="heading md:text-[1.8em] text-[1.5em] flex w-[fit-content] my-auto">
+                <span className="text-[#05f0dc] w-[fit-content] jost text-[0.75em] md:mt-[0.3em] mt-[0.4em] pr-3">
                   01.{" "}
                 </span>
                 <b>About Me</b>
@@ -236,9 +236,9 @@ export default function Page() {
         id="projects"
       >
 
-<div className="grid grid-cols-[11em,auto] mb-[1.5em]">
-              <h3 className="heading md:text-[1.8em] text-[1.2em] flex w-[fit-content]">
-                <span className="text-[#05f0dc] w-[fit-content] jost text-[0.75em] mt-[0.3em] pr-3">
+<div className="grid md:grid-cols-[11em,auto] grid-cols-[9em,auto] mb-[1.5em]">
+              <h3 className="heading md:text-[1.8em] text-[1.5em] flex w-[fit-content] my-auto">
+                <span className="text-[#05f0dc] w-[fit-content] jost text-[0.75em] md:mt-[0.3em] mt-[0.4em] pr-3">
                   02.{" "}
                 </span>
                 <b>Projects</b>
