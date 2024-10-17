@@ -83,7 +83,7 @@ export default function Navigation(props) {
 								animate="visible"
 								className="hover:translate-y-[-5px] transition-transform duration-300 icon my-auto px-3 py-2"
 								style={{cursor: "pointer", fontFamily: "Jost", letterSpacing: "1.06px"}}>
-									<Link href="#projects">
+									<Link href="#contact">
 								<span className="text-[#05f0dc]">03. </span> Contact
 								</Link>
 							</motion.li>
