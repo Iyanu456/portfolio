@@ -72,7 +72,7 @@ export default function Page() {
       </section>
 
       <motion.section
-        className="grid my-auto pt-[5em] lg:max-w-[90em] mx-auto pl-[2.5em] md:pl-[12em] pr-[2em] md:min-h-[102vh] max-sm:min-h-[102vh] place-items-center"
+        className="grid my-auto pt-[5em] lg:max-w-[90em] mx-auto px-[2em] md:pl-[12em] md:min-h-[102vh] max-sm:min-h-[102vh] place-items-center"
         initial={{ opacity: 0, y: 50 }} // Start with opacity 0 and slight downward position
         animate={{ opacity: 1, y: 0 }} // Animate to full opacity and original position
         transition={{ duration: 1, ease: "easeOut" }} // Smooth transition
@@ -133,7 +133,7 @@ export default function Page() {
       </motion.section>
 
       <section
-        className="max-sm:mb-[4em] grid my-auto pt-[2em] pl-[2.5em] md:pl-[12em] lg:max-w-[90em] mx-auto pr-[2em] md:min-h-[95vh] place-items-center"
+        className="max-sm:mb-[4em] grid my-auto pt-[2em] px-[2em] md:pl-[12em] lg:max-w-[90em] mx-auto md:min-h-[95vh] place-items-center"
         id="about-me"
       >
         <div className="flex flex-col md:grid md:grid-cols-[50%,30%] place-items-center gap-[2.7em]">
@@ -253,7 +253,7 @@ export default function Page() {
       </section>
 
       <section
-        className="max-sm:grid my-auto pt-[2em] px-[2.5em] md:pl-[12em] md:pr-[5em]  min-h-[90vh] md:place-items-center max-sm:max-w-[100vw] lg:max-w-[93em] mx-auto"
+        className="max-sm:grid my-auto pt-[2em] px-[2em] md:pl-[12em] md:pr-[5em]  min-h-[90vh] md:place-items-center max-sm:max-w-[100vw] lg:max-w-[93em] mx-auto"
         id="projects"
       >
 
@@ -280,7 +280,7 @@ export default function Page() {
                 initial="initial"
                 custom={index}
                 whileInView="animate"
-                //viewport={{ once: true }} 
+                viewport={{ once: true }} 
 				key={index} className="md:grid max-sm:mx-auto flex flex-col grid-cols-[34%,56%] gap-5 md:gap-[4em] mb-[3em]">
                   <div className="overflow-hidden rounded-md">
                   <Link
@@ -324,7 +324,7 @@ export default function Page() {
 	  initial="initial"
 	  //custom={index}
 	  whileInView="animate"
-	  className="mb-[6em] mt-[10em] md:pl-[12em] max-sm:px-[2.5em]  grid md:grid-cols-[0.8fr,1fr] gap-[3em]  lg:max-w-[100em] mx-auto" id="contact">
+	  className="mb-[6em] mt-[10em] md:pl-[12em] max-sm:px-[2em]  grid md:grid-cols-[0.8fr,1fr] gap-[3em]  lg:max-w-[100em] mx-auto" id="contact">
           <div className="center-align flex justify-center gap-4">
             <div className="flex flex-col  gap-4 max-sm:w-[100%] max-sm:flex-col">
             <h3 className="mb-2 text-[2em] mx-auto font-semibold ">
@@ -360,7 +360,7 @@ export default function Page() {
           
         </motion.section>
 
-        <footer className="text-center mb-[5em] px-[2.5em]">
+        <footer className="text-center mb-[5em] px-[2em]">
       <p>Copyright © {currentYear} All rights reserved | Iyanu Oyerinde</p>
     </footer>
     </div>
