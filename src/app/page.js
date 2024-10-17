@@ -270,7 +270,13 @@ export default function Page() {
             {projects.map(
               ({ name, image, description, techStack, link }, index) => (
                 <>
-                <div key={index} className="md:grid max-sm:mx-auto flex flex-col grid-cols-[34%,56%] gap-5 md:gap-[4em] mb-[3em]">
+                <motion.div
+				variants={technologiesAnimation}
+                initial="initial"
+                custom={index}
+                whileInView="animate"
+                //viewport={{ once: true }} 
+				key={index} className="md:grid max-sm:mx-auto flex flex-col grid-cols-[34%,56%] gap-5 md:gap-[4em] mb-[3em]">
                   <div className="overflow-hidden rounded-md">
                   <Link
                     href={link}
@@ -299,7 +305,7 @@ export default function Page() {
                     </div>
                   </div>
                   
-                </div>
+                </motion.div>
                
                 </>
               )
