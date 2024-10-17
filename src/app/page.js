@@ -2,6 +2,7 @@
 import Navigation from "./components/Navigation";
 import Image from "next/image";
 import Link from "next/link";
+import { Send, SendHorizonal, Phone, Mail, MailOpen, CodeXml, Eye } from "lucide-react";
 import { ProfileImage, socials, icons, projects } from "./images";
 import { animate, delay, motion } from "framer-motion";
 
@@ -117,6 +118,9 @@ export default function Page() {
             </span>
           </motion.h1>
 
+		{/*Gradient div */}
+		  <div className="absolute z-[-10] inset-0  bg-[radial-gradient(circle,_#17318a_0%,_rgba(7,18,34,1)_100%)]"></div>
+
           <motion.p
             className="text-[1.06m] md:w-[60%] py-3 mute leading-[1.65em]"
             initial={{ opacity: 0 }} // P fade-in effect
@@ -129,7 +133,7 @@ export default function Page() {
       </motion.section>
 
       <section
-        className="max-sm:mb-[4em] grid my-auto pt-[2em] pl-[2.5em] md:pl-[12em] lg:max-w-[90em] mx-auto pr-[2em] md:min-h-[60vh] place-items-center"
+        className="max-sm:mb-[4em] grid my-auto pt-[2em] pl-[2.5em] md:pl-[12em] lg:max-w-[90em] mx-auto pr-[2em] md:min-h-[95vh] place-items-center"
         id="about-me"
       >
         <div className="flex flex-col md:grid md:grid-cols-[50%,30%] place-items-center gap-[2.7em]">
@@ -143,6 +147,7 @@ export default function Page() {
               </h3>
               <div className="line m-auto pr-[2em] "></div>
             </div>
+			
 
             <div
             
@@ -213,7 +218,7 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="hidden md:grid my-auto pt-[2em] pl-[2.5em] md:pl-[4em] pr-[2em] md:min-h-[102vh] place-items-center">
+      <section className="hidden md:grid my-auto pt-[2em] pl-[2em] md:pl-[4em] pr-[2em] md:min-h-[102vh] place-items-center">
         <div className="grid place-items-center w-[fit-content] mx-auto ">
           <h3 className="mx-auto text-[2em] mb-3 text-center font-bold pb-[1em]">
             <b>Technologies</b>
@@ -300,8 +305,8 @@ export default function Page() {
                     <div className="project-card">{description}</div>
                     <div className="mt-4 flex flex-wrap gap-[1.5em]">{techStack.map((item, index) => <p className="w-[fit-content] text-[#05f0dc]"key={index}>{item}</p>)}</div>
                     <div className="flex gap-3 mt-4">
-                      <Link href="" className="px-5 py-2 w-[fit-content] bg-cyan-900 rounded-md">Live</Link>
-                      <Link href="" className="px-5 py-2 w-[fit-content] bg-cyan-900 rounded-md">Source</Link>
+                      <Link href="" className="px-5 py-2 w-[fit-content] bg-cyan-900 rounded-md flex gap-3"><Eye className="w-[fit-content] my-auto"/> Live</Link>
+                      <Link href="" className="px-5 py-2 w-[fit-content] bg-cyan-900 rounded-md flex gap-3"><CodeXml className="w-[fit-content] my-auto"/> Source  </Link>
                     </div>
                   </div>
                   
@@ -314,7 +319,12 @@ export default function Page() {
         
       </section>
 
-      <section className="mb-[9em] mt-[10em] md:pl-[12em] max-sm:px-[2.5em]  grid md:grid-cols-[0.8fr,1fr] gap-[3em]  lg:max-w-[100em] mx-auto" id="contact">
+      <motion.section 
+	  variants={technologiesAnimation}
+	  initial="initial"
+	  //custom={index}
+	  whileInView="animate"
+	  className="mb-[6em] mt-[10em] md:pl-[12em] max-sm:px-[2.5em]  grid md:grid-cols-[0.8fr,1fr] gap-[3em]  lg:max-w-[100em] mx-auto" id="contact">
           <div className="center-align flex justify-center gap-4">
             <div className="flex flex-col  gap-4 max-sm:w-[100%] max-sm:flex-col">
             <h3 className="mb-2 text-[2em] mx-auto font-semibold ">
@@ -336,21 +346,21 @@ export default function Page() {
                 placeholder="Write me a message!"
                 className="h-60 rounded-lg border border-gray-600 bg-blue-950 p-2 pl-4 text-white placeholder-gray-400"
               ></textarea>
-              <button className="px-[2em] py-4 text-[1.2em] font-semibold shadow-md w-[fit-content] rounded-md bg-blue-600 text-white">
-                Send message
+              <button className="flex gap-3 px-[1.8em] py-4 text-[1.2em] font-semibold shadow-md w-[fit-content] rounded-md bg-blue-600 text-white">
+                Send message <SendHorizonal className="w-[fit-content] my-auto"/>
               </button>
             </div>
            
             
           </div>
           <div className="max-sm:hidden mt-[4.1em] flex flex-col gap-4">
-              <p>09011774616</p>
-              <p>oyerindei13@gmail.com</p>
+              <p className="flex gap-3"><Phone className="w-[fit-content] my-auto"/> 09011774616</p>
+              <p className="flex gap-3"><MailOpen className="w-[fit-content] my-auto"/> oyerindei13@gmail.com</p>
             </div>
           
-        </section>
+        </motion.section>
 
-        <footer className="text-center my-[3em] mb-[5em] px-[2.5em]">
+        <footer className="text-center mb-[5em] px-[2.5em]">
       <p>Copyright © {currentYear} All rights reserved | Iyanu Oyerinde</p>
     </footer>
     </div>

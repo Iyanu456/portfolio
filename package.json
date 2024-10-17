@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "framer": "^2.4.1",
+    "lucide-react": "^0.453.0",
     "next": "latest",
     "react": "latest",
     "react-dom": "latest"
