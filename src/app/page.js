@@ -324,10 +324,10 @@ export default function Page() {
 	  initial="initial"
 	  //custom={index}
 	  whileInView="animate"
-	  className="mb-[6em] mt-[10em] md:pl-[12em] max-sm:px-[2em]  grid md:grid-cols-[0.8fr,1fr] gap-[3em]  lg:max-w-[100em] mx-auto" id="contact">
+	  className="mb-[6em] mt-[10em] md:pl-[12em] max-sm:px-[2em] sm:px-[2em]  grid md:grid-cols-[0.8fr,1fr] gap-[3em]  lg:max-w-[100em] mx-auto" id="contact">
           <div className="center-align flex justify-center gap-4">
             <div className="flex flex-col  gap-4 max-sm:w-[100%] max-sm:flex-col">
-            <h3 className="mb-2 text-[2em] mx-auto font-semibold ">
+            <h3 className="mb-2 md:text-[2em] sm:text-[1.6em] mx-auto font-semibold ">
             Send me a message
           </h3>
           
@@ -346,7 +346,7 @@ export default function Page() {
                 placeholder="Write me a message!"
                 className="h-60 rounded-lg border border-gray-600 bg-blue-950 p-2 pl-4 text-white placeholder-gray-400"
               ></textarea>
-              <button className="flex gap-3 px-[1.8em] py-4 text-[1.2em] font-semibold shadow-md w-[fit-content] rounded-md bg-blue-600 text-white">
+              <button className="flex gap-3 px-[1.5em] py-4 font-semibold shadow-md w-[fit-content] rounded-md bg-blue-600 text-white">
                 Send message <SendHorizonal className="w-[fit-content] my-auto"/>
               </button>
             </div>

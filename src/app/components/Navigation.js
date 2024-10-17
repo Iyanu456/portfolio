@@ -4,10 +4,19 @@ import Link from "next/link";
 import Image from "next/image"
 import { motion } from "framer";
 import menuIcon from "../assets/icons/menu-1.svg"
+import { Menu, X } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 export default function Navigation(props) {
 
 	const [scrollingUp, setScrollingUp] = useState(true);
+	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  // Helps close the menu bar when the user clicks any of the links inside the menu dropdown or navigation to another route
+  function closeMenuOnNavigation() {
+    setMobileMenuOpen(false);
+  }
 
 	useEffect(() => {
 		let prevScrollPos = window.pageYOffset;
@@ -91,11 +100,58 @@ export default function Navigation(props) {
 					</ul>
 
 					
-					<button className="w-[fit-content] block md:hidden" onClick={() => {
-							props.sidebarOpen ? props.setSidebarOpen(false) : props.setSidebarOpen(true)
-							console.log("clicked on nav");
-							}}><Image src={menuIcon} alt="X -formerly twitter icon" className="icon cursor-pointer  max-h-[25px] max-w-[25px]" /></button>
+					<button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="lg:hidden md:hidden"
+          >
+            {mobileMenuOpen ? <X className="h-6 w-6 mr-0 ml-auto" /> : <Menu className="h-6 w-6 mr-0 ml-auto" />}
+          </button>
 				</nav>
+
+				{mobileMenuOpen && (
+          <div className="md:hidden lg:hidden transition-all z-10 absolute top-full left-0 w-full bg-blue-950 shadow-lg">
+            <nav className=" px-[2em] pt-2 pb-3 space-y-1 sm:px-3">
+              <Link 
+                href="/" 
+                className={`text-white hover:text-gray-900 block py-2 px-3 rounded-md text-white hover:bg-gray-50 transition-all 
+                  ${pathname === "/" && " font-bold"}`
+                }
+                onClick={closeMenuOnNavigation}
+              >
+                Home
+              </Link>
+              <Link 
+                href="#about-me" 
+                className={`text-white hover:text-gray-900 block py-2 px-3 rounded-md text-white hover:bg-gray-50 transition-all 
+                  ${pathname === "/#about" && "font-bold"}`
+                }
+                onClick={closeMenuOnNavigation}
+              >
+                About
+              </Link>
+              <Link 
+                href="#projects" 
+                className={`text-white hover:text-gray-900 block py-2 px-3 rounded-md text-white hover:bg-gray-50 transition-all 
+                  ${pathname === "/#projecrs" && " font-bold"}`
+                }
+                onClick={closeMenuOnNavigation}
+              >
+                Projects
+              </Link>
+              <Link 
+                href="#contact" 
+                className={`text-white hover:text-gray-900 block py-2 px-3 rounded-md text-white hover:bg-gray-50 transition-all 
+                  ${pathname === "/#contact-me" && "font-bold"}`
+                }
+                onClick={closeMenuOnNavigation}
+              >
+                Contact
+              </Link>
+              
+            </nav>
+            
+          </div>
+        )}
 			</header>
     )
 }
