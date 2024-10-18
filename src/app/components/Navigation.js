@@ -125,7 +125,7 @@ export default function Navigation(props) {
 
 	
         <div className={`grid place-items-center md:hidden lg:hidden transition-transform transform duration-300 overflow-y-hidden fixed top-[4.9em] bottom-auto z-[100] h-[100%] bg-[#112240] shadow-lg ${props.mobileMenuOpen ? "translate-x-0" : "translate-x-[101%]"} `}>
-          <nav className="mx-auto flex flex-col gap-3 px-[2em] pt-2 pb-3 space-y-1 sm:px-[2em] w-[50%] text-center">
+          <nav className="mx-auto flex flex-col gap-3 px-[2em] pt-2 pb-3 space-y-1 sm:px-[2em] w-[70%] text-center">
             <Link
               href="/"
               className={`text-white block py-2 px-3 rounded-md hover:bg-[rgba(156,156,156,0.2)]  hover:bg-gray-50 transition-all 
