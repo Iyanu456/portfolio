@@ -308,7 +308,7 @@ export default function Page() {
                   whileInView="animate"
                   viewport={{ once: true }}
                   key={index}
-                  className="relative md:grid max-sm:mx-auto flex flex-col tablet:flex-col lg:grid-cols-[34%,56%] gap-2 md:gap-[2em] lg:gap-[3.4em] mb-[3em]"
+                  className="relative md:grid max-sm:mx-auto flex flex-col tablet:flex-col lg:grid-cols-[34%,56%] gap-2 md:gap-[2em] lg:gap-[3.4em] mb-[3em] rounded-md"
                 >
                   <div className="overflow-hidden rounded-md">
                     <Link href={link} target="blank" className=" w-[85%] tablet:w-[100%] max-sm:w-[100%]">
@@ -322,7 +322,7 @@ export default function Page() {
                       />
                     </Link>
                   </div>
-                  <div className="absolute flex flex-col tablet:flex :flex tablet:flex-col tablet:absolute max-sm:absolute justify-center center-align  lg:relative tablet:bg-[rgba(10,24,46,0.91)] bg-[rgba(10,24,46,0.93)] h-[103%] tablet:h-[103%] tablet:px-[2em] px-[2em] tablet:py-6 py-6 lg:px-0 lg:py-0">
+                  <div className="rounded-md absolute flex flex-col tablet:flex :flex tablet:flex-col tablet:absolute max-sm:absolute justify-center center-align  lg:relative tablet:bg-[rgba(10,24,46,0.91)] bg-[rgba(10,24,46,0.93)] h-[103%] tablet:h-[103%] tablet:px-[2em] px-[2em] tablet:py-6 py-6 lg:px-0 lg:py-0">
                     <h2 className=" lg:text-[1.8em] tablet:text-[1.5em] text-[1.3em] md:mb-4 mb-2 font-semibold">
                       {name}
                     </h2>
