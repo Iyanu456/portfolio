@@ -10,10 +10,19 @@
 :root {
   /*background:  #071222;*/
   background: #191e29;
-  background: radial-gradient(circle, #17318a 0%, rgba(7,18,34,1) 100%);
-  color: rgb(236, 236, 236);
+  background: #0a192f;
+  /*background: radial-gradient(circle, #17318a 0%, rgba(7,18,34,1) 100%);*/
+  color: #a7b2d4;
   width: 100%;
   outline: #05f0dc;
+}
+
+a {
+  color: #f0f4ff;
+}
+
+h2, h3, h1 {
+  color: #d4dbf5;
 }
 
 html {

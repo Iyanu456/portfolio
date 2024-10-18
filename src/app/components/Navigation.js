@@ -52,7 +52,7 @@ export default function Navigation(props) {
           variants={navVariants}
           initial="hidden"
           animate="visible"
-          className="hover:translate-y-[-5px] transition-transform duration-300 font-bold icon border border-5 border-white my-auto border py-[0.3em] ml-0 mr-auto px-[0.5em] cursor-pointer"
+          className="hover:translate-y-[-5px] transition-transform duration-300 font-bold icon border border-5 border-white my-auto border py-[0.3em] ml-0 mr-auto px-[0.5em] cursor-pointer text-[#ccd6f6] text-[1.1em]"
         >
           Iyanu
         </motion.div>
@@ -70,7 +70,7 @@ export default function Navigation(props) {
                 letterSpacing: "1.06px",
               }}
             >
-              <span className="text-[#05f0dc]">01. </span> About
+              <span className="text-[#64ffda]">01. </span> About
             </motion.li>
           </Link>
 
@@ -86,7 +86,7 @@ export default function Navigation(props) {
             }}
           >
             <Link href="#projects">
-              <span className="text-[#05f0dc]">02. </span> Projects
+              <span className="text-[#64ffda]">02. </span> Projects
             </Link>
           </motion.li>
 
@@ -102,7 +102,7 @@ export default function Navigation(props) {
             }}
           >
             <Link href="#contact">
-              <span className="text-[#05f0dc]">03. </span> Contact
+              <span className="text-[#64ffda]">03. </span> Contact
             </Link>
           </motion.li>
         </ul>
@@ -121,7 +121,7 @@ export default function Navigation(props) {
     </header>
 
 	
-        <div className={`grid place-items-center md:hidden lg:hidden transition-transform transform duration-300 overflow-y-hidden fixed top-[5em] bottom-auto z-[100] h-[100%]   bg-blue-950 shadow-lg ${props.mobileMenuOpen ? "translate-x-0" : "translate-x-[101%]"} `}>
+        <div className={`grid place-items-center md:hidden lg:hidden transition-transform transform duration-300 overflow-y-hidden fixed top-[5em] bottom-auto z-[100] h-[100%]   bg-[#112240] shadow-lg ${props.mobileMenuOpen ? "translate-x-0" : "translate-x-[101%]"} `}>
           <nav className="mx-auto flex flex-col gap-3 px-[2em] mt-[-7em] pt-2 pb-3 space-y-1 sm:px-[2em] w-[40%] text-center">
             <Link
               href="/"

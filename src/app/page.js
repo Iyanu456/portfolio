@@ -109,7 +109,7 @@ export default function Page() {
             animate={{ opacity: 1 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
           >
-            <b>
+            <b className="text-[#d4dbf5]">
               Hi
               <motion.span
                 initial={{ rotate: 0 }} // Start with no rotation
@@ -133,13 +133,13 @@ export default function Page() {
               , {`I'm`} Iyanu
             </b>
             <br />
-            <span className="text-[rgb(210,210,210)] font-semibold">
+            <span className="text-[#8892b0] font-semibold">
               I build things for the web.
             </span>
           </motion.h1>
 
           {/*Gradient div */}
-          <div className="absolute z-[-10] inset-0  bg-[radial-gradient(circle,_#17318a_0%,_rgba(7,18,34,1)_100%)]"></div>
+          {/*<div className="absolute z-[-10] inset-0  bg-[radial-gradient(circle,_#17318a_0%,_rgba(7,18,34,1)_100%)]"></div>*/}
 
           <motion.p
             className="text-[1.06m] md:w-[60%] py-3 mute leading-[1.65em]"
@@ -154,7 +154,7 @@ export default function Page() {
 
 <div className="relative">
   {/*Gradient div */}
-  <div className="absolute z-[-11] top-auto right-auto left-auto bottom-0 h-[108.1%] w-[100%]  bg-[transparent] inner-shadow inset-0"></div>
+  {/*<div className="absolute z-[-11] top-auto right-auto left-auto bottom-0 h-[108.1%] w-[100%]  bg-[transparent] inner-shadow inset-0"></div>*/}
       <section
         className="max-sm:mb-[4em]  sm:py-[3em] max-sm:py-[3em]  grid my-auto md:pt-[-3em]  px-[2em] md:pl-[12em] lg:max-w-[90em] mx-auto min-h-[102vh] place-items-center"
         id="about-me"
@@ -166,7 +166,7 @@ export default function Page() {
                 <span className="text-[#05f0dc] w-[fit-content] jost text-[0.75em] md:mt-[0.3em] mt-[0.4em] pr-3">
                   01.{" "}
                 </span>
-                <b>About Me</b>
+                <b className="text-[#ccd6f6]">About Me</b>
               </h3>
               <div className="line m-auto pr-[2em] "></div>
             </div>
