@@ -154,7 +154,7 @@ export default function Page() {
 
 <div className="relative">
   {/*Gradient div */}
-  <div className="absolute z-[-10] top-auto right-auto left-auto bottom-0 h-[102.1%] w-[100%]  bg-[transparent] inner-shadow inset-0"></div>
+  <div className="absolute z-[-11] top-auto right-auto left-auto bottom-0 h-[108.1%] w-[100%]  bg-[transparent] inner-shadow inset-0"></div>
       <section
         className="max-sm:mb-[4em]  sm:py-[3em] max-sm:py-[3em]  grid my-auto md:pt-[-3em]  px-[2em] md:pl-[12em] lg:max-w-[90em] mx-auto min-h-[102vh] place-items-center"
         id="about-me"
@@ -227,7 +227,7 @@ export default function Page() {
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
-            className="max-sm:hidden sm:hidden my-auto duration-300 transform hover:-translate-y-[0px] hover:-translate-x-[0px] transition-transform grid place-items-center relative h-[10em] w-[10em] md:h-[16em] md:w-[16em] group"
+            className="max-sm:hidden  my-auto duration-300 transform hover:-translate-y-[0px] hover:-translate-x-[0px] transition-transform grid place-items-center relative h-[10em] w-[10em] md:h-[16em] md:w-[16em] group"
           >
             <div className="grid rounded-[100%] md:rounded-md z-20 absolute duration-300 transform group-hover:-translate-y-[5px] group-hover:-translate-x-[5px] transition-transform h-[10em] w-[10em] md:h-[16em] md:w-[16em]  my-auto bg-[#05f0dc] ">
               <Image
