@@ -7,6 +7,7 @@ import {
   Phone,
   MailOpen,
   CodeXml,
+  ArrowDown,
   Eye,
 } from "lucide-react";
 import { ProfileImage, socials, icons, projects } from "./images";
@@ -150,6 +151,9 @@ export default function Page() {
             {`I’m a software engineer specializing in building (and occasionally designing) exceptional digital experiences. Currently, I’m focused on building accessible, human-centered products for startups and web3 projects.`}
           </motion.p>
         </motion.div>
+        <Link href={"#about-me"} className="floating-arrow absolute z-[120] right-auto left-auto tablet:hidden sm:left-[50vw] bottom-[2em] top-auto lg:hidden">
+        <ArrowDown  color="#ccd6f6" size={30}/>
+        </Link>
       </motion.section>
 
 <div className="relative">

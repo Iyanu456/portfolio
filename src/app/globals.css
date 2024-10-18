@@ -11,6 +11,8 @@
   /*background:  #071222;*/
   background: #191e29;
   background: #0a192f;
+  background: rgba(10, 24, 46, 0.897);
+  
   /*background: radial-gradient(circle, #17318a 0%, rgba(7,18,34,1) 100%);*/
   color: #a7b2d4;
   width: 100%;
@@ -38,6 +40,30 @@ body {
   width: 100%;
   
 }
+
+.floating-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.floating-arrow {
+  width: 3rem; /* Adjust the size */
+  height: 3rem;
+  color: #4b5563; /* Tailwind's gray-800 equivalent */
+  animation: float 2s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-18px); /* Floating up */
+  }
+}
+
 
 .inner-shadow {
   /*box-shadow: inset 0 25px 50px 0 rgb(0 0 0 / 0.4);*/
