@@ -304,7 +304,7 @@ export default function Page() {
                   whileInView="animate"
                   viewport={{ once: true }}
                   key={index}
-                  className="relative md:grid max-sm:mx-auto flex flex-col tablet:flex-col lg:grid-cols-[34%,56%] gap-2 md:gap-[2em] mb-[3em]"
+                  className="relative md:grid max-sm:mx-auto flex flex-col tablet:flex-col lg:grid-cols-[34%,56%] gap-2 md:gap-[2em] lg:gap-[3.4em] mb-[3em]"
                 >
                   <div className="overflow-hidden rounded-md">
                     <Link href={link} target="blank" className=" w-[85%] tablet:w-[100%] max-sm:w-[100%]">
