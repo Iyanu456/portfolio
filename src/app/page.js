@@ -156,7 +156,7 @@ export default function Page() {
   {/*Gradient div */}
   <div className="absolute z-[-10] top-auto right-auto left-auto bottom-0 h-[102.1%] w-[100%]  bg-[transparent] inner-shadow inset-0"></div>
       <section
-        className="max-sm:mb-[4em]  sm:py-[3em]  grid my-auto md:pt-[-3em]  px-[2em] md:pl-[12em] lg:max-w-[90em] mx-auto min-h-[102vh] place-items-center"
+        className="max-sm:mb-[4em]  sm:py-[3em] max-sm:py-[3em]  grid my-auto md:pt-[-3em]  px-[2em] md:pl-[12em] lg:max-w-[90em] mx-auto min-h-[102vh] place-items-center"
         id="about-me"
       >
         <div className="flex flex-col md:grid md:grid-cols-[50%,30%] place-items-center gap-[2.7em]">
