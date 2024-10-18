@@ -104,7 +104,7 @@ export default function Page() {
           transition={{ duration: 1.2, ease: "easeOut" }} // Slight delay for better effect
         >
           <motion.h1
-            className="md:text-[4.2em]  md:w-[80%] text-[1.8em] leading-[1.3em]"
+            className="lg:text-[4.2em] md:text-[3em] tablet:text-[3.2em]  md:w-[80%] lg:w-[85%] text-[1.8em] leading-[1.3em]"
             initial={{ opacity: 0 }} // H1 fade-in effect
             animate={{ opacity: 1 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
@@ -133,7 +133,7 @@ export default function Page() {
               , {`I'm`} Iyanu
             </b>
             <br />
-            <span className="text-[#8892b0] font-semibold">
+            <span className="text-[#a2adcf] font-semibold">
               I build things for the web.
             </span>
           </motion.h1>
@@ -142,7 +142,7 @@ export default function Page() {
           {/*<div className="absolute z-[-10] inset-0  bg-[radial-gradient(circle,_#17318a_0%,_rgba(7,18,34,1)_100%)]"></div>*/}
 
           <motion.p
-            className="text-[1.06m] md:w-[60%] py-3 mute leading-[1.65em]"
+            className="text-[1.06m] text-[#a7b2d4] md:w-[60%] py-3 mute leading-[1.65em]"
             initial={{ opacity: 0 }} // P fade-in effect
             animate={{ opacity: 1 }}
             transition={{ duration: 1.8, ease: "easeOut" }}
@@ -156,10 +156,10 @@ export default function Page() {
   {/*Gradient div */}
   {/*<div className="absolute z-[-11] top-auto right-auto left-auto bottom-0 h-[108.1%] w-[100%]  bg-[transparent] inner-shadow inset-0"></div>*/}
       <section
-        className="max-sm:mb-[4em]  sm:py-[3em] max-sm:py-[3em]  grid my-auto md:pt-[-3em]  px-[2em] md:pl-[12em] lg:max-w-[90em] mx-auto min-h-[102vh] place-items-center"
+        className="max-sm:mb-[4em]  sm:py-[3em] max-sm:py-[3em]  grid my-auto md:pt-[-3em] pl-[2em] pr-[2em] md:pr-[8em] tablet:pr-[8em] md:pl-[12em] lg:max-w-[90em] mx-auto min-h-[102vh] place-items-center "
         id="about-me"
       >
-        <div className="flex flex-col md:grid md:grid-cols-[50%,30%] place-items-center gap-[2.7em]">
+        <div className="flex flex-col lg:grid md:grid-cols-[50%,30%] place-items-center gap-[2.7em] tablet:flex tablet:flex-col ">
           <div className="my-auto">
             <div className="grid md:grid-cols-[13em,auto] grid-cols-[10.5em,auto]">
               <h3 className="heading md:text-[1.8em] text-[1.5em] flex w-[fit-content] my-auto">
@@ -227,7 +227,7 @@ export default function Page() {
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
-            className="max-sm:hidden  my-auto duration-300 transform hover:-translate-y-[0px] hover:-translate-x-[0px] transition-transform grid place-items-center relative h-[10em] w-[10em] md:h-[16em] md:w-[16em] group"
+            className="max-sm:hidden sm:hidden md:block  my-auto duration-300 transform hover:-translate-y-[0px] hover:-translate-x-[0px] transition-transform grid place-items-center relative h-[10em] w-[10em] md:h-[16em] md:w-[16em] group"
           >
             <div className="grid rounded-[100%] md:rounded-md z-20 absolute duration-300 transform group-hover:-translate-y-[5px] group-hover:-translate-x-[5px] transition-transform h-[10em] w-[10em] md:h-[16em] md:w-[16em]  my-auto bg-[#05f0dc] ">
               <Image
@@ -295,7 +295,7 @@ export default function Page() {
             <div className="line m-auto pr-[2em]"></div>
           </div>
           {projects.map(
-            ({ name, image, description, techStack, link }, index) => (
+            ({ name, image, description, techStack, link, github_link }, index) => (
               <>
                 <motion.div
                   variants={technologiesAnimation}
@@ -304,13 +304,13 @@ export default function Page() {
                   whileInView="animate"
                   viewport={{ once: true }}
                   key={index}
-                  className="md:grid max-sm:mx-auto flex flex-col grid-cols-[34%,56%] gap-5 md:gap-[4em] mb-[3em]"
+                  className="relative md:grid max-sm:mx-auto flex flex-col tablet:flex-col lg:grid-cols-[34%,56%] gap-2 md:gap-[2em] mb-[3em]"
                 >
                   <div className="overflow-hidden rounded-md">
-                    <Link href={link} target="blank" className=" w-[85%]">
+                    <Link href={link} target="blank" className=" w-[85%] tablet:w-[100%] max-sm:w-[100%]">
                       <Image
                         src={image}
-                        className="cover w-[100%] transition hover:scale-[1.1] duration-200 md:max-w-[22em]  rounded-md"
+                        className="object-cover w-[100%] tablet:w-[100%] tablet:pt-[0.1em] pt-[0.1em] lg:h-[19em] tablet:h-[23em] h-[23em] transition hover:scale-[1.1] duration-200 lg:max-w-[22em]  rounded-md tablet:shadow-lg"
                         alt="project screenshot"
                         width="100"
                         height="100"
@@ -318,8 +318,8 @@ export default function Page() {
                       />
                     </Link>
                   </div>
-                  <div>
-                    <h2 className=" md:text-[1.8em] text-[1.5em] md:mb-4 mb-2 font-semibold">
+                  <div className="absolute flex flex-col tablet:flex :flex tablet:flex-col tablet:absolute max-sm:absolute justify-center center-align  lg:relative tablet:bg-[rgba(10,24,46,0.91)] bg-[rgba(10,24,46,0.93)] h-[103%] tablet:h-[103%] tablet:px-[2em] px-[2em] tablet:py-6 py-6 lg:px-0 lg:py-0">
+                    <h2 className=" lg:text-[1.8em] tablet:text-[1.5em] text-[1.3em] md:mb-4 mb-2 font-semibold">
                       {name}
                     </h2>
                     <div className="project-card">{description}</div>
@@ -335,13 +335,13 @@ export default function Page() {
                     </div>
                     <div className="flex gap-3 mt-4">
                       <Link
-                        href=""
+                        href={link}
                         className="px-5 py-2 w-[fit-content] bg-cyan-900 rounded-md flex gap-3"
                       >
                         <Eye className="w-[fit-content] my-auto" /> Live
                       </Link>
                       <Link
-                        href=""
+                        href={github_link}
                         className="px-5 py-2 w-[fit-content] bg-cyan-900 rounded-md flex gap-3"
                       >
                         <CodeXml className="w-[fit-content] my-auto" /> Source{" "}
@@ -360,13 +360,13 @@ export default function Page() {
         initial="initial"
         //custom={index}
         whileInView="animate"
-        className="mb-[6em] mt-[10em] sm:mt-[5em] max-sm:mt-[5em] md:pl-[12em] max-sm:px-[2em] sm:px-[2em] sm:text-center max-sm:text-center  grid md:grid-cols-[0.8fr,1fr] gap-[3em]  lg:max-w-[100em] mx-auto"
+        className="mb-[6em] mt-[10em] sm:mt-[5em] max-sm:mt-[2em] md:pl-[12em] max-sm:px-[2em] sm:px-[2em] sm:text-center max-sm:text-center  grid tablet:grid-cols-[1.25fr,1fr] lg:grid-cols-[0.8fr,1fr] gap-[3em]  lg:max-w-[100em] mx-auto"
         id="contact"
       >
         <div className="center-align flex justify-center gap-4">
           <div className="flex flex-col  gap-4 max-sm:w-[100%] max-sm:flex-col">
             <h3 className="mb-2 md:text-[2em] sm:text-[1.8em] max-sm:text-[1.6em] mx-auto font-semibold ">
-              Send me a message
+              {`Let's get in touch`}
             </h3>
 
             <input
@@ -384,7 +384,7 @@ export default function Page() {
               placeholder="Write me a message!"
               className="h-60 rounded-lg border border-gray-600 bg-blue-950 p-2 pl-4 text-white placeholder-gray-400"
             ></textarea>
-            <button className="flex gap-3 px-[1.2em] py-4 font-semibold shadow-md w-[fit-content] rounded-md bg-blue-600 text-white">
+            <button className="flex justify-center center-align gap-3 px-[1.2em] py-4 font-semibold shadow-md max-sm:w-[fit-content] lg:w-[fit-content] rounded-md bg-blue-600 text-white">
               Send message <SendHorizonal className="w-[fit-content] my-auto" />
             </button>
           </div>
@@ -400,7 +400,7 @@ export default function Page() {
         </div>
       </motion.section>
 
-      <footer className="text-center mb-[5em] px-[2em]">
+      <footer className="text-center text-[0.95em] mb-[5em] px-[2em]">
         <p>Copyright © {currentYear} All rights reserved | Iyanu Oyerinde</p>
       </footer>
     </div>

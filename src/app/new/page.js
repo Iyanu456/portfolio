@@ -132,7 +132,7 @@ export default function Page() {
         className="max-sm:mb-[4em] grid my-auto pt-[2em] pl-[2.5em] md:pl-[12em] lg:max-w-[90em] mx-auto pr-[2em] md:min-h-[60vh] place-items-center"
         id="about-me"
       >
-        <div className="flex flex-col md:grid md:grid-cols-[50%,30%] place-items-center gap-[2.7em]">
+        <div className="flex flex-col grid md:grid-cols-[50%,30%] max-[820px]:flex max-[820px]:flex-col place-items-center gap-[2.7em] max-[820px]:flex max-[820px]:flex-col">
           <div className="my-auto">
             <div className="grid md:grid-cols-[13em,auto] grid-cols-[10.5em,auto]">
               <h3 className="heading md:text-[1.8em] text-[1.5em] flex w-[fit-content] my-auto">
@@ -163,7 +163,7 @@ export default function Page() {
               initial="initial"
               whileInView="animate"
               viewport={{ once: true }}
-              className="py-2"
+              className="py-2 pr-[2em]"
             >
               {`
               Hello! My name is Iyanu. I’m a passionate software engineer with a
@@ -288,7 +288,7 @@ export default function Page() {
                   </Link>
                   </div>
                   <div>
-                    <h2 className=" md:text-[1.8em] text-[1.5em] md:mb-4 mb-2 font-semibold">
+                    <h2 className=" lg:text-[1.8em] tablet:text-[1.5em] text-[1.5em] md:mb-4 mb-2 font-semibold">
                       {name}
                     </h2>
                     <div className="project-card">{description}</div>

@@ -89,7 +89,8 @@ const icons = [
 			description: "LlamaGPT is a conversational AI chatbot powered by Meta's Llama2 AI model. LlamaGPT is capable of answering questions on almost any topic",
 			techStack: ["React", "Next.js", "Tailwind CSS", "Replicate API"],
 			image: "/images/llama2.jpg",
-			link: "https://llama-gpt.vercel.app/login"
+			link: "https://llama-gpt.vercel.app/login",
+			github_link: "https://github.com/Iyanu456/llamaGPT"
 		},
 
 		{
@@ -97,7 +98,8 @@ const icons = [
 			description: "Crafted during the GetLinked pre-hackathon, this hackathon registration website mirrors a Figma design for an elegant touch.",
 			techStack: ["React", "Next.js", "Tailwind CSS",],
 			image: "/images/getlinked.png",
-			link: "http://getlinked-hackathon-six.vercel.app/"
+			link: "http://getlinked-hackathon-six.vercel.app/",
+			github_link: "https://github.com/Iyanu456/getlinked-hackathon"
 
 		}
 	]
@@ -106,7 +108,7 @@ const icons = [
 			{
 				image: LinkedInImage,
 				link: "https://www.linkedin.com/in/iyanuoluwa-oyerinde",
-				alt: "Linkedin page"
+				alt: "Linkedin page",
 			},
 
 			{
