@@ -372,17 +372,17 @@ export default function Page() {
             <input
               type="text"
               placeholder="Name / Organization"
-              className=" rounded-lg border border-gray-600 bg-blue-950 p-2 pl-4 text-white placeholder-gray-400"
+              className=" rounded-lg border border-gray-600 bg-[rgba(10,24,46,0.897)] p-2 pl-4 text-white placeholder-gray-400"
             />
             <input
               type="email"
               placeholder="Email - example@example.com"
-              className=" rounded-lg border border-gray-600 bg-blue-950 p-2 pl-4 text-white placeholder-gray-400"
+              className=" rounded-lg border border-gray-600 bg-[rgba(10,24,46,0.897)] p-2 pl-4 text-white placeholder-gray-400"
             />
 
             <textarea
               placeholder="Write me a message!"
-              className="h-60 rounded-lg border border-gray-600 bg-blue-950 p-2 pl-4 text-white placeholder-gray-400"
+              className="h-60 rounded-lg border border-gray-600 bg-[rgba(10,24,46,0.897)] p-2 pl-4 text-white placeholder-gray-400"
             ></textarea>
             <button className="flex justify-center center-align gap-3 px-[1.2em] py-4 font-semibold shadow-md max-sm:w-[fit-content] lg:w-[fit-content] rounded-md bg-blue-600 text-white">
               Send message <SendHorizonal className="w-[fit-content] my-auto" />
