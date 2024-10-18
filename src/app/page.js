@@ -2,14 +2,34 @@
 import Navigation from "./components/Navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { Send, SendHorizonal, Phone, Mail, MailOpen, CodeXml, Eye } from "lucide-react";
+import {
+  SendHorizonal,
+  Phone,
+  MailOpen,
+  CodeXml,
+  Eye,
+} from "lucide-react";
 import { ProfileImage, socials, icons, projects } from "./images";
 import { animate, delay, motion } from "framer-motion";
+import { useState } from "react";
 
-const skills = ['JavaScript', 'TypeScript', 'React', 'Nextjs', 'Tailwind', 'Nodejs', 'Express', 'Flask', 'MongoDB', 'MySQL' ]
+
+const skills = [
+  "JavaScript",
+  "TypeScript",
+  "React",
+  "Nextjs",
+  "Tailwind",
+  "Nodejs",
+  "Express",
+  "Flask",
+  "MongoDB",
+  "MySQL",
+];
 const currentYear = new Date().getFullYear();
 
 export default function Page() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const aboutMeAnimation = {
     initial: {
       opacity: 0,
@@ -58,8 +78,8 @@ export default function Page() {
   };
 
   return (
-    <div className="min-h-[100vh]">
-      <Navigation />
+    <div className={`grid min-h-[100vh] ${mobileMenuOpen ? "overflow-hidden" : ""}`}>
+      <Navigation setMobileMenuOpen={setMobileMenuOpen} mobileMenuOpen={mobileMenuOpen} />
 
       <section className="md:flex hidden flex-col gap-3 fixed top-[40vh] bottom-auto left-[2em] right-auto socials p-2 mr-[-2em] w-[fit-content]">
         {socials.map(({ image, link, alt }, index) => (
@@ -72,7 +92,7 @@ export default function Page() {
       </section>
 
       <motion.section
-        className="grid my-auto pt-[5em] lg:max-w-[90em] mx-auto px-[2em] md:pl-[12em] md:min-h-[102vh] max-sm:min-h-[102vh] place-items-center"
+        className="grid my-auto md:pt-[5em] lg:max-w-[90em] mx-auto px-[2em] md:pl-[12em] md:min-h-[102vh] max-sm:min-h-[102vh] sm:min-h-[102vh] place-items-center"
         initial={{ opacity: 0, y: 50 }} // Start with opacity 0 and slight downward position
         animate={{ opacity: 1, y: 0 }} // Animate to full opacity and original position
         transition={{ duration: 1, ease: "easeOut" }} // Smooth transition
@@ -118,8 +138,8 @@ export default function Page() {
             </span>
           </motion.h1>
 
-		{/*Gradient div */}
-		  <div className="absolute z-[-10] inset-0  bg-[radial-gradient(circle,_#17318a_0%,_rgba(7,18,34,1)_100%)]"></div>
+          {/*Gradient div */}
+          <div className="absolute z-[-10] inset-0  bg-[radial-gradient(circle,_#17318a_0%,_rgba(7,18,34,1)_100%)]"></div>
 
           <motion.p
             className="text-[1.06m] md:w-[60%] py-3 mute leading-[1.65em]"
@@ -132,8 +152,11 @@ export default function Page() {
         </motion.div>
       </motion.section>
 
+<div className="relative">
+  {/*Gradient div */}
+  <div className="absolute z-[-10] top-auto right-auto left-auto bottom-0 h-[102.1%] w-[100%]  bg-[transparent] inner-shadow inset-0"></div>
       <section
-        className="max-sm:mb-[4em] grid my-auto pt-[2em] px-[2em] md:pl-[12em] lg:max-w-[90em] mx-auto md:min-h-[95vh] place-items-center"
+        className="max-sm:mb-[4em]  sm:py-[3em]  grid my-auto md:pt-[-3em]  px-[2em] md:pl-[12em] lg:max-w-[90em] mx-auto min-h-[102vh] place-items-center"
         id="about-me"
       >
         <div className="flex flex-col md:grid md:grid-cols-[50%,30%] place-items-center gap-[2.7em]">
@@ -147,22 +170,18 @@ export default function Page() {
               </h3>
               <div className="line m-auto pr-[2em] "></div>
             </div>
-			
 
-            <div
-            
-            className="my-[1.5em] mt-[1.6em] md:hidden mx-auto duration-300 transform hover:-translate-y-[0px] hover:-translate-x-[0px] transition-transform grid place-items-center relative h-[10em] w-[10em] md:h-[16em] md:w-[16em] group"
-          >
-            <div className="grid rounded-[100%] md:rounded-md z-20 absolute duration-300 transform group-hover:-translate-y-[5px] group-hover:-translate-x-[5px] transition-transform h-[10em] w-[10em] md:h-[16em] md:w-[16em]  my-auto bg-[#05f0dc] ">
-              <Image
-                className="rounded-[100%] md:rounded-md object-cover  w-[100%] h-[100%] opacity-[85%] group-hover:opacity-[100%]"
-                src={ProfileImage}
-                alt="my profile picture"
-              />
+            <div className="my-[1.5em] mt-[1.6em] md:hidden mx-auto duration-300 transform hover:-translate-y-[0px] hover:-translate-x-[0px] transition-transform grid place-items-center relative h-[10em] w-[10em] md:h-[16em] md:w-[16em] group">
+              <div className="grid rounded-[100%] md:rounded-md z-20 absolute duration-300 transform group-hover:-translate-y-[5px] group-hover:-translate-x-[5px] transition-transform h-[10em] w-[10em] md:h-[16em] md:w-[16em]  my-auto bg-[#05f0dc] ">
+                <Image
+                  className="rounded-[100%] md:rounded-md object-cover  w-[100%] h-[100%] opacity-[85%] group-hover:opacity-[100%]"
+                  src={ProfileImage}
+                  alt="my profile picture"
+                />
+              </div>
+
+              <div className="max-sm:hidden shadow-md rounded-[100%] md:rounded-md z-10 duration-200 border mt-[0.4em] ml-[0.4em] md:mt-[1em] md:ml-[1em] border-[2px] group-hover:-translate-y-[-5px] group-hover:-translate-x-[-5px]  border-[#05f0dc] h-[10em] w-[10em] md:h-[16em] md:w-[16em] "></div>
             </div>
-
-            <div className="max-sm:hidden shadow-md rounded-[100%] md:rounded-md z-10 duration-200 border mt-[0.4em] ml-[0.4em] md:mt-[1em] md:ml-[1em] border-[2px] group-hover:-translate-y-[-5px] group-hover:-translate-x-[-5px]  border-[#05f0dc] h-[10em] w-[10em] md:h-[16em] md:w-[16em] "></div>
-          </div>
             <motion.p
               variants={aboutMeAnimation}
               initial="initial"
@@ -185,17 +204,22 @@ export default function Page() {
               better.`}
             </motion.p>
             <p className="block md:hidden mb-[1.2em]">
-              {`Here are a few technologies I’ve been working with recently: `} <br/><br />
+              {`Here are a few technologies I’ve been working with recently: `}{" "}
+              <br />
+              <br />
               <div className="grid grid-cols-[1fr,1fr] gap-3">
                 {skills.map((skill, index) => (
                   <>
-                  <div key={index} className="flex gap-2 justify-center center-align">
-              <div class="w-0 mx-auto my-auto h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent border-b-[8.66px] border-b-[#05f0dc] rotate-90"></div>
-              <p>{skill}</p></div>
+                    <div
+                      key={index}
+                      className="flex gap-2 justify-center center-align"
+                    >
+                      <div class="w-0 mx-auto my-auto h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent border-b-[8.66px] border-b-[#05f0dc] rotate-90"></div>
+                      <p>{skill}</p>
+                    </div>
                   </>
                 ))}
               </div>
-              
             </p>
           </div>
           <motion.div
@@ -203,7 +227,7 @@ export default function Page() {
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
-            className="max-sm:hidden my-auto duration-300 transform hover:-translate-y-[0px] hover:-translate-x-[0px] transition-transform grid place-items-center relative h-[10em] w-[10em] md:h-[16em] md:w-[16em] group"
+            className="max-sm:hidden sm:hidden my-auto duration-300 transform hover:-translate-y-[0px] hover:-translate-x-[0px] transition-transform grid place-items-center relative h-[10em] w-[10em] md:h-[16em] md:w-[16em] group"
           >
             <div className="grid rounded-[100%] md:rounded-md z-20 absolute duration-300 transform group-hover:-translate-y-[5px] group-hover:-translate-x-[5px] transition-transform h-[10em] w-[10em] md:h-[16em] md:w-[16em]  my-auto bg-[#05f0dc] ">
               <Image
@@ -217,6 +241,7 @@ export default function Page() {
           </motion.div>
         </div>
       </section>
+      </div>
 
       <section className="hidden md:grid my-auto pt-[2em] pl-[2em] md:pl-[4em] pr-[2em] md:min-h-[102vh] place-items-center">
         <div className="grid place-items-center w-[fit-content] mx-auto ">
@@ -253,116 +278,131 @@ export default function Page() {
       </section>
 
       <section
-        className="max-sm:grid my-auto pt-[2em] px-[2em] md:pl-[12em] md:pr-[5em]  min-h-[90vh] md:place-items-center max-sm:max-w-[100vw] lg:max-w-[93em] mx-auto"
+        className="max-sm:grid sm:mt-[3em] my-auto pt-[2em] px-[2em] md:pl-[12em] md:pr-[5em]  min-h-[90vh] md:place-items-center max-sm:max-w-[100vw] lg:max-w-[93em] mx-auto"
         id="projects"
       >
-
-      
-
-
-        
-          
-          <div id="projects" className="flex flex-col gap-3 md:max-w-[85%] max-sm:max-w[100%]">
+        <div
+          id="projects"
+          className="flex flex-col gap-3 md:max-w-[85%] max-sm:max-w[100%]"
+        >
           <div className="grid md:grid-cols-[13em,auto] grid-cols-[9em,auto] mb-[1.7em]">
-              <h3 className="heading md:text-[1.8em] text-[1.5em] flex w-[fit-content] my-auto">
-                <span className="text-[#05f0dc] w-[fit-content] jost text-[0.75em] md:mt-[0.3em] mt-[0.4em] pr-3">
-                  03.{" "}
-                </span>
-                <b>Projects</b>
-              </h3>
-              <div className="line m-auto pr-[2em]"></div>
-            </div>
-            {projects.map(
-              ({ name, image, description, techStack, link }, index) => (
-                <>
+            <h3 className="heading md:text-[1.8em] text-[1.5em] flex w-[fit-content] my-auto">
+              <span className="text-[#05f0dc] w-[fit-content] jost text-[0.75em] md:mt-[0.3em] mt-[0.4em] pr-3">
+                03.{" "}
+              </span>
+              <b>Projects</b>
+            </h3>
+            <div className="line m-auto pr-[2em]"></div>
+          </div>
+          {projects.map(
+            ({ name, image, description, techStack, link }, index) => (
+              <>
                 <motion.div
-				variants={technologiesAnimation}
-                initial="initial"
-                custom={index}
-                whileInView="animate"
-                viewport={{ once: true }} 
-				key={index} className="md:grid max-sm:mx-auto flex flex-col grid-cols-[34%,56%] gap-5 md:gap-[4em] mb-[3em]">
+                  variants={technologiesAnimation}
+                  initial="initial"
+                  custom={index}
+                  whileInView="animate"
+                  viewport={{ once: true }}
+                  key={index}
+                  className="md:grid max-sm:mx-auto flex flex-col grid-cols-[34%,56%] gap-5 md:gap-[4em] mb-[3em]"
+                >
                   <div className="overflow-hidden rounded-md">
-                  <Link
-                    href={link}
-                    target="blank"
-                    className=" w-[85%]"
-                  >
-                    <Image
-                      src={image}
-                      className="cover w-[100%] transition hover:scale-[1.1] duration-200 md:max-w-[22em]  rounded-md"
-                      alt="project screenshot"
-                      width="100"
-                      height="100"
-                      unoptimized="true"
-                    />
-                  </Link>
+                    <Link href={link} target="blank" className=" w-[85%]">
+                      <Image
+                        src={image}
+                        className="cover w-[100%] transition hover:scale-[1.1] duration-200 md:max-w-[22em]  rounded-md"
+                        alt="project screenshot"
+                        width="100"
+                        height="100"
+                        unoptimized="true"
+                      />
+                    </Link>
                   </div>
                   <div>
                     <h2 className=" md:text-[1.8em] text-[1.5em] md:mb-4 mb-2 font-semibold">
                       {name}
                     </h2>
                     <div className="project-card">{description}</div>
-                    <div className="mt-4 flex flex-wrap gap-[1.5em]">{techStack.map((item, index) => <p className="w-[fit-content] text-[#05f0dc]"key={index}>{item}</p>)}</div>
+                    <div className="mt-4 flex flex-wrap gap-[1.5em]">
+                      {techStack.map((item, index) => (
+                        <p
+                          className="w-[fit-content] text-[#05f0dc]"
+                          key={index}
+                        >
+                          {item}
+                        </p>
+                      ))}
+                    </div>
                     <div className="flex gap-3 mt-4">
-                      <Link href="" className="px-5 py-2 w-[fit-content] bg-cyan-900 rounded-md flex gap-3"><Eye className="w-[fit-content] my-auto"/> Live</Link>
-                      <Link href="" className="px-5 py-2 w-[fit-content] bg-cyan-900 rounded-md flex gap-3"><CodeXml className="w-[fit-content] my-auto"/> Source  </Link>
+                      <Link
+                        href=""
+                        className="px-5 py-2 w-[fit-content] bg-cyan-900 rounded-md flex gap-3"
+                      >
+                        <Eye className="w-[fit-content] my-auto" /> Live
+                      </Link>
+                      <Link
+                        href=""
+                        className="px-5 py-2 w-[fit-content] bg-cyan-900 rounded-md flex gap-3"
+                      >
+                        <CodeXml className="w-[fit-content] my-auto" /> Source{" "}
+                      </Link>
                     </div>
                   </div>
-                  
                 </motion.div>
-               
-                </>
-              )
-            )}</div>
-          
-        
+              </>
+            )
+          )}
+        </div>
       </section>
 
-      <motion.section 
-	  variants={technologiesAnimation}
-	  initial="initial"
-	  //custom={index}
-	  whileInView="animate"
-	  className="mb-[6em] mt-[10em] md:pl-[12em] max-sm:px-[2em] sm:px-[2em]  grid md:grid-cols-[0.8fr,1fr] gap-[3em]  lg:max-w-[100em] mx-auto" id="contact">
-          <div className="center-align flex justify-center gap-4">
-            <div className="flex flex-col  gap-4 max-sm:w-[100%] max-sm:flex-col">
-            <h3 className="mb-2 md:text-[2em] sm:text-[1.6em] mx-auto font-semibold ">
-            Send me a message
-          </h3>
-          
-              <input
-                type="text"
-                placeholder="Name / Organization"
-                className=" rounded-lg border border-gray-600 bg-blue-950 p-2 pl-4 text-white placeholder-gray-400"
-              />
-              <input
-                type="email"
-                placeholder="Email - example@example.com"
-                className=" rounded-lg border border-gray-600 bg-blue-950 p-2 pl-4 text-white placeholder-gray-400"
-              />
+      <motion.section
+        variants={technologiesAnimation}
+        initial="initial"
+        //custom={index}
+        whileInView="animate"
+        className="mb-[6em] mt-[10em] sm:mt-[5em] max-sm:mt-[5em] md:pl-[12em] max-sm:px-[2em] sm:px-[2em] sm:text-center max-sm:text-center  grid md:grid-cols-[0.8fr,1fr] gap-[3em]  lg:max-w-[100em] mx-auto"
+        id="contact"
+      >
+        <div className="center-align flex justify-center gap-4">
+          <div className="flex flex-col  gap-4 max-sm:w-[100%] max-sm:flex-col">
+            <h3 className="mb-2 md:text-[2em] sm:text-[1.8em] max-sm:text-[1.6em] mx-auto font-semibold ">
+              Send me a message
+            </h3>
 
-<textarea
-                placeholder="Write me a message!"
-                className="h-60 rounded-lg border border-gray-600 bg-blue-950 p-2 pl-4 text-white placeholder-gray-400"
-              ></textarea>
-              <button className="flex gap-3 px-[1.5em] py-4 font-semibold shadow-md w-[fit-content] rounded-md bg-blue-600 text-white">
-                Send message <SendHorizonal className="w-[fit-content] my-auto"/>
-              </button>
-            </div>
-           
-            
+            <input
+              type="text"
+              placeholder="Name / Organization"
+              className=" rounded-lg border border-gray-600 bg-blue-950 p-2 pl-4 text-white placeholder-gray-400"
+            />
+            <input
+              type="email"
+              placeholder="Email - example@example.com"
+              className=" rounded-lg border border-gray-600 bg-blue-950 p-2 pl-4 text-white placeholder-gray-400"
+            />
+
+            <textarea
+              placeholder="Write me a message!"
+              className="h-60 rounded-lg border border-gray-600 bg-blue-950 p-2 pl-4 text-white placeholder-gray-400"
+            ></textarea>
+            <button className="flex gap-3 px-[1.2em] py-4 font-semibold shadow-md w-[fit-content] rounded-md bg-blue-600 text-white">
+              Send message <SendHorizonal className="w-[fit-content] my-auto" />
+            </button>
           </div>
-          <div className="max-sm:hidden mt-[4.1em] flex flex-col gap-4">
-              <p className="flex gap-3"><Phone className="w-[fit-content] my-auto"/> 09011774616</p>
-              <p className="flex gap-3"><MailOpen className="w-[fit-content] my-auto"/> oyerindei13@gmail.com</p>
-            </div>
-          
-        </motion.section>
+        </div>
+        <div className="max-sm:hidden mt-[4.1em] flex flex-col gap-4">
+          <p className="flex gap-3">
+            <Phone className="w-[fit-content] my-auto" /> 09011774616
+          </p>
+          <p className="flex gap-3">
+            <MailOpen className="w-[fit-content] my-auto" />{" "}
+            oyerindei13@gmail.com
+          </p>
+        </div>
+      </motion.section>
 
-        <footer className="text-center mb-[5em] px-[2em]">
-      <p>Copyright © {currentYear} All rights reserved | Iyanu Oyerinde</p>
-    </footer>
+      <footer className="text-center mb-[5em] px-[2em]">
+        <p>Copyright © {currentYear} All rights reserved | Iyanu Oyerinde</p>
+      </footer>
     </div>
   );
 }
