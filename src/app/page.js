@@ -31,14 +31,17 @@ const currentYear = new Date().getFullYear();
 
 export default function Page() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 1024);
+  const [isLargeScreen, setIsLargeScreen] = useState(false);
+
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      // Your client-side code that uses window here
       const handleResize = () => {
         setIsLargeScreen(window.innerWidth >= 1024);
       };
+  
+      // Set the initial screen size
+      handleResize();
   
       // Add event listener on component mount
       window.addEventListener('resize', handleResize);
@@ -48,8 +51,8 @@ export default function Page() {
         window.removeEventListener('resize', handleResize);
       };
     }
-    
   }, []);
+  
 
 
   const about_me_animation = {
