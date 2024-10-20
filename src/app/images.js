@@ -121,7 +121,7 @@ const icons = [
 			image: "/images/nodepair-screenshot.png",
 			link: "https://landing-page-xi-jade.vercel.app/",
 			github_link: "",
-			thumbnail: "/images/getlinked-thumbnail.png"
+			thumbnail: "/images/nodepair-thumbnail.png"
 			
 		},
 
