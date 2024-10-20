@@ -44,7 +44,7 @@ export default function Navigation(props) {
   return (
     <>
 	<header
-      className={`grid fixed top-0 w-[100%] overflow-x-hidden left-0 right-0 pt-8 pb-3 z-20 px-[1.5em] md:px-[3em] py-[2em] transition-transform transform duration-300 ${
+      className={`grid fixed top-0 max-w-[100svw] overflow-x-hidden left-auto right-auto pt-8 pb-3 z-20 px-[1.5em] md:px-[3em] py-[2em] transition-transform transform duration-300 ${
         scrollingUp || props.mobileMenuOpen ? "translate-y-0 " : "-translate-y-[74%] overflow-y-hidden"
       } text-white py-4`}
     >
@@ -124,7 +124,7 @@ export default function Navigation(props) {
     </header>
 
 	
-        <div className={`grid place-items-center md:hidden lg:hidden transition-transform transform duration-300 overflow-y-hidden fixed top-[4.9em] bottom-auto z-[1000] h-[100%] bg-[#112240] shadow-lg ${props.mobileMenuOpen ? "translate-x-[15%]" : "translate-x-[100%]"} `}>
+        <div className={`grid place-items-center md:hidden lg:hidden transition-transform transform duration-300 overflow-y-hidden fixed top-[4.9em] bottom-auto z-[1000] h-[100%] bg-[#112240] shadow-lg  ${props.mobileMenuOpen ? "translate-x-[15%]" : "translate-x-[100%]"} `}>
           <nav className="mx-auto flex flex-col gap-3 pt-2 pb-3 mr-[5em]  w-[75%] text-center">
             <Link
               href="/"
