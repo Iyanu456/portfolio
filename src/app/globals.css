@@ -17,6 +17,7 @@
   color: #a7b2d4;
   width: 100%;
   outline: #05f0dc;
+  overflow-x: hidden;
 }
 
 a {
