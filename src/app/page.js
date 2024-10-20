@@ -447,7 +447,7 @@ export default function Page() {
               placeholder="Write me a message!"
               className="h-60 rounded-lg border border-gray-600 bg-[rgba(10,24,46,0.897)] p-2 pl-4 text-white placeholder-gray-400"
             ></textarea>
-            <button className="flex justify-center center-align gap-3 px-[1.2em] py-4 font-semibold shadow-md max-sm:w-[fit-content] lg:w-[fit-content] rounded-md bg-blue-600 text-white">
+            <button className="flex justify-center center-align gap-3 px-[1.2em] py-4 font-semibold shadow-md max-sm:w-[fit-content] lg:w-[fit-content] rounded-md bg-cyan-600 text-white">
               Send message <SendHorizonal className="w-[fit-content] my-auto" />
             </button>
           </div>
