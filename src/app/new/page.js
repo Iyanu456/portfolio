@@ -248,7 +248,7 @@ export default function Page() {
       </section>
 
       <section
-        className="max-sm:grid my-auto pt-[2em] px-[2.5em] md:pl-[12em] md:pr-[5em]  min-h-[90vh] md:place-items-center max-sm:max-w-[100vw] lg:max-w-[93em] mx-auto"
+        className="max-sm:grid my-auto pt-[2em] px-[2.5em] md:pl-[12em] md:pr-[5em]  min-h-[90vh] md:place-items-center lg:max-w-[93em] mx-auto"
         id="projects"
       >
 
