@@ -183,7 +183,7 @@ export default function Page() {
           {/*<div className="absolute z-[-10] inset-0  bg-[radial-gradient(circle,_#17318a_0%,_rgba(7,18,34,1)_100%)]"></div>*/}
 
           <motion.p
-            className="text-[1.06m] text-[#a7b2d4] md:w-[60%] py-3 mute leading-[1.65em]"
+            className="text-[1.06m] text-[#a7b2d4]  md:w-[60%] py-3 leading-[1.65em]"
             initial={{ opacity: 0 }} // P fade-in effect
             animate={{ opacity: 1 }}
             transition={{ duration: 1.8, ease: "easeOut" }}
