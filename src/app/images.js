@@ -85,6 +85,15 @@ const icons = [
 
 	const projects = [
 		{
+			name: "SketchCV",
+			description: "A user-friendly resume maker app designed to simplify the process of creating professional resumes. Sketch CV allows users to easily input their details and generate polished, ready-to-download resumes.",
+			techStack: ["React + Vite", "Tailwind CSS",],
+			image: "/images/sketchcv_screenshot.png",
+			link: "https://resume-maker-iyanu456s-projects.vercel.app/",
+			github_link: "https://github.com/Iyanu456/resume-maker",
+			thumbnail: "/images/sketchcv-thumbnail.png"
+		}, 
+		{
 			name: "LlamaGPT",
 			description: "LlamaGPT is a conversational AI chatbot powered by Meta's Llama2 AI model. LlamaGPT is capable of answering questions on almost any topic",
 			techStack: ["React", "Next.js", "Tailwind CSS", "Replicate API"],
@@ -102,20 +111,21 @@ const icons = [
 			link: "http://getlinked-hackathon-six.vercel.app/",
 			github_link: "https://github.com/Iyanu456/getlinked-hackathon",
 			thumbnail: "/images/getlinked-thumbnail.png"
-
-
 			
 		},
 
 		{
-			name: "SketchCV",
-			description: "A user-friendly resume maker app designed to simplify the process of creating professional resumes. Sketch CV allows users to easily input their details and generate polished, ready-to-download resumes.",
-			techStack: ["React + Vite", "Tailwind CSS",],
-			image: "/images/sketchcv_screenshot.png",
-			link: "https://resume-maker-iyanu456s-projects.vercel.app/",
-			github_link: "https://github.com/Iyanu456/resume-maker",
-			thumbnail: "/images/sketchcv-thumbnail.png"
-		}
+			name: "NodePair",
+			description: "Developed the landing page prototype for Nodepair, a dynamic freelance platform. ",
+			techStack: ["React", "Next.js", "Tailwind CSS",],
+			image: "/images/nodepair-screenshot.png",
+			link: "https://landing-page-xi-jade.vercel.app/",
+			github_link: "",
+			thumbnail: "/images/getlinked-thumbnail.png"
+			
+		},
+
+		
 	]
 
 	const socials = [

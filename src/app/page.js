@@ -387,20 +387,20 @@ export default function Page() {
                     </div>
                     
                     <div className="flex gap-3 mt-4">
-                      <Link
+                      {(link && link != "")  && <Link
                         href={link}
                         target="blank"
                         className="px-5 py-2 w-[fit-content] bg-cyan-900 rounded-md flex gap-3"
                       >
                         <Eye className="w-[fit-content] my-auto" /> Live
-                      </Link>
-                      <Link
+                      </Link>}
+                      {(github_link && github_link != "") && <Link
                         href={github_link}
                         target="blank"
                         className="px-5 py-2 w-[fit-content] bg-cyan-900 rounded-md flex gap-3"
                       >
                         <CodeXml className="w-[fit-content] my-auto" /> Source{" "}
-                      </Link>
+                      </Link>}
                     </div>
                   </div>
                   </div>
@@ -457,7 +457,7 @@ export default function Page() {
       </motion.section>
 
       <footer className="text-center text-[0.95em] mb-[5em] px-[2em]">
-        <p>Copyright © {currentYear} All rights reserved | Iyanu Oyerinde</p>
+        <p>Copyright © {currentYear} All rights reserved | Iyanuoluwa Oyerinde</p>
       </footer>
     </div>
   );
