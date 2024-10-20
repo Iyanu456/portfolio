@@ -45,7 +45,7 @@ export default function Navigation(props) {
     <>
 	<header
       className={`grid fixed top-0 left-0 right-0 pt-8 pb-3 z-20 px-[1.5em] md:px-[3em] py-[2em] transition-transform transform duration-300 ${
-        scrollingUp || props.mobileMenuOpen ? "translate-y-0 " : "-translate-y-[70%] overflow-y-hidden"
+        scrollingUp || props.mobileMenuOpen ? "translate-y-0 " : "-translate-y-[74%] overflow-y-hidden"
       } text-white py-4`}
     >
       <nav className="flex">
@@ -58,7 +58,7 @@ export default function Navigation(props) {
           Iyanu
         </motion.div>
 
-        <ul className="w-[fit-content] hidden md:flex ml-auto mr-0 gap-8 my-auto">
+        <ul className="w-[fit-content] hidden sm:flex lg:flex md:flex tablet:flex ml-auto mr-0 gap-8 my-auto">
           <Link href="#about-me" className="w-[fit-content]">
             <motion.li
               variants={navVariants}
@@ -112,7 +112,7 @@ export default function Navigation(props) {
 
         <button
           onClick={() => props.setMobileMenuOpen(!props.mobileMenuOpen)}
-          className="lg:hidden md:hidden w-[fit-content]"
+          className="sm:hidden md:hidden lg:hidden tablet:hidden w-[fit-content]"
         >
           {props.mobileMenuOpen ? (
             <X className="h-6 w-6 mr-0 ml-auto w-[fit-content]" color="#ccd6f6"/>
@@ -128,7 +128,7 @@ export default function Navigation(props) {
           <nav className="mx-auto flex flex-col gap-3 px-[2em] pt-2 pb-3 space-y-1 sm:px-[2em] w-[70%] text-center">
             <Link
               href="/"
-              className={`text-white block py-2 px-3 rounded-md hover:bg-[rgba(156,156,156,0.2)]  hover:bg-gray-50 transition-all 
+              className={`text-white block py-2 px-3 rounded-md hover:bg-[rgba(156,156,156,0.2)]   transition-all 
                   ${pathname === "/" && ""}`}
               onClick={closeMenuOnNavigation}
             >
@@ -147,7 +147,7 @@ export default function Navigation(props) {
             <Link
               href="#projects"
               className={`text-white w-[100%] block py-2 px-3 rounded-md hover:bg-[rgba(156,156,156,0.2)]   transition-all 
-                  ${pathname === "/#projecrs" && " font-bold"}`}
+                  ${pathname === "/#projects" && " font-bold"}`}
               onClick={closeMenuOnNavigation}
             >
               <span className="text-[#64ffda] text-[0.95em] pr-2 w-[fit-content]">02. </span>

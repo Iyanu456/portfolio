@@ -90,17 +90,31 @@ const icons = [
 			techStack: ["React", "Next.js", "Tailwind CSS", "Replicate API"],
 			image: "/images/llama2.jpg",
 			link: "https://llama-gpt.vercel.app/login",
-			github_link: "https://github.com/Iyanu456/llamaGPT"
+			github_link: "https://github.com/Iyanu456/llamaGPT",
+			thumbnail: "/images/llamagpt-thumbnail.png"
 		},
 
 		{
-			name: "GetLinked Hackathon Challenge",
+			name: "GetLinked Hackathon",
 			description: "Crafted during the GetLinked pre-hackathon, this hackathon registration website mirrors a Figma design for an elegant touch.",
 			techStack: ["React", "Next.js", "Tailwind CSS",],
 			image: "/images/getlinked.png",
 			link: "http://getlinked-hackathon-six.vercel.app/",
-			github_link: "https://github.com/Iyanu456/getlinked-hackathon"
+			github_link: "https://github.com/Iyanu456/getlinked-hackathon",
+			thumbnail: "/images/getlinked-thumbnail.png"
 
+
+			
+		},
+
+		{
+			name: "SketchCV",
+			description: "A user-friendly resume maker app designed to simplify the process of creating professional resumes. Sketch CV allows users to easily input their details and generate polished, ready-to-download resumes.",
+			techStack: ["React + Vite", "Tailwind CSS",],
+			image: "/images/sketchcv_screenshot.png",
+			link: "https://resume-maker-iyanu456s-projects.vercel.app/",
+			github_link: "https://github.com/Iyanu456/resume-maker",
+			thumbnail: "/images/sketchcv-thumbnail.png"
 		}
 	]
 

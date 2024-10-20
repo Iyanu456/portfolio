@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 import { ProfileImage, socials, icons, projects } from "./images";
 import { animate, delay, motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 
 const skills = [
@@ -31,7 +31,24 @@ const currentYear = new Date().getFullYear();
 
 export default function Page() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const aboutMeAnimation = {
+  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 1024);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsLargeScreen(window.innerWidth >= 1024);
+    };
+
+    // Add event listener on component mount
+    window.addEventListener('resize', handleResize);
+
+    // Remove event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+
+  const about_me_animation = {
     initial: {
       opacity: 0,
       y: 100,
@@ -47,7 +64,7 @@ export default function Page() {
     },
   };
 
-  const profileAnimation = {
+  const profile_animation = {
     initial: {
       opacity: 0,
       y: 50,
@@ -63,7 +80,7 @@ export default function Page() {
     },
   };
 
-  const technologiesAnimation = {
+  const technologies_animation = {
     initial: {
       opacity: 0,
       y: 100,
@@ -78,6 +95,20 @@ export default function Page() {
     }),
   };
 
+  const tech_stack_animation = {
+    initial: {
+      opacity: 0,
+      y: 100,
+    },
+
+    animate: (index) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: 0.4 * index,
+      },
+    }),
+  };
   return (
     <div className={`grid min-h-[100vh] ${mobileMenuOpen ? "overflow-hidden" : ""}`}>
       <Navigation setMobileMenuOpen={setMobileMenuOpen} mobileMenuOpen={mobileMenuOpen} />
@@ -91,6 +122,8 @@ export default function Page() {
           </div>
         ))}
       </section>
+
+      
 
       <motion.section
         className="grid my-auto md:pt-[5em] lg:max-w-[90em] mx-auto px-[2em] md:pl-[12em] md:min-h-[102vh] max-sm:min-h-[102vh] sm:min-h-[102vh] place-items-center"
@@ -187,7 +220,7 @@ export default function Page() {
               <div className="max-sm:hidden shadow-md rounded-[100%] md:rounded-md z-10 duration-200 border mt-[0.4em] ml-[0.4em] md:mt-[1em] md:ml-[1em] border-[2px] group-hover:-translate-y-[-5px] group-hover:-translate-x-[-5px]  border-[#05f0dc] h-[10em] w-[10em] md:h-[16em] md:w-[16em] "></div>
             </div>
             <motion.p
-              variants={aboutMeAnimation}
+              variants={about_me_animation}
               initial="initial"
               whileInView="animate"
               viewport={{ once: true }}
@@ -207,7 +240,12 @@ export default function Page() {
               every project is a chance to learn and make the world a bit
               better.`}
             </motion.p>
-            <p className="block md:hidden mb-[1.2em]">
+            <motion.p 
+            variants={about_me_animation}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            className="block md:hidden mb-[1.2em]">
               {`Here are a few technologies I’ve been working with recently: `}{" "}
               <br />
               <br />
@@ -224,10 +262,10 @@ export default function Page() {
                   </>
                 ))}
               </div>
-            </p>
+            </motion.p>
           </div>
           <motion.div
-            variants={profileAnimation}
+            variants={profile_animation}
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
@@ -259,7 +297,7 @@ export default function Page() {
             {icons.map((item, index) => (
               <motion.div
                 whileHover={{ scale: 1.08 }}
-                variants={technologiesAnimation}
+                variants={technologies_animation}
                 initial="initial"
                 custom={index}
                 whileInView="animate"
@@ -299,35 +337,45 @@ export default function Page() {
             <div className="line m-auto pr-[2em]"></div>
           </div>
           {projects.map(
-            ({ name, image, description, techStack, link, github_link }, index) => (
+            ({ name, image, description, techStack, link, github_link, thumbnail }, index) => (
               <>
                 <motion.div
-                  variants={technologiesAnimation}
+                  variants={tech_stack_animation}
                   initial="initial"
                   custom={index}
                   whileInView="animate"
                   viewport={{ once: true }}
                   key={index}
-                  className="relative md:grid max-sm:mx-auto flex flex-col tablet:flex-col lg:grid-cols-[34%,56%] gap-2 md:gap-[2em] lg:gap-[3.4em] mb-[3em] rounded-md"
+                  className="relative md:grid max-sm:mx-auto flex flex-col tablet:flex-col lg:grid-cols-[34%,56%] gap-2 md:gap-[2em] lg:gap-[3.4em] mb-[3em] rounded-[2em]"
                 >
-                  <div className="overflow-hidden rounded-md">
+                  <div className="hidden tablet:hidden lg:block relative overflow-hidden rounded-[2em]">
                     <Link href={link} target="blank" className=" w-[85%] tablet:w-[100%] max-sm:w-[100%]">
                       <Image
                         src={image}
-                        className="object-cover w-[100%] tablet:w-[100%] tablet:pt-[0.1em] pt-[0.1em] lg:h-[19em] tablet:h-[23em] h-[23em] transition hover:scale-[1.1] duration-200 lg:max-w-[22em]  rounded-md tablet:shadow-lg"
+                        className="object-cover w-[100%] tablet:w-[100%] tablet:pt-[0.1em] pt-[0.1em] lg:h-[18em] tablet:h-[22em] sm:h-[18em] h-[22em] transition hover:scale-[1.1] duration-200 lg:max-w-[22em]  rounded-md tablet:shadow-lg"
                         alt="project screenshot"
                         width="100"
                         height="100"
                         unoptimized="true"
                       />
                     </Link>
+                    {/*<div class="lg:hidden absolute inset-0 bg-black opacity-[90%] bg-[rgba(10,24,46,0.91)] "></div>
+                    <div class="lg:hidden absolute inset-0 bg-[rgba(10,24,46,0.91)] lg:bg-[transparent]"></div>*/}
                   </div>
-                  <div className="rounded-md absolute flex flex-col tablet:flex :flex tablet:flex-col tablet:absolute max-sm:absolute justify-center center-align  lg:relative tablet:bg-[rgba(10,24,46,0.91)] bg-[rgba(10,24,46,0.93)] h-[103%] tablet:h-[103%] tablet:px-[2em] px-[2em] tablet:py-6 py-6 lg:px-0 lg:py-0">
+                  <div className="relative grid">
+                 
+                  
+                  <div style={{
+                    background: `url(${isLargeScreen ? "" : thumbnail})`,
+                    position: 'center',
+                    objectFit: 'cover',
+                    
+                  }}  className="relative my-auto rounded-[2em]  flex flex-col tablet:flex :flex tablet:flex-col  justify-center  center-align  lg:relative h-[fit-content] tablet:px-[2em] px-[2em]  py-[2em] lg:px-0 lg:py-0">
                     <h2 className=" lg:text-[1.8em] tablet:text-[1.5em] text-[1.3em] md:mb-4 mb-2 font-semibold">
                       {name}
                     </h2>
                     <div className="project-card">{description}</div>
-                    <div className="mt-4 flex flex-wrap gap-[1.5em]">
+                    <div className="mt-4 inline-flex leading-[0.7em] mb-3 flex-wrap gap-[1.5em]">
                       {techStack.map((item, index) => (
                         <p
                           className="w-[fit-content] text-[#05f0dc]"
@@ -337,20 +385,24 @@ export default function Page() {
                         </p>
                       ))}
                     </div>
+                    
                     <div className="flex gap-3 mt-4">
                       <Link
                         href={link}
+                        target="blank"
                         className="px-5 py-2 w-[fit-content] bg-cyan-900 rounded-md flex gap-3"
                       >
                         <Eye className="w-[fit-content] my-auto" /> Live
                       </Link>
                       <Link
                         href={github_link}
+                        target="blank"
                         className="px-5 py-2 w-[fit-content] bg-cyan-900 rounded-md flex gap-3"
                       >
                         <CodeXml className="w-[fit-content] my-auto" /> Source{" "}
                       </Link>
                     </div>
+                  </div>
                   </div>
                 </motion.div>
               </>
@@ -360,7 +412,7 @@ export default function Page() {
       </section>
 
       <motion.section
-        variants={technologiesAnimation}
+        variants={tech_stack_animation}
         initial="initial"
         //custom={index}
         whileInView="animate"
@@ -393,14 +445,14 @@ export default function Page() {
             </button>
           </div>
         </div>
-        <div className="max-sm:hidden mt-[4.1em] flex flex-col gap-4">
-          <p className="flex gap-3">
-            <Phone className="w-[fit-content] my-auto" /> 09011774616
-          </p>
-          <p className="flex gap-3">
+        <div className="mt-[4.1em] flex flex-col gap-4">
+          <Link href="tel:+2349122420200" className="flex gap-3">
+            <Phone className="w-[fit-content] my-auto " /> +234 912 242 0200
+          </Link>
+          <Link href="mailto:oyerindei13@gmail.com" className="flex gap-3 tracking-[0.2em]">
             <MailOpen className="w-[fit-content] my-auto" />{" "}
             oyerindei13@gmail.com
-          </p>
+          </Link>
         </div>
       </motion.section>
 
