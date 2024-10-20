@@ -268,7 +268,7 @@ export default function Page() {
               <div className="line m-auto pr-[2em]"></div>
             </div>
             {projects.map(
-              ({ name, image, description, techStack, link }, index) => (
+              ({ name, image, description, techStack, link, github_link }, index) => (
                 <>
                 <div key={index} className="md:grid max-sm:mx-auto flex flex-col grid-cols-[34%,56%] gap-5 md:gap-[4em] mb-[3em]">
                   <div className="overflow-hidden rounded-md">

@@ -34,17 +34,21 @@ export default function Page() {
   const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 1024);
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsLargeScreen(window.innerWidth >= 1024);
-    };
-
-    // Add event listener on component mount
-    window.addEventListener('resize', handleResize);
-
-    // Remove event listener on component unmount
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
+    if (typeof window !== 'undefined') {
+      // Your client-side code that uses window here
+      const handleResize = () => {
+        setIsLargeScreen(window.innerWidth >= 1024);
+      };
+  
+      // Add event listener on component mount
+      window.addEventListener('resize', handleResize);
+  
+      // Remove event listener on component unmount
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }
+    
   }, []);
 
 
