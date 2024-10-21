@@ -112,7 +112,7 @@ export default function Navigation(props) {
 
         <button
           onClick={() => props.setMobileMenuOpen(!props.mobileMenuOpen)}
-          className="sm:hidden md:hidden lg:hidden tablet:hidden w-[24px] bg-[red]"
+          className="sm:hidden md:hidden lg:hidden tablet:hidden w-[24px]"
         >
           {props.mobileMenuOpen ? (
             <Menu className="h-6 w-6 w-[24px]" color="#ccd6f6"/>

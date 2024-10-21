@@ -119,8 +119,8 @@ export default function Page() {
   };
   return (
     <div className={`grid min-h-[100vh] ${mobileMenuOpen ? "" : ""}`}>
-      {/*<Navigation setMobileMenuOpen={setMobileMenuOpen} mobileMenuOpen={mobileMenuOpen} />*/}
-      <Header mobileMenuOpen={mobileMenuOpen} setMobileMenuOpen={setMobileMenuOpen}/>
+      <Navigation setMobileMenuOpen={setMobileMenuOpen} mobileMenuOpen={mobileMenuOpen} />
+      {/*<Header mobileMenuOpen={mobileMenuOpen} setMobileMenuOpen={setMobileMenuOpen}/>*/}
 
       <section className="md:flex hidden flex-col gap-3 fixed top-[40vh] bottom-auto left-[2em] right-auto socials p-2 mr-[-2em] w-[fit-content]">
         {socials.map(({ image, link, alt }, index) => (
