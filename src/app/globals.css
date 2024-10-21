@@ -20,9 +20,7 @@
   overflow-x: hidden;
 }
 
-body {
-  overflow-x: hidden;
-}
+body {}
 a {
   color: #f0f4ff;
 }
