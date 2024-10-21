@@ -111,7 +111,7 @@ export default function Navigation(props) {
         </ul>
 
         <button
-          //onClick={() => props.setMobileMenuOpen(!props.mobileMenuOpen)}
+          onClick={() => props.setMobileMenuOpen(!props.mobileMenuOpen)}
           className="sm:hidden md:hidden lg:hidden tablet:hidden w-[fit-content]"
         >
           {props.mobileMenuOpen ? (
@@ -124,7 +124,7 @@ export default function Navigation(props) {
     </header>
 
 	
-        <div className={`grid place-items-center md:hidden lg:hidden transition-transform transform duration-300 overflow-y-hidden fixed top-[4.9em] bottom-auto right-0 left-0 z-[1000] h-[100%] w-[80%] bg-[#112240] shadow-lg ${props.mobileMenuOpen ? " translate-x-0" : "translate-x-[180%] hidden"} `}>
+        {/*<div className={`grid place-items-center md:hidden lg:hidden transition-transform transform duration-300 overflow-y-hidden fixed top-[4.9em] bottom-auto right-0 left-0 z-[1000] h-[100%] w-[80%] bg-[#112240] shadow-lg ${props.mobileMenuOpen ? " translate-x-0" : "translate-x-[180%] hidden"} `}>
           <nav className="mx-auto flex flex-col gap-3 px-[2em] pt-2 pb-3 space-y-1 sm:px-[2em] w-[70%] text-center">
             <Link
               href="/"
@@ -174,7 +174,7 @@ export default function Navigation(props) {
           </div>
         ))}
           </div>
-        </div>
+        </div>*/}
       
 	</>
   );
