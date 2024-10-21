@@ -5,7 +5,7 @@ import { Menu, X } from "lucide-react";
 export default function Header(props) {
   return (
     <header className="flex justify-center center-align w-[100%] px-[1.5em] lg:px-[3.34em] py-[2em] ">
-      <Link href="/" className="font-bold my-auto ml-0 mr-auto">
+      <Link href="/" className="font-bold my-auto ml-0 mr-auto w-[fit-content]">
         Iyanu
       </Link>
       <nav className="grid w-[fit-content] hidden sm:block md:block mr-0 ml-auto">
@@ -35,9 +35,9 @@ export default function Header(props) {
           className="hidden max-sm:block w-[fit-content]"
         >
           {props.mobileMenuOpen ? (
-            <X className="h-6 w-6" color="#ccd6f6"/>
+            <Image src="/icons/close_icon.svg" height={24} width={24} alt="menu" className="" color="#ccd6f6"/>
           ) : (
-            <Menu className="h-6 w-6" color="#ccd6f6"/>
+            <Image src="/icons/menu_icon.svg" height={24} width={24} alt="menu" className="" color="#ccd6f6"/>
           )}
         </button>
     </header>
