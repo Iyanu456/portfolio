@@ -4,12 +4,12 @@ import { Menu, X } from "lucide-react";
 
 export default function Header(props) {
   return (
-    <header className="flex justify-between px-[1.5em] lg:px-[3.34em] py-[2em] ">
-      <Link href="/" className="font-bold my-auto">
+    <header className="flex justify-center center-align w-[100%] px-[1.5em] lg:px-[3.34em] py-[2em] ">
+      <Link href="/" className="font-bold my-auto ml-0 mr-auto">
         Iyanu
       </Link>
-      <nav className="hidden sm:block md:block w-[fit-content]">
-        <ul className="flex gap-[2.5em]">
+      <nav className="grid w-[fit-content] hidden sm:block md:block mr-0 ml-auto">
+        <ul className="flex  gap-[2.5em]">
           <li>
             <Link href="#about-me" className="flex gap-3 icon px-4 py-2">
             <span className="text-[#64ffda]">01. </span>
