@@ -4,7 +4,7 @@ import { Menu, X } from "lucide-react";
 
 export default function Header(props) {
   return (
-    <header className="flex justify-center center-align w-[100%] px-[1.5em] lg:px-[3.34em] py-[2em] ">
+    <header className="flex justify-center center-align w-[90%] px-[1.5em] lg:px-[3.34em] py-[2em] ">
       <Link href="/" className="font-bold my-auto ml-0 mr-auto w-[fit-content]">
         Iyanu
       </Link>
