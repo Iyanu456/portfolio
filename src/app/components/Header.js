@@ -4,8 +4,9 @@ import { Menu, X } from "lucide-react";
 
 export default function Header(props) {
   return (
-    <header className="flex justify-center center-align w-[90%] px-[1.5em] lg:px-[3.34em] py-[2em] ">
-      <Link href="/" className="font-bold my-auto ml-0 mr-auto w-[fit-content]">
+    <header className="grid w-[90%] px-[1.5em] lg:px-[3.34em] py-[2em] ">
+        <div className="flex">
+        <Link href="/" className="font-bold my-auto ml-0 mr-auto w-[fit-content]">
         Iyanu
       </Link>
       <nav className="grid w-[fit-content] hidden sm:block md:block mr-0 ml-auto">
@@ -40,6 +41,8 @@ export default function Header(props) {
             <Image src="/icons/menu_icon.svg" height={24} width={24} alt="menu" className="" color="#ccd6f6"/>
           )}
         </button>
+        </div>
+     
     </header>
   );
 }

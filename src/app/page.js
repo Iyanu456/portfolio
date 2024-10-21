@@ -118,7 +118,7 @@ export default function Page() {
     }),
   };
   return (
-    <div className={`grid min-h-[100vh] ${mobileMenuOpen ? "overflow-hidden" : ""}`}>
+    <div className={`grid min-h-[100vh] ${mobileMenuOpen ? "" : ""}`}>
       {/*<Navigation setMobileMenuOpen={setMobileMenuOpen} mobileMenuOpen={mobileMenuOpen} />*/}
       <Header mobileMenuOpen={mobileMenuOpen} setMobileMenuOpen={setMobileMenuOpen}/>
 
