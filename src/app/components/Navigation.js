@@ -117,7 +117,7 @@ export default function Navigation(props) {
           {props.mobileMenuOpen ? (
             <X className="h-6 w-6 w-[24px]" color="#ccd6f6"/>
           ) : (
-            <Menu className="h-6 w-6 w-[24px]" color="#ccd6f6"/>
+            <X className="h-6 w-6 w-[24px]" color="#ccd6f6"/>
           )}
         </button>
       </nav>
