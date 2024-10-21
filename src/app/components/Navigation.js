@@ -44,7 +44,7 @@ export default function Navigation(props) {
   return (
     <>
 	<header
-      className={`grid fixed top-0 left-0 right-0 pt-8 pb-3 z-20 px-[1.5em] md:px-[3em] py-[2em] transition-transform transform duration-300 ${
+      className={`grid fixed top-0 left-0 right-0 pt-8 max-w-[100vw] w-[100vw] pb-3 z-20 px-[1.5em] py-[2em] transition-transform transform duration-300 ${
         scrollingUp || props.mobileMenuOpen ? "translate-y-0 " : "-translate-y-[74%] overflow-y-hidden"
       } text-white py-4`}
     >
@@ -53,7 +53,7 @@ export default function Navigation(props) {
           variants={navVariants}
           initial="hidden"
           animate="visible"
-          className="w-[fit-content] hover:translate-y-[-5px] transition-transform duration-300 font-bold icon border border-5 border-white my-auto border py-[0.3em] ml-0 mr-auto px-[0.5em] cursor-pointer text-[#ccd6f6] text-[1.1em]"
+          className="w-[fit-content] hover:translate-y-[-5px] transition-transform duration-300 font-bold icon border border-5 border-white my-auto border py-[0.3em] ml-0 mr-auto px-[0.5em] cursor-pointer text-[#ccd6f6] text-[1.1em] "
         >
           Iyanu
         </motion.div>
@@ -112,7 +112,7 @@ export default function Navigation(props) {
 
         <button
           onClick={() => props.setMobileMenuOpen(!props.mobileMenuOpen)}
-          className="sm:hidden md:hidden lg:hidden tablet:hidden w-[fit-content]"
+          className="sm:hidden md:hidden lg:hidden tablet:hidden w-[24px] bg-[red]"
         >
           {props.mobileMenuOpen ? (
             <X className="h-6 w-6 w-[24px]" color="#ccd6f6"/>
