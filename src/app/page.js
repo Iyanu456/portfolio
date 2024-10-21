@@ -13,6 +13,7 @@ import {
 import { ProfileImage, socials, icons, projects } from "./images";
 import { animate, delay, motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import Header from "./components/Header";
 
 
 const skills = [
@@ -118,7 +119,8 @@ export default function Page() {
   };
   return (
     <div className={`grid min-h-[100vh] ${mobileMenuOpen ? "overflow-hidden" : ""}`}>
-      <Navigation setMobileMenuOpen={setMobileMenuOpen} mobileMenuOpen={mobileMenuOpen} />
+      {/*<Navigation setMobileMenuOpen={setMobileMenuOpen} mobileMenuOpen={mobileMenuOpen} />*/}
+      <Header mobileMenuOpen={mobileMenuOpen} setMobileMenuOpen={setMobileMenuOpen}/>
 
       <section className="md:flex hidden flex-col gap-3 fixed top-[40vh] bottom-auto left-[2em] right-auto socials p-2 mr-[-2em] w-[fit-content]">
         {socials.map(({ image, link, alt }, index) => (
