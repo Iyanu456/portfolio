@@ -44,7 +44,7 @@ export default function Navigation(props) {
   return (
     <>
 	<header
-      className={`grid fixed top-0 w-[100vw] overflow-x-hidden left-auto right-auto pt-8 pb-3 z-20 px-[1.5em] md:px-[3em] py-[2em] transition-transform transform duration-300 ${
+      className={`grid fixed top-0 left-0 right-0 pt-8 pb-3 z-20 px-[1.5em] md:px-[3em] py-[2em] transition-transform transform duration-300 ${
         scrollingUp || props.mobileMenuOpen ? "translate-y-0 " : "-translate-y-[74%] overflow-y-hidden"
       } text-white py-4`}
     >
@@ -110,15 +110,22 @@ export default function Navigation(props) {
           </motion.li>
         </ul>
 
-        
+        <button
+          onClick={() => props.setMobileMenuOpen(!props.mobileMenuOpen)}
+          className="sm:hidden md:hidden lg:hidden tablet:hidden w-[fit-content]"
+        >
+          {props.mobileMenuOpen ? (
+            <X className="h-6 w-6 mr-0 ml-auto w-[fit-content]" color="#ccd6f6"/>
+          ) : (
+            <Menu className="h-6 w-6 mr-0 ml-auto w-[fit-content]" color="#ccd6f6"/>
+          )}
+        </button>
       </nav>
     </header>
 
-
-
 	
-        <div className={`grid place-items-center md:hidden lg:hidden transition-transform transform duration-300 overflow-y-hidden fixed top-0 bottom-auto z-[1000] h-[100%] bg-[#112240] shadow-lg  z-[1000] ${props.mobileMenuOpen ? "translate-x-[15vw]" : "translate-x-[100vw]"} `}>
-          <nav className="mx-auto flex flex-col gap-3 pt-2 pb-3 mr-[5em]  w-[75%] text-center">
+        <div className={`grid place-items-center md:hidden lg:hidden transition-transform transform duration-300 overflow-y-hidden fixed top-[4.9em] bottom-auto z-[1000] h-[100%] bg-[#112240] shadow-lg ${props.mobileMenuOpen ? "translate-x-0" : "translate-x-[100%]"} `}>
+          <nav className="mx-auto flex flex-col gap-3 px-[2em] pt-2 pb-3 space-y-1 sm:px-[2em] w-[70%] text-center">
             <Link
               href="/"
               className={`text-white block py-2 px-3 rounded-md hover:bg-[rgba(156,156,156,0.2)]   transition-all 
@@ -168,17 +175,6 @@ export default function Navigation(props) {
         ))}
           </div>
         </div>
-
-        <button
-          onClick={() => props.setMobileMenuOpen(!props.mobileMenuOpen)}
-          className="sm:hidden md:hidden lg:hidden tablet:hidden w-[fit-content] top-9 bottom-auto fixed right-[2em] left-auto z-[5000]"
-        >
-          {props.mobileMenuOpen ? (
-            <X className="h-6 w-6 mr-0 ml-auto w-[fit-content] z-[1200] relative" color="#ccd6f6"/>
-          ) : (
-            <Menu className="h-6 w-6 mr-0 ml-auto w-[fit-content]" color="#ccd6f6"/>
-          )}
-        </button>
       
 	</>
   );
