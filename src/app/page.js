@@ -129,7 +129,7 @@ export default function Page() {
       y: 0,
       transition: {
         duration: 1,
-        delay: 1,
+        delay: 0.9,
       },
     }),
   };
