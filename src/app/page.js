@@ -13,7 +13,9 @@ import {
 import { ProfileImage, socials, icons, projects } from "./images";
 import { animate, delay, motion } from "framer-motion";
 import { useState, useEffect } from "react";
-import Header from "./components/Header";
+import useAxios from "@/hooks/useAxios";
+import ReactCanvasConfetti from "react-canvas-confetti";
+import Confetti from "./components/Confetti";
 
 
 const skills = [
@@ -34,6 +36,8 @@ export default function Page() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
+  const [isVisible, setIsVisible] = useState(false);
+  const { sendRequest } = useAxios();
 
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -58,6 +62,50 @@ export default function Page() {
       };
     }
   }, []);
+
+  const SendMail = async (e) => {
+
+    e.preventDefault();
+
+    if (name === "" || email === "" || message === "") {
+      console.error('Name, email, or message is missing');
+      return;
+    }
+
+    console.log(process.env.NEXT_BASE_URL)
+    console.log(process.env.SECRET_KEY)
+
+    try {
+      const response = await sendRequest({
+        url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/send_mail/`,
+        method: 'POST',
+        body: { name, email, message },
+        headers: {
+          'Content-Type': 'application/json',
+          'x-secret-key': `${process.env.NEXT_PUBLIC_SECRET_KEY}`
+        }
+      });
+
+      if (response.ok) {
+        console.log("email sent successfully")
+        setIsVisible(true);
+        // Set a timeout to hide the item after 4 seconds
+    setTimeout(() => {
+      setIsVisible(false);
+    }, 8000); // 4000 milliseconds = 4 seconds
+
+        
+      }
+    }
+    catch (error) {
+      console.error(error);
+      return;
+    }
+    
+    
+
+    
+  }
   
 
 
@@ -138,6 +186,9 @@ export default function Page() {
       },
     }),
   };
+
+ 
+
   return (
     <div className={`grid min-h-[100vh] ${mobileMenuOpen ? "" : ""}`}>
       <Navigation setMobileMenuOpen={setMobileMenuOpen} mobileMenuOpen={mobileMenuOpen} />
@@ -449,7 +500,7 @@ export default function Page() {
         id="contact"
       >
         <div className="center-align flex justify-center gap-4">
-          <form className="flex flex-col  gap-4 max-sm:w-[100%] max-sm:flex-col">
+          <form onSubmit={SendMail} className="flex flex-col  gap-4 max-sm:w-[100%] md:max-w-[80%]  max-sm:flex-col">
             <h3 className="mb-2 md:text-[2em] sm:text-[1.8em] max-sm:text-[1.6em] mx-auto font-semibold ">
               {`Let's get in touch`}
             </h3>
@@ -458,22 +509,31 @@ export default function Page() {
               type="text"
               placeholder="Name / Organization"
               className=" rounded-lg border border-gray-600 bg-[rgba(10,24,46,0.897)] p-2 pl-4 text-white placeholder-gray-400"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
             />
             <input
               type="email"
               placeholder="Email - example@example.com"
               className=" rounded-lg border border-gray-600 bg-[rgba(10,24,46,0.897)] p-2 pl-4 text-white placeholder-gray-400"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               required
             />
 
             <textarea
               placeholder="Write me a message!"
               className="h-60 rounded-lg border border-gray-600 bg-[rgba(10,24,46,0.897)] p-2 pl-4 text-white placeholder-gray-400"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
               required
             ></textarea>
             <button className="flex justify-center center-align gap-3 px-[1.2em] py-4 font-semibold shadow-md max-sm:w-[fit-content] lg:w-[fit-content] rounded-md bg-cyan-600 text-white">
               Send message <SendHorizonal className="w-[fit-content] my-auto" />
             </button>
+            {isVisible && <Confetti />}
+            
           </form>
         </div>
         <div className="mt-[4.1em] flex flex-col gap-4">
@@ -486,10 +546,12 @@ export default function Page() {
           </Link>
         </div>
       </motion.section>
+      
 
       <footer className="text-center text-[0.95em] mb-[5em] px-[2em]">
         <p>Copyright © {currentYear} All rights reserved | Iyanuoluwa Oyerinde</p>
       </footer>
+     
     </div>
   );
 }
