@@ -44,7 +44,7 @@ export default function Navigation(props) {
   return (
     <>
 	<header
-      className={`grid fixed top-0 left-0 right-0 pt-8 max-w-[100vw] w-[100vw] pb-3 z-20 px-[1.5em] py-[2em] transition-transform transform duration-300 ${
+      className={`grid fixed top-0 left-0 right-0 pt-8 max-w-[100vw] w-[100vw] pb-3 z-20 px-[1.5em] py-[2em] lg:pr-[5em] transition-transform transform duration-300 ${
         scrollingUp || props.mobileMenuOpen ? "translate-y-0 " : "-translate-y-[74%] overflow-y-hidden"
       } text-white py-4`}
     >

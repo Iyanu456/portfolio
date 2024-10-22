@@ -146,6 +146,11 @@ const icons = [
 				link: "https://github.com/iyanu456",
 				alt: "GitHub Repository"
 			},
+			{
+				image: "/icons/mail_icon.svg",
+				link: "mailto:oyerindei13@gmail.com",
+				alt: "Email me"
+			},
 	]
 
 

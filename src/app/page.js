@@ -126,7 +126,7 @@ export default function Page() {
         {socials.map(({ image, link, alt }, index) => (
           <div className="icon" key={index}>
             <Link href={link} target="blank">
-              <Image src={image} alt={alt} />
+              <Image className="min-w-[25px] min-h-[25px]" src={image} width={30} height={30} alt={alt} />
             </Link>
           </div>
         ))}
