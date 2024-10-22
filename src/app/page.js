@@ -129,7 +129,7 @@ export default function Page() {
       y: 0,
       transition: {
         duration: 1,
-        delay: 0.8,
+        delay: 1.8,
       },
     }),
   };
@@ -439,7 +439,6 @@ export default function Page() {
       <motion.section
         variants={contact_me_animation}
         initial="initial"
-        custom={1.8}
         whileInView="animate"
         className="mb-[6em] mt-[10em] sm:mt-[5em] max-sm:mt-[2em] md:pl-[12em] max-sm:px-[2em] sm:px-[2em] sm:text-center max-sm:text-center  grid tablet:grid-cols-[1.25fr,1fr] lg:grid-cols-[0.8fr,1fr] gap-[3em]  lg:max-w-[100em] mx-auto"
         id="contact"
