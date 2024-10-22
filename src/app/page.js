@@ -245,7 +245,7 @@ export default function Page() {
               <br />
               Whether{" "}
               {`I'm writing code or working on web projects, I love
-              making things that can make a positive difference. I believe that
+              making things that make a positive difference. I believe that
               every project is a chance to learn and make the world a bit
               better.`}
             </motion.p>
