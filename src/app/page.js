@@ -31,6 +31,11 @@ const skills = [
 const currentYear = new Date().getFullYear();
 
 export default function Page() {
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [message, setMessage] = useState("");
+
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isLargeScreen, setIsLargeScreen] = useState(false);
 
@@ -444,7 +449,7 @@ export default function Page() {
         id="contact"
       >
         <div className="center-align flex justify-center gap-4">
-          <div className="flex flex-col  gap-4 max-sm:w-[100%] max-sm:flex-col">
+          <form className="flex flex-col  gap-4 max-sm:w-[100%] max-sm:flex-col">
             <h3 className="mb-2 md:text-[2em] sm:text-[1.8em] max-sm:text-[1.6em] mx-auto font-semibold ">
               {`Let's get in touch`}
             </h3>
@@ -458,16 +463,18 @@ export default function Page() {
               type="email"
               placeholder="Email - example@example.com"
               className=" rounded-lg border border-gray-600 bg-[rgba(10,24,46,0.897)] p-2 pl-4 text-white placeholder-gray-400"
+              required
             />
 
             <textarea
               placeholder="Write me a message!"
               className="h-60 rounded-lg border border-gray-600 bg-[rgba(10,24,46,0.897)] p-2 pl-4 text-white placeholder-gray-400"
+              required
             ></textarea>
             <button className="flex justify-center center-align gap-3 px-[1.2em] py-4 font-semibold shadow-md max-sm:w-[fit-content] lg:w-[fit-content] rounded-md bg-cyan-600 text-white">
               Send message <SendHorizonal className="w-[fit-content] my-auto" />
             </button>
-          </div>
+          </form>
         </div>
         <div className="mt-[4.1em] flex flex-col gap-4">
           <Link href="tel:+2349122420200" className="flex gap-3">
