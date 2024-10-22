@@ -117,6 +117,22 @@ export default function Page() {
       },
     }),
   };
+
+  const contact_me_animation = {
+    initial: {
+      opacity: 0,
+      y: 50,
+    },
+
+    animate: () => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 1,
+        delay: 0.8,
+      },
+    }),
+  };
   return (
     <div className={`grid min-h-[100vh] ${mobileMenuOpen ? "" : ""}`}>
       <Navigation setMobileMenuOpen={setMobileMenuOpen} mobileMenuOpen={mobileMenuOpen} />
@@ -421,7 +437,7 @@ export default function Page() {
       </section>
 
       <motion.section
-        variants={tech_stack_animation}
+        variants={contact_me_animation}
         initial="initial"
         custom={1.8}
         whileInView="animate"
