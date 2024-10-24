@@ -1,5 +1,5 @@
 "use client";
-import Navigation from "./components/Navigation";
+import Header from "./components/Header";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -16,6 +16,7 @@ import { useState, useEffect } from "react";
 import useAxios from "@/hooks/useAxios";
 import ReactCanvasConfetti from "react-canvas-confetti";
 import Confetti from "./components/Confetti";
+import { LoaderCircle } from "lucide-react";
 
 
 const skills = [
@@ -37,10 +38,10 @@ export default function Page() {
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
   const [isVisible, setIsVisible] = useState(false);
-  const { sendRequest } = useAxios();
+  const { loading, error, sendRequest } = useAxios();
+  const [errorMessage, setErrorMessage] = useState("")
 
 
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isLargeScreen, setIsLargeScreen] = useState(false);
 
 
@@ -72,8 +73,6 @@ export default function Page() {
       return;
     }
 
-    console.log(process.env.NEXT_BASE_URL)
-    console.log(process.env.SECRET_KEY)
 
     try {
       const response = await sendRequest({
@@ -98,7 +97,9 @@ export default function Page() {
       }
     }
     catch (error) {
-      console.error(error);
+      //console.error(error);
+      setErrorMessage("An error occurred please try again")
+      setTimeout(() => setErrorMessage(""), 5000)
       return;
     }
     
@@ -167,6 +168,7 @@ export default function Page() {
       y: 0,
       transition: {
         delay: 0.4 * index,
+        duration: 0.7
       },
     }),
   };
@@ -182,7 +184,7 @@ export default function Page() {
       y: 0,
       transition: {
         duration: 1,
-        delay: 0.9,
+        delay: 1.1,
       },
     }),
   };
@@ -190,10 +192,7 @@ export default function Page() {
  
 
   return (
-    <div className={`grid min-h-[100vh] ${mobileMenuOpen ? "" : ""}`}>
-      <Navigation setMobileMenuOpen={setMobileMenuOpen} mobileMenuOpen={mobileMenuOpen} />
-      {/*<Header mobileMenuOpen={mobileMenuOpen} setMobileMenuOpen={setMobileMenuOpen}/>*/}
-
+    <div className={`grid min-h-[100vh]`}>
       <section className="md:flex hidden flex-col gap-3 fixed top-[40vh] bottom-auto left-[2em] right-auto socials p-2 mr-[-2em] w-[fit-content]">
         {socials.map(({ image, link, alt }, index) => (
           <div className="icon" key={index}>
@@ -321,7 +320,7 @@ export default function Page() {
               every project is a chance to learn and make the world a bit
               better.`}
             </motion.p>
-            <motion.p 
+            <motion.div 
             variants={about_me_animation}
             initial="initial"
             whileInView="animate"
@@ -332,18 +331,18 @@ export default function Page() {
               <br />
               <div className="grid grid-cols-[1fr,1fr] gap-3">
                 {skills.map((skill, index) => (
-                  <>
+                
                     <div
                       key={index}
                       className="flex gap-2 justify-center center-align"
                     >
-                      <div class="w-0 mx-auto my-auto h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent border-b-[8.66px] border-b-[#05f0dc] rotate-90"></div>
+                      <div className="w-0 mx-auto my-auto h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent border-b-[8.66px] border-b-[#05f0dc] rotate-90"></div>
                       <p>{skill}</p>
                     </div>
-                  </>
+                  
                 ))}
               </div>
-            </motion.p>
+            </motion.div>
           </div>
           <motion.div
             variants={profile_animation}
@@ -419,14 +418,14 @@ export default function Page() {
           </div>
           {projects.map(
             ({ name, image, description, techStack, link, github_link, thumbnail }, index) => (
-              <>
+              <div key={index}>
                 <motion.div
                   variants={tech_stack_animation}
                   initial="initial"
                   custom={index}
                   whileInView="animate"
                   viewport={{ once: true }}
-                  key={index}
+                  
                   className="relative md:grid max-sm:mx-auto flex flex-col tablet:flex-col lg:grid-cols-[34%,56%] gap-2 md:gap-[2em] lg:gap-[3.4em] mb-[3em] rounded-[2em]"
                 >
                   <div className="hidden tablet:hidden lg:block relative overflow-hidden rounded-[2em]">
@@ -486,7 +485,7 @@ export default function Page() {
                   </div>
                   </div>
                 </motion.div>
-              </>
+              </div>
             )
           )}
         </div>
@@ -529,8 +528,10 @@ export default function Page() {
               onChange={(e) => setMessage(e.target.value)}
               required
             ></textarea>
+            {errorMessage !== "" && <p className="max-sm:text-left">{errorMessage}</p>}
+            {isVisible && <p className="max-sm:text-left">Message sent!</p>}
             <button className="flex justify-center center-align gap-3 px-[1.2em] py-4 font-semibold shadow-md max-sm:w-[fit-content] lg:w-[fit-content] rounded-md bg-cyan-600 text-white">
-              Send message <SendHorizonal className="w-[fit-content] my-auto" />
+              Send message  {loading ? <LoaderCircle className="w-[fit-content] my-auto rotating-svg"/> : <SendHorizonal className="w-[fit-content] my-auto" />}
             </button>
             {isVisible && <Confetti />}
             
@@ -546,12 +547,6 @@ export default function Page() {
           </Link>
         </div>
       </motion.section>
-      
-
-      <footer className="text-center text-[0.95em] mb-[5em] px-[2em]">
-        <p>Copyright © {currentYear} All rights reserved | Iyanuoluwa Oyerinde</p>
-      </footer>
-     
     </div>
   );
 }
