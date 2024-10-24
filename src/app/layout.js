@@ -20,8 +20,8 @@ export default function RootLayout({ children }) {
       <body>
         <Header />  
         {children}
-        <footer className="text-center text-[0.95em] mb-[5em] px-[2em]">
-        <div className="mt-[4.1em] mb-[4em] flex flex-col gap-4">
+        <footer className="text-center text-[0.95em] mb-[5em] px-[2em] ">
+        <div className="mt-[4.1em] mb-[4em] flex flex-col gap-4 sm:pl-[0em] md:pl-[14em]">
           <Link href="tel:+2349122420200" className="flex gap-3">
             <Phone className="w-[fit-content] my-auto " /> +234 912 242 0200
           </Link>
