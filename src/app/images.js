@@ -88,7 +88,7 @@ const icons = [
 			name: "SketchCV",
 			description: "A user-friendly resume maker app designed to simplify the process of creating professional resumes. Sketch CV allows users to easily input their details and generate polished, ready-to-download resumes.",
 			techStack: ["React + Vite", "Tailwind CSS",],
-			image: "/images/sketchcv_screenshot.png",
+			image: "/images/sketchcv_screenshot.PNG",
 			link: "https://resume-maker-iyanu456s-projects.vercel.app/",
 			github_link: "https://github.com/Iyanu456/resume-maker",
 			thumbnail: "/images/sketchcv-thumbnail.png"
@@ -118,7 +118,7 @@ const icons = [
 			name: "NodePair",
 			description: "Developed the landing page prototype for Nodepair, a dynamic freelance platform. ",
 			techStack: ["React", "Next.js", "Tailwind CSS",],
-			image: "/images/nodepair-screenshot.png",
+			image: "/images/nodepair-screenshot.PNG",
 			link: "https://landing-page-xi-jade.vercel.app/",
 			github_link: "",
 			thumbnail: "/images/nodepair-thumbnail.png"
