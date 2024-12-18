@@ -22,6 +22,7 @@ const skills = [
   "JavaScript",
   "TypeScript",
   "React",
+  "React Native",
   "Nextjs",
   "Tailwind",
   "Nodejs",
@@ -300,8 +301,8 @@ export default function Page() {
                 {`
               Hello! My name is Iyanu. I’m a passionate software engineer with a
               strong drive to create innovative and user-centered digital
-              experiences. With a background in web development, I specialize in
-              building high-quality, scalable web applications and solving
+              experiences. With a background in software engineering, I specialize in
+              building high-quality, scalable applications and solving
               complex technical challenges.`}
                 <br />
                 <br />
