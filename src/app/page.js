@@ -255,7 +255,7 @@ export default function Page() {
             <a
       href="/Iyanuoluwa Resume.pdf"
       download="Iyanuoluwa Resume.pdf"
-      className="inline-block px-6 py-3 text-white border border-2 rounded-md shadow "
+      className="px-[1.2em] py-4 font-semibold shadow-md max-sm:w-[fit-content] lg:w-[fit-content] rounded-md bg-cyan-600 text-white"
     >
       Download Resume
     </a>
