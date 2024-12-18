@@ -252,6 +252,13 @@ export default function Page() {
           >
             {`I’m a software engineer specializing in building (and occasionally designing) exceptional digital experiences. Currently, I’m focused on building accessible, human-centered products for startups and web3 projects.`}
           </motion.p>
+            <a
+      href="/Iyanuoluwa Resume.pdf"
+      download="Iyanuoluwa Resume.pdf"
+      className="inline-block px-6 py-3 text-white border border-2 rounded-md shadow "
+    >
+      Download Resume
+    </a>
         </motion.div>
         <Link
           href={"#about-me"}
