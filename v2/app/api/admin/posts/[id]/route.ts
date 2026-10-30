@@ -41,7 +41,7 @@ export async function PUT(request: Request, { params }: Context) {
     await posts.updateOne({ _id }, { $set: update });
     let emailBroadcast: { total: number; sent: number; configured: boolean } | null = null;
     if (previous.status !== "PUBLISHED" && status === "PUBLISHED" && body.sendToSubscribers === true) {
-      try { emailBroadcast = await sendNewPostToSubscribers({ title: update.title, excerpt: update.excerpt, slug: update.slug, contentHtml: update.contentHtml }); }
+      try { emailBroadcast = await sendNewPostToSubscribers({ title, excerpt: String(body.excerpt || ""), slug, contentHtml: String(body.contentHtml || "") }); }
       catch (error) { console.error("[publish] Subscriber email broadcast failed:", error); emailBroadcast = { total: 0, sent: 0, configured: false }; }
     }
     return NextResponse.json({ ...previous, ...update, id: id, emailBroadcast });
