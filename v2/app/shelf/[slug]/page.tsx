@@ -137,7 +137,7 @@ export default async function ArticlePage({
           <h1 className="article-title-wrap mt-5 text-3xl font-medium leading-[1.04] tracking-editorial sm:text-5xl lg:text-7xl">
             {post.title}
           </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-neutral-600">
+          <p className="mt-2 md:mt-6 max-w-2xl text-md md:text-lg leading-8 text-neutral-600">
             {post.excerpt}
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3 text-xs text-neutral-500">
@@ -164,18 +164,18 @@ export default async function ArticlePage({
       <ArticleInlineActionBridge>
         {post.contentHtml ? (
           <div
-            className="article-copy mx-auto mt-10 max-w-[680px]"
+            className="article-copy mx-auto mt-10 max-w-[680px] "
             dangerouslySetInnerHTML={{ __html: post.contentHtml }}
           />
         ) : (
-          <div className="article-copy mx-auto mt-10 max-w-[680px]">
+          <div className="article-copy mx-auto mt-10 max-w-[680px] ">
             {post.body.map((block, index) =>
               block.type === "h2" ? (
                 <h2 key={index}>{block.text}</h2>
               ) : block.type === "quote" ? (
                 <blockquote key={index}>{block.text}</blockquote>
               ) : (
-                <p key={index}>{block.text}</p>
+                <p  key={index}>{block.text}</p>
               ),
             )}
           </div>
