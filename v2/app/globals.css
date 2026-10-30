@@ -1,0 +1,409 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #faf9f6;
+  color: #171717;
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  color: #fff;
+  background: #f05a28;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.article-copy {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.12rem, 1.5vw, 1.28rem);
+  line-height: 1.9;
+  color: #343434;
+}
+
+.article-copy p {
+  margin: 0 0 1.6em;
+}
+
+.article-copy h2 {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #171717;
+  font-size: 1.55rem;
+  letter-spacing: -0.04em;
+  line-height: 1.25;
+  margin: 2.2em 0 0.8em;
+}
+
+.article-copy blockquote {
+  margin: 2rem 0;
+  border-left: 2px solid #f05a28;
+  padding-left: 1.25rem;
+  font-size: 1.4rem;
+  line-height: 1.5;
+  color: #171717;
+}
+
+:focus-visible {
+  outline: 2px solid #f05a28;
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Admin rich-text editor */
+.article-editor { font-family: Georgia, "Times New Roman", serif; font-size: 1.12rem; line-height: 1.85; color: #343434; }
+.article-editor p { margin: 0 0 1.15em; }
+.article-editor h1, .article-editor h2, .article-editor h3 { font-family: Arial, Helvetica, sans-serif; color: #171717; font-weight: 600; letter-spacing: -0.045em; line-height: 1.2; margin: 1.4em 0 .65em; }
+.article-editor h1 { font-size: 2rem; } .article-editor h2 { font-size: 1.55rem; } .article-editor h3 { font-size: 1.25rem; }
+.article-editor blockquote { margin: 1.5rem 0; border-left: 3px solid #F05A28; padding: .25rem 0 .25rem 1.25rem; color: #525252; }
+.article-editor ul, .article-editor ol { padding-left: 1.5rem; margin: 1rem 0; } .article-editor ul { list-style: disc; } .article-editor ol { list-style: decimal; }
+.article-editor img { display: block; max-width: 100%; height: auto; border-radius: 6px; margin: 1.5rem auto; }
+.article-editor hr { border: 0; border-top: 1px solid #E8E5DF; margin: 2rem 0; }
+.article-editor a, .editor-link { color: #F05A28; text-decoration: underline; text-underline-offset: 3px; }
+.article-editor p.is-editor-empty:first-child::before { color: #a3a3a3; content: attr(data-placeholder); float: left; height: 0; pointer-events: none; }
+
+.article-copy img,
+.article-copy video {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 2rem 0;
+  border-radius: 0.25rem;
+}
+
+.article-copy video {
+  max-height: 680px;
+  background: #171717;
+}
+
+.article-editor img,
+.article-editor video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1.5rem 0;
+  border-radius: 0.25rem;
+}
+
+.article-editor video {
+  width: 100%;
+  max-height: 560px;
+  background: #171717;
+}
+
+.article-editor blockquote {
+  margin: 1.5rem 0;
+  border-left: 2px solid #f05a28;
+  padding-left: 1rem;
+  color: #525252;
+}
+
+/* Long editorial titles should wrap instead of being clipped. */
+.article-title-wrap {
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+/* Reader actions embedded in article copy */
+.inline-reader-action {
+  display: block;
+  margin: 2.25rem 0;
+  padding: 1.35rem 1.5rem;
+  border: 1px solid rgba(240, 90, 40, 0.32);
+  border-left: 4px solid #f05a28;
+  border-radius: 0.8rem;
+  background: linear-gradient(120deg, rgba(255, 241, 232, 0.8), rgba(255, 255, 255, 0.96));
+  cursor: pointer;
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+.inline-reader-action:hover,
+.inline-reader-action:focus-visible {
+  border-color: #f05a28;
+  box-shadow: 0 8px 24px rgba(23, 23, 23, 0.06);
+  transform: translateY(-1px);
+}
+.inline-reader-action__eyebrow {
+  display: block;
+  margin-bottom: 0.45rem;
+  color: #c9471b;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+.inline-reader-action__title {
+  display: block;
+  color: #171717;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.12rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.35;
+}
+.inline-reader-action__description {
+  margin: 0.45rem 0 0 !important;
+  color: #626262;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.88rem;
+  line-height: 1.65;
+}
+.inline-reader-action__link {
+  display: inline-block;
+  margin-top: 0.85rem;
+  color: #c9471b;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+/* The support amount field sits inside a focus-within ring; avoid a second native focus outline. */
+.support-amount-input:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+
+/* Quiet editorial motion: short fades, gentle lift, and restrained hover feedback. */
+@keyframes editorial-page-enter {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes editorial-rise {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes editorial-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.motion-page {
+  animation: editorial-fade 560ms ease both;
+}
+.motion-reveal {
+  opacity: 1;
+  transform: none;
+}
+.motion-ready .motion-reveal:not(.is-visible) {
+  opacity: 0;
+  transform: translateY(14px);
+}
+.motion-reveal.is-visible {
+  animation: editorial-rise 650ms cubic-bezier(.2,.7,.2,1) var(--motion-delay, 0ms) both;
+}
+.motion-stagger {
+  animation: editorial-rise 560ms cubic-bezier(.2,.7,.2,1) both;
+}
+.motion-stagger-0 { animation-delay: 0ms; }
+.motion-stagger-1 { animation-delay: 45ms; }
+.motion-stagger-2 { animation-delay: 90ms; }
+.motion-stagger-3 { animation-delay: 135ms; }
+.motion-stagger-4 { animation-delay: 180ms; }
+.motion-stagger-5 { animation-delay: 225ms; }
+.motion-stagger-6 { animation-delay: 270ms; }
+.motion-stagger-7 { animation-delay: 315ms; }
+.motion-stagger-8 { animation-delay: 360ms; }
+
+.site-header-shell, .site-footer-shell {
+  animation: editorial-fade 700ms ease both;
+}
+.site-header-mark {
+  transition: transform 240ms cubic-bezier(.2,.7,.2,1), background-color 180ms ease;
+}
+.site-header-mark:hover {
+  transform: rotate(-8deg) scale(1.04);
+}
+a, button, input, textarea, select {
+  transition-timing-function: cubic-bezier(.2,.7,.2,1);
+}
+a:focus-visible, button:focus-visible {
+  scroll-margin-block: 1rem;
+}
+.article-copy img, .article-copy video, .post-cover-media {
+  transition: opacity 380ms ease, transform 500ms cubic-bezier(.2,.7,.2,1);
+}
+.article-copy img:hover, .article-copy video:hover {
+  transform: translateY(-2px);
+}
+.article-end-cta {
+  transition: transform 220ms cubic-bezier(.2,.7,.2,1), border-color 220ms ease, box-shadow 220ms ease, background-color 220ms ease;
+}
+.article-end-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(23, 23, 23, .055);
+}
+@media (prefers-reduced-motion: reduce) {
+  .motion-page, .motion-reveal, .motion-stagger {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .motion-ready .motion-reveal:not(.is-visible) {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .site-header-mark:hover, .article-copy img:hover, .article-copy video:hover, .article-end-cta:hover {
+    transform: none !important;
+  }
+}
+
+/* Stop-motion media inside the admin editor. Keep these rules scoped so the
+   global article image styles cannot turn the animation's preview into a stack. */
+.stop-motion-editor-card {
+  display: block;
+  clear: both;
+  width: 100%;
+  max-width: 100%;
+  margin: 1.5rem 0;
+  overflow: hidden;
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+  background: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
+}
+.stop-motion-editor-card.is-selected { outline: 2px solid rgba(240,90,40,.45); outline-offset: 2px; }
+.stop-motion-editor-media { position: relative; display: flex; align-items: center; justify-content: center; width: 100%; min-height: 180px; max-height: 460px; overflow: hidden; background: #f5f5f4; }
+.stop-motion-editor-media .stop-motion-frame-current { display: block; width: 100%; max-width: 100%; max-height: 460px; height: auto; object-fit: contain; margin: 0; border-radius: 0; }
+.stop-motion-frame-count { position: absolute; right: 10px; bottom: 10px; padding: 5px 8px; border-radius: 999px; color: white; background: rgba(23,23,23,.78); font: 11px/1.2 Arial, sans-serif; }
+.stop-motion-empty { padding: 48px 20px; color: #737373; font: 13px/1.5 Arial, sans-serif; text-align: center; }
+.stop-motion-editor-controls { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; padding: 10px 12px; border-top: 1px solid #eee; }
+.stop-motion-editor-label { color: #404040; font: 600 12px/1.4 Arial, sans-serif; }
+.stop-motion-editor-buttons { display: flex; align-items: center; gap: 5px; }
+.stop-motion-editor-buttons button { display: inline-flex; align-items: center; justify-content: center; gap: 5px; min-width: 30px; min-height: 30px; padding: 5px 8px; border: 1px solid #e5e5e5; border-radius: 7px; background: #fff; color: #525252; font: 11px/1 Arial, sans-serif; cursor: pointer; }
+.stop-motion-editor-buttons button:hover, .stop-motion-editor-buttons button.active { border-color: #f05a28; color: #c9471b; background: #fff7ed; }
+.stop-motion-editor-buttons button.danger:hover { border-color: #fecaca; color: #dc2626; background: #fef2f2; }
+.stop-motion-editor-settings { display: flex; flex-wrap: wrap; align-items: end; gap: 12px; padding: 10px 12px; border-top: 1px solid #eee; background: #fafaf9; }
+.stop-motion-speed-label, .stop-motion-alt-label { display: flex; flex: 1 1 180px; flex-direction: column; gap: 5px; color: #737373; font: 600 11px/1.4 Arial, sans-serif; }
+.stop-motion-alt-label input { width: 100%; min-width: 0; padding: 7px 9px; border: 1px solid #e5e5e5; border-radius: 7px; background: #fff; color: #404040; font: 12px/1.4 Arial, sans-serif; }
+.article-editor img[data-image-align="center"] { margin-right: auto; margin-left: auto; }
+.article-editor img[data-image-align="right"] { margin-right: 0; margin-left: auto; }
+.article-editor img[data-image-align="left"] { margin-right: auto; margin-left: 0; }
+.article-editor .ProseMirror-selectednode { outline: 2px solid rgba(240,90,40,.65); outline-offset: 3px; border-radius: 4px; }
+
+/* Published stop-motion animations: keep playback controls visually attached to
+   the media block, never flowing like ordinary article copy. */
+.article-copy figure.stop-motion-figure,
+.article-copy figure[data-stop-motion="true"] {
+  display: block;
+  position: relative;
+  clear: both;
+  width: 100%;
+  max-width: 100%;
+  margin: 2rem 0;
+  overflow: hidden;
+  border: 1px solid #e7e5e4;
+  border-radius: 14px;
+  background: #fafaf9;
+  line-height: 1.4;
+}
+.article-copy figure.stop-motion-figure > img.stop-motion-frame,
+.article-copy figure[data-stop-motion="true"] > img.stop-motion-frame {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  max-height: 680px;
+  object-fit: contain;
+  margin: 0;
+  border-radius: 0;
+  box-shadow: none;
+  transform: none;
+}
+.article-copy .stop-motion-public-controls {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  min-height: 52px;
+  margin: 0;
+  padding: 10px 14px;
+  border-top: 1px solid #e7e5e4;
+  background: #fafaf9;
+  color: #57534e;
+  font: 12px/1.4 Arial, Helvetica, sans-serif;
+}
+.article-copy .stop-motion-play-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  min-height: 32px;
+  margin: 0;
+  padding: 7px 12px;
+  border: 1px solid #d6d3d1;
+  border-radius: 999px;
+  background: #fff;
+  color: #292524;
+  font: 600 12px/1.2 Arial, Helvetica, sans-serif;
+  cursor: pointer;
+  transition: border-color 160ms ease, background-color 160ms ease;
+}
+.article-copy .stop-motion-play-button:hover {
+  border-color: #f05a28;
+  background: #fff7ed;
+}
+.article-copy .stop-motion-play-button:focus-visible {
+  outline: 2px solid #f05a28;
+  outline-offset: 2px;
+}
+.article-copy .stop-motion-public-label {
+  display: block;
+  margin: 0 0 0 auto;
+  color: #78716c;
+  font: 11px/1.4 Arial, Helvetica, sans-serif;
+  text-align: right;
+}
+.article-copy .stop-motion-caption {
+  display: block;
+  margin: 0;
+  padding: 8px 14px 11px;
+  border-top: 1px solid #e7e5e4;
+  color: #78716c;
+  background: #fafaf9;
+  font: 11px/1.5 Arial, Helvetica, sans-serif;
+}
+@media (max-width: 480px) {
+  .article-copy .stop-motion-public-controls { gap: 8px; padding: 9px 10px; }
+  .article-copy .stop-motion-play-button { min-height: 30px; padding: 6px 10px; }
+  .article-copy .stop-motion-public-label { font-size: 10px; }
+}
