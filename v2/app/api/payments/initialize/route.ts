@@ -11,7 +11,7 @@ export async function POST(request: Request) {
   if (!secret) return NextResponse.json({ error: "Payments are not configured yet. Add PAYSTACK_SECRET_KEY to the server environment." }, { status: 503 });
   const body = await request.json().catch(() => ({}));
   const email = clean(body.email, 254).toLowerCase();
-  const currency = body.currency === "USD" ? "USD" : body.currency === "NGN" ? "NGN" : "";
+  const currency: "USD" | "NGN" | "" = body.currency === "USD" ? "USD" : body.currency === "NGN" ? "NGN" : "";
   const amount = Number(body.amount);
   const purpose = body.purpose === "article" ? "article" : "publication";
   const slug = clean(body.slug, 180);
