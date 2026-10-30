@@ -55,7 +55,7 @@ export default async function HomePage() {
             </Link>
           </div>
           <div className="space-y-0">
-            {posts.map((post, index) => <PostCard key={post.slug} post={post} index={index} />)}
+            {posts.slice(0, 3).map((post, index) => <PostCard key={post.slug} post={post} index={index} />)}
           </div>
         </MotionReveal>
       </section>
