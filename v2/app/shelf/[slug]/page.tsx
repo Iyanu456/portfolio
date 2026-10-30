@@ -14,22 +14,33 @@ export const dynamic = "force-dynamic";
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://localhost:3000";
 
 // Social crawlers are more reliable with a predictable JPEG than a negotiated
-// AVIF/WebP response. Keep the original optimized URL for on-page rendering.
+// AVIF/WebP response. Cloudinary may URL-encode transformation commas/colons,
+// so remove the existing transformation segment by position rather than matching
+// one literal URL spelling.
 function getSocialImageUrl(imageUrl: string) {
   if (!imageUrl.includes("res.cloudinary.com/")) return imageUrl;
-  if (imageUrl.includes("/upload/q_auto:best,f_auto/")) {
-    return imageUrl.replace(
-      "/upload/q_auto:best,f_auto/",
-      "/upload/f_jpg,q_90,w_1200,h_630,c_fill,g_auto/",
-    );
+
+  try {
+    const url = new URL(imageUrl);
+    const segments = url.pathname.split("/");
+    const uploadIndex = segments.findIndex((segment) => segment === "upload");
+    if (uploadIndex === -1) return imageUrl;
+
+    const nextSegment = segments[uploadIndex + 1] || "";
+    const decodedNextSegment = decodeURIComponent(nextSegment);
+    const looksLikeTransformation =
+      /^(?:f_|q_|w_|h_|c_|g_|ar_|dpr_|e_|fl_|b_|t_|x_|y_|z_|ac_|af_|br_|cs_|dl_|dn_|du_|eo_|ki_|l_|o_|pg_|r_|so_|sp_|vc_|vs_|fps_|q_auto|f_auto)/.test(decodedNextSegment);
+
+    if (looksLikeTransformation) {
+      segments.splice(uploadIndex + 1, 1);
+    }
+
+    segments.splice(uploadIndex + 1, 0, "f_jpg,q_90,w_1200,h_630,c_fill,g_auto");
+    url.pathname = segments.join("/");
+    return url.toString();
+  } catch {
+    return imageUrl;
   }
-  if (imageUrl.includes("/upload/")) {
-    return imageUrl.replace(
-      "/upload/",
-      "/upload/f_jpg,q_90,w_1200,h_630,c_fill,g_auto/",
-    );
-  }
-  return imageUrl;
 }
 
 export async function generateMetadata({
