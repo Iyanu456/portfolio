@@ -110,6 +110,7 @@ type PostData = {
   contentHtml: string;
   status: string;
   actionButtons: ActionButton[];
+  nextReadSlug: string | null;
 };
 const blank: PostData = {
   title: "",
@@ -120,6 +121,7 @@ const blank: PostData = {
   contentHtml: "<p></p>",
   status: "DRAFT",
   actionButtons: [],
+  nextReadSlug: null,
 };
 const presets: Omit<ActionButton, "id">[] = [
   {
@@ -180,6 +182,7 @@ function slugify(s: string) {
 export default function PostEditor({ postId }: { postId?: string }) {
   const router = useRouter();
   const [data, setData] = useState<PostData>(blank);
+  const [availablePosts, setAvailablePosts] = useState<Array<{ slug: string; title: string; status: string }>>([]);
   const [slugTouched, setSlugTouched] = useState(false);
   const [loading, setLoading] = useState(Boolean(postId));
   const [saving, setSaving] = useState(false);
@@ -324,6 +327,9 @@ export default function PostEditor({ postId }: { postId?: string }) {
   });
   editorRef.current = editor;
   useEffect(() => {
+    fetch("/api/admin/posts", { cache: "no-store" }).then((r) => r.ok ? r.json() : []).then((items) => setAvailablePosts(Array.isArray(items) ? items : [])).catch(() => setAvailablePosts([]));
+  }, []);
+  useEffect(() => {
     if (!postId) return;
     let alive = true;
     (async () => {
@@ -342,6 +348,7 @@ export default function PostEditor({ postId }: { postId?: string }) {
             actionButtons: Array.isArray(d.actionButtons)
               ? d.actionButtons
               : [],
+            nextReadSlug: d.nextReadSlug || null,
           });
           setSendToSubscribers(d.emailSubscribersOnPublish === true);
           setSlugTouched(true);
@@ -852,6 +859,7 @@ export default function PostEditor({ postId }: { postId?: string }) {
       contentHtml: editor.getHTML(),
       status,
       actionButtons: data.actionButtons,
+      nextReadSlug: data.nextReadSlug || null,
       sendToSubscribers,
     };
     try {
@@ -1307,10 +1315,20 @@ export default function PostEditor({ postId }: { postId?: string }) {
                         },
                         { value: "Culture", label: "Culture" },
                         { value: "Personal notes", label: "Personal notes" },
+                        { value: "Faith", label: "Faith" },
+                        { value: "Fiction", label: "Fiction" },
                       ]}
                     />
                   </div>
                 </label>
+                <div className="mt-5">
+                  <label htmlFor="next-read" className="block text-xs font-medium text-neutral-600">Recommended next read <span className="font-normal text-neutral-400">(optional)</span></label>
+                  <select id="next-read" value={data.nextReadSlug || ""} onChange={(event) => setData((prev) => ({ ...prev, nextReadSlug: event.target.value || null }))} className="mt-2 w-full rounded-lg border border-neutral-200 bg-white px-3 py-3 text-sm outline-none focus:border-neutral-500">
+                    <option value="">Automatic recommendation</option>
+                    {availablePosts.filter((item) => item.slug !== data.slug && item.status === "PUBLISHED").map((item) => <option key={item.slug} value={item.slug}>{item.title}</option>)}
+                  </select>
+                  <p className="mt-1 text-[11px] leading-5 text-neutral-500">Choose a specific published article, or leave this on automatic to recommend the next available post.</p>
+                </div>
                 <div className="mt-5">
                   <div className="flex items-center justify-between gap-3">
                     <label className="text-xs font-medium text-neutral-700">

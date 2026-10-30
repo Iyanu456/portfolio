@@ -37,7 +37,7 @@ export async function PUT(request: Request, { params }: Context) {
     if (!previous) return NextResponse.json({ error: "Not found" }, { status: 404 });
     const status: "PUBLISHED" | "DRAFT" = body.status === "PUBLISHED" ? "PUBLISHED" : "DRAFT"; const now = new Date();
     const publishedAt = status === "PUBLISHED" ? (previous.publishedAt ?? now) : null;
-    const update: Partial<import("@/lib/posts-db").PostRecord> = { title, slug, excerpt: String(body.excerpt || ""), category: String(body.category || "Ideas & observations"), coverImage: body.coverImage ? String(body.coverImage) : null, contentHtml: String(body.contentHtml || ""), actionButtons: normalizeActions(body.actionButtons), emailSubscribersOnPublish: body.sendToSubscribers === true, status, publishedAt, updatedAt: now };
+    const update: Partial<import("@/lib/posts-db").PostRecord> = { title, slug, excerpt: String(body.excerpt || ""), category: String(body.category || "Ideas & observations"), coverImage: body.coverImage ? String(body.coverImage) : null, contentHtml: String(body.contentHtml || ""), nextReadSlug: body.nextReadSlug ? String(body.nextReadSlug) : null, actionButtons: normalizeActions(body.actionButtons), emailSubscribersOnPublish: body.sendToSubscribers === true, status, publishedAt, updatedAt: now };
     await posts.updateOne({ _id }, { $set: update });
     let emailBroadcast: { total: number; sent: number; configured: boolean } | null = null;
     if (previous.status !== "PUBLISHED" && status === "PUBLISHED" && body.sendToSubscribers === true) {
@@ -49,6 +49,27 @@ export async function PUT(request: Request, { params }: Context) {
     const duplicate = error && typeof error === "object" && "code" in error && error.code === 11000;
     return NextResponse.json({ error: duplicate ? "That URL slug is already in use. Choose another." : "Could not update this post." }, { status: duplicate ? 409 : 503 });
   }
+}
+
+export async function PATCH(request: Request, { params }: Context) {
+  if (!(await isAdmin())) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const { id } = await params; const _id = asObjectId(id);
+  if (!_id) return NextResponse.json({ error: "Not found" }, { status: 404 });
+  const body = await request.json().catch(() => ({}));
+  const action = body.action;
+  if (action !== "archive" && action !== "restore") return NextResponse.json({ error: "Invalid archive action." }, { status: 400 });
+  try {
+    const posts = await ensurePostIndexes();
+    const current = await posts.findOne({ _id });
+    if (!current) return NextResponse.json({ error: "Not found" }, { status: 404 });
+    if (action === "archive") {
+      await posts.updateOne({ _id }, { $set: { status: "ARCHIVED", archivedFromStatus: current.status === "DRAFT" ? "DRAFT" : "PUBLISHED", updatedAt: new Date() } });
+    } else {
+      const restoreStatus = current.archivedFromStatus || "PUBLISHED";
+      await posts.updateOne({ _id }, { $set: { status: restoreStatus, updatedAt: new Date() }, $unset: { archivedFromStatus: "" } });
+    }
+    return NextResponse.json({ ok: true });
+  } catch { return NextResponse.json({ error: "Could not update archive status." }, { status: 503 }); }
 }
 
 export async function DELETE(_request: Request, { params }: Context) {

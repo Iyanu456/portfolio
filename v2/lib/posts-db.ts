@@ -13,7 +13,9 @@ export type PostRecord = Document & {
   contentHtml: string;
   actionButtons?: ActionButtonRecord[];
   emailSubscribersOnPublish?: boolean;
-  status: "DRAFT" | "PUBLISHED";
+  status: "DRAFT" | "PUBLISHED" | "ARCHIVED";
+  nextReadSlug?: string | null;
+  archivedFromStatus?: "DRAFT" | "PUBLISHED";
   publishedAt: Date | null;
   createdAt: Date;
   updatedAt: Date;

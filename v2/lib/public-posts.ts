@@ -25,7 +25,7 @@ function toPublicPost(p: PostRecord) {
   const date = p.publishedAt ?? p.createdAt;
   const plain = sanitizeHtml(p.contentHtml || "", { allowedTags: [], allowedAttributes: {} });
   return {
-    slug: p.slug, title: p.title, excerpt: p.excerpt, category: p.category,
+    slug: p.slug, title: p.title, excerpt: p.excerpt, category: p.category, nextReadSlug: p.nextReadSlug || null,
     date: date.toLocaleDateString("en", { month: "long", day: "numeric", year: "numeric" }),
     publishedAt: date.toISOString(),
     updatedAt: (p.updatedAt ?? date).toISOString(),
@@ -38,7 +38,7 @@ export async function getPublicPosts() {
   try {
     const collection = await getCollection<PostRecord>("posts");
     const records = await collection.find({ status: "PUBLISHED" }).sort({ publishedAt: -1, createdAt: -1 }).toArray();
-    if (records.length) return records.map((p) => toPublicPost(p));
+    return records.map((p) => toPublicPost(p));
   } catch {
     // Starter content remains available while the database is being configured.
   }
@@ -48,8 +48,8 @@ export async function getPublicPosts() {
 export async function getPublicPost(slug: string) {
   try {
     const collection = await getCollection<PostRecord>("posts");
-    const post = await collection.findOne({ slug, status: "PUBLISHED" });
-    if (post) return toPublicPost(post);
+    const storedPost = await collection.findOne({ slug });
+    if (storedPost) return storedPost.status === "PUBLISHED" ? toPublicPost(storedPost) : undefined;
   } catch {
     // Use starter posts until the database is configured.
   }

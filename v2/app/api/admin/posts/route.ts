@@ -36,7 +36,7 @@ export async function POST(request: Request) {
     const status = body.status === "PUBLISHED" ? "PUBLISHED" : "DRAFT";
     const record: PostRecord = {
       title, slug, excerpt: String(body.excerpt || ""), category: String(body.category || "Ideas & observations"),
-      coverImage: body.coverImage ? String(body.coverImage) : null, contentHtml: String(body.contentHtml || ""), actionButtons: normalizeActions(body.actionButtons), emailSubscribersOnPublish: body.sendToSubscribers === true,
+      coverImage: body.coverImage ? String(body.coverImage) : null, contentHtml: String(body.contentHtml || ""), nextReadSlug: body.nextReadSlug ? String(body.nextReadSlug) : null, actionButtons: normalizeActions(body.actionButtons), emailSubscribersOnPublish: body.sendToSubscribers === true,
       status, publishedAt: status === "PUBLISHED" ? now : null, createdAt: now, updatedAt: now
     };
     const result = await posts.insertOne(record);

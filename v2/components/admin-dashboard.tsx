@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { FileText, Plus, ExternalLink, LogOut, Pencil, Trash2, Eye, Users, MousePointerClick, BookOpenText, MonitorSmartphone } from "lucide-react";
+import { FileText, Plus, ExternalLink, LogOut, Pencil, Trash2, Eye, Users, MousePointerClick, BookOpenText, MonitorSmartphone, Archive, RotateCcw } from "lucide-react";
 
 type Post = { id: string; title: string; slug: string; excerpt: string; category: string; status: string; updatedAt: string; publishedAt: string | null };
 type Analytics = {
@@ -15,6 +15,7 @@ const emptyAnalytics: Analytics = { periodDays: 30, pageViews: 0, uniqueVisitors
 
 export default function AdminDashboard() {
   const [posts, setPosts] = useState<Post[]>([]);
+  const [postView, setPostView] = useState<"active" | "archived">("active");
   const [analytics, setAnalytics] = useState<Analytics>(emptyAnalytics);
   const [error, setError] = useState("");
   const [analyticsError, setAnalyticsError] = useState("");
@@ -54,9 +55,17 @@ export default function AdminDashboard() {
     const response = await fetch(`/api/admin/posts/${post.id}`, { method: "DELETE" });
     if (response.ok) void loadPosts(); else setError("Could not delete this post.");
   }
+  async function setArchived(post: Post, action: "archive" | "restore") {
+    const message = action === "archive" ? `Archive “${post.title}”? It will be hidden from the public site but kept in your dashboard.` : `Restore “${post.title}”?`;
+    if (!confirm(message)) return;
+    const response = await fetch(`/api/admin/posts/${post.id}`, { method: "PATCH", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ action }) });
+    if (response.ok) void loadPosts(); else setError("Could not update this post.");
+  }
 
   const published = posts.filter((post) => post.status === "PUBLISHED").length;
-  const drafts = posts.length - published;
+  const archived = posts.filter((post) => post.status === "ARCHIVED").length;
+  const drafts = posts.filter((post) => post.status === "DRAFT").length;
+  const visiblePosts = posts.filter((post) => postView === "archived" ? post.status === "ARCHIVED" : post.status !== "ARCHIVED");
   const postViews = new Map(analytics.posts.map((post) => [post.slug, post.views]));
 
   return <div className="mx-auto max-w-6xl px-5 py-8 sm:px-8 sm:py-12">
@@ -78,9 +87,13 @@ export default function AdminDashboard() {
     </section>
 
     <section className="mt-10" aria-labelledby="posts-heading">
-      <div className="flex flex-wrap items-center justify-between gap-4"><div><h2 id="posts-heading" className="text-lg font-semibold tracking-tight">Your posts</h2><p className="mt-1 text-xs text-neutral-500">{posts.length} total · {published} published · {drafts} drafts</p></div><Link href="/admin/posts/new" className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-medium text-white hover:bg-[#F05A28]"><Plus size={16}/> Write a post</Link></div>
+      <div className="flex flex-wrap items-center justify-between gap-4"><div><h2 id="posts-heading" className="text-lg font-semibold tracking-tight">Your posts</h2><p className="mt-1 text-xs text-neutral-500">{posts.length} total · {published} published · {drafts} drafts · {archived} archived</p></div><Link href="/admin/posts/new" className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-medium text-white hover:bg-[#F05A28]"><Plus size={16}/> Write a post</Link></div>
+      <div className="mt-4 flex items-center gap-2" role="tablist" aria-label="Post views">
+        <button type="button" role="tab" aria-selected={postView === "active"} onClick={() => setPostView("active")} className={`rounded-full px-4 py-2 text-xs font-medium ${postView === "active" ? "bg-ink text-white" : "border border-neutral-200 bg-white text-neutral-600"}`}>Active posts ({posts.length - archived})</button>
+        <button type="button" role="tab" aria-selected={postView === "archived"} onClick={() => setPostView("archived")} className={`rounded-full px-4 py-2 text-xs font-medium ${postView === "archived" ? "bg-ink text-white" : "border border-neutral-200 bg-white text-neutral-600"}`}><Archive size={13} className="mr-1 inline"/>Archive ({archived})</button>
+      </div>
       {error && <p role="alert" className="mt-4 rounded-lg bg-red-50 p-3 text-sm text-red-700">{error}</p>}
-      <section className="mt-4 overflow-hidden rounded-xl border border-neutral-200 bg-white"><div className="divide-y divide-neutral-100">{loading ? <p className="p-6 text-sm text-neutral-500">Loading posts…</p> : posts.length === 0 ? <div className="px-6 py-14 text-center"><FileText className="mx-auto text-neutral-400" size={26}/><h3 className="mt-4 font-medium">Your first post starts here.</h3><p className="mt-2 text-sm text-neutral-500">Create a draft, shape your ideas, and publish when it is ready.</p><Link href="/admin/posts/new" className="mt-5 inline-flex rounded-full bg-ink px-5 py-2.5 text-sm text-white">Write your first post</Link></div> : posts.map((post) => <div key={post.id} className="flex flex-wrap items-center justify-between gap-4 px-4 py-4 sm:px-5"><div className="min-w-0 flex-1"><div className="flex flex-wrap items-center gap-2"><h3 className="truncate font-medium">{post.title}</h3><span className={`rounded-full px-2 py-1 text-[10px] uppercase tracking-wider ${post.status === "PUBLISHED" ? "bg-green-50 text-green-700" : "bg-neutral-100 text-neutral-600"}`}>{post.status === "PUBLISHED" ? "Published" : "Draft"}</span></div><p className="mt-1 text-xs text-neutral-500">{post.category} · Updated {new Date(post.updatedAt).toLocaleDateString()} {post.status === "PUBLISHED" && <span>· {postViews.get(post.slug) || 0} views / 30 days</span>}</p></div><div className="flex items-center gap-2"><Link href={`/admin/posts/${post.id}`} aria-label={`Edit ${post.title}`} className="rounded-lg border border-neutral-200 p-2 hover:bg-neutral-50"><Pencil size={15}/></Link>{post.status === "PUBLISHED" && <Link href={`/shelf/${post.slug}`} target="_blank" aria-label={`View ${post.title}`} className="rounded-lg border border-neutral-200 p-2 hover:bg-neutral-50"><ExternalLink size={15}/></Link>}<button onClick={() => void remove(post)} aria-label={`Delete ${post.title}`} className="rounded-lg border border-neutral-200 p-2 text-neutral-500 hover:bg-red-50 hover:text-red-700"><Trash2 size={15}/></button></div></div>)}</div></section>
+      <section className="mt-4 overflow-hidden rounded-xl border border-neutral-200 bg-white"><div className="divide-y divide-neutral-100">{loading ? <p className="p-6 text-sm text-neutral-500">Loading posts…</p> : visiblePosts.length === 0 ? <div className="px-6 py-14 text-center"><FileText className="mx-auto text-neutral-400" size={26}/><h3 className="mt-4 font-medium">Your first post starts here.</h3><p className="mt-2 text-sm text-neutral-500">Create a draft, shape your ideas, and publish when it is ready.</p><Link href="/admin/posts/new" className="mt-5 inline-flex rounded-full bg-ink px-5 py-2.5 text-sm text-white">Write your first post</Link></div> : visiblePosts.map((post) => <div key={post.id} className="flex flex-wrap items-center justify-between gap-4 px-4 py-4 sm:px-5"><div className="min-w-0 flex-1"><div className="flex flex-wrap items-center gap-2"><h3 className="truncate font-medium">{post.title}</h3><span className={`rounded-full px-2 py-1 text-[10px] uppercase tracking-wider ${post.status === "PUBLISHED" ? "bg-green-50 text-green-700" : post.status === "ARCHIVED" ? "bg-amber-50 text-amber-700" : "bg-neutral-100 text-neutral-600"}`}>{post.status === "PUBLISHED" ? "Published" : post.status === "ARCHIVED" ? "Archived" : "Draft"}</span></div><p className="mt-1 text-xs text-neutral-500">{post.category} · Updated {new Date(post.updatedAt).toLocaleDateString()} {post.status === "PUBLISHED" && <span>· {postViews.get(post.slug) || 0} views / 30 days</span>}</p></div><div className="flex items-center gap-2"><Link href={`/admin/posts/${post.id}`} aria-label={`Edit ${post.title}`} className="rounded-lg border border-neutral-200 p-2 hover:bg-neutral-50"><Pencil size={15}/></Link>{post.status === "PUBLISHED" && <Link href={`/shelf/${post.slug}`} target="_blank" aria-label={`View ${post.title}`} className="rounded-lg border border-neutral-200 p-2 hover:bg-neutral-50"><ExternalLink size={15}/></Link>}<button onClick={() => void setArchived(post, post.status === "ARCHIVED" ? "restore" : "archive")} aria-label={`${post.status === "ARCHIVED" ? "Restore" : "Archive"} ${post.title}`} title={post.status === "ARCHIVED" ? "Restore post" : "Archive post"} className="rounded-lg border border-neutral-200 p-2 text-neutral-500 hover:bg-amber-50 hover:text-amber-700">{post.status === "ARCHIVED" ? <RotateCcw size={15}/> : <Archive size={15}/>}</button><button onClick={() => void remove(post)} aria-label={`Delete ${post.title}`} className="rounded-lg border border-neutral-200 p-2 text-neutral-500 hover:bg-red-50 hover:text-red-700"><Trash2 size={15}/></button></div></div>)}</div></section>
     </section>
     <p className="mt-5 text-xs leading-5 text-neutral-500">Analytics use first-party random browser and tab-session identifiers; they record page views, button/link clicks, and reading milestones, not names or email addresses. Local development traffic is excluded. Counts are approximate: privacy tools, cleared storage, and multiple devices can affect unique-browser totals. To exclude this browser from tracking, set localStorage key iyanu-analytics-opt-out to true in the browser console.</p>
   </div>;
