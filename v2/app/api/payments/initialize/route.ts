@@ -11,14 +11,14 @@ export async function POST(request: Request) {
   if (!secret) return NextResponse.json({ error: "Payments are not configured yet. Add PAYSTACK_SECRET_KEY to the server environment." }, { status: 503 });
   const body = await request.json().catch(() => ({}));
   const email = clean(body.email, 254).toLowerCase();
-  const currency = body.currency === "USD" ? "USD" : body.currency === "NGN" ? "NGN" : "";
+  const currency = body.currency === "USD" ? ("USD" as const) : body.currency === "NGN" ? ("NGN" as const) : null;
   const amount = Number(body.amount);
   const purpose = body.purpose === "article" ? "article" : "publication";
   const slug = clean(body.slug, 180);
   const postTitle = clean(body.postTitle, 180);
   const tierLabel = clean(body.tierLabel, 80);
   if (!validEmail(email)) return NextResponse.json({ error: "Enter a valid email address." }, { status: 400 });
-  if (!currency || !Number.isFinite(amount)) return NextResponse.json({ error: "Choose a valid currency and amount." }, { status: 400 });
+  if (currency === null || !Number.isFinite(amount)) return NextResponse.json({ error: "Choose a valid currency and amount." }, { status: 400 });
   if (currency === "NGN" && (amount < 1000 || amount > 500000 || !Number.isInteger(amount))) return NextResponse.json({ error: "Naira contributions must be whole amounts between ₦1,000 and ₦500,000." }, { status: 400 });
   if (currency === "USD" && (amount < 2 || amount > 5000 || Math.round(amount * 100) !== amount * 100)) return NextResponse.json({ error: "Dollar contributions must be between $2 and $5,000, with up to two decimal places." }, { status: 400 });
 

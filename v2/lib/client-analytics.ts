@@ -1,4 +1,4 @@
-export type AnalyticsEventType = "page_view" | "click" | "read_milestone";
+export type AnalyticsEventType = "page_view" | "click" | "share" | "read_milestone";
 
 function getVisitorId() {
   try {

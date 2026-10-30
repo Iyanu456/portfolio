@@ -35,9 +35,9 @@ export async function PUT(request: Request, { params }: Context) {
   try {
     const posts = await ensurePostIndexes(); const previous = await posts.findOne({ _id });
     if (!previous) return NextResponse.json({ error: "Not found" }, { status: 404 });
-    const status = body.status === "PUBLISHED" ? "PUBLISHED" : "DRAFT"; const now = new Date();
+    const status: "PUBLISHED" | "DRAFT" = body.status === "PUBLISHED" ? "PUBLISHED" : "DRAFT"; const now = new Date();
     const publishedAt = status === "PUBLISHED" ? (previous.publishedAt ?? now) : null;
-    const update = { title, slug, excerpt: String(body.excerpt || ""), category: String(body.category || "Ideas & observations"), coverImage: body.coverImage ? String(body.coverImage) : null, contentHtml: String(body.contentHtml || ""), actionButtons: normalizeActions(body.actionButtons), emailSubscribersOnPublish: body.sendToSubscribers === true, status, publishedAt, updatedAt: now };
+    const update: Partial<import("@/lib/posts-db").PostRecord> = { title, slug, excerpt: String(body.excerpt || ""), category: String(body.category || "Ideas & observations"), coverImage: body.coverImage ? String(body.coverImage) : null, contentHtml: String(body.contentHtml || ""), actionButtons: normalizeActions(body.actionButtons), emailSubscribersOnPublish: body.sendToSubscribers === true, status, publishedAt, updatedAt: now };
     await posts.updateOne({ _id }, { $set: update });
     let emailBroadcast: { total: number; sent: number; configured: boolean } | null = null;
     if (previous.status !== "PUBLISHED" && status === "PUBLISHED" && body.sendToSubscribers === true) {

@@ -21,7 +21,7 @@ export async function POST(request: Request) {
   const body = await request.json().catch(() => null) as Record<string, unknown> | null;
   if (!body) return NextResponse.json({ ok: false }, { status: 400 });
   const type = body.type;
-  if (type !== "page_view" && type !== "click" && type !== "read_milestone") return NextResponse.json({ ok: false }, { status: 400 });
+  if (type !== "page_view" && type !== "click" && type !== "share" && type !== "read_milestone") return NextResponse.json({ ok: false }, { status: 400 });
   const path = clean(body.path, 300);
   if (!path.startsWith("/") || path.startsWith("//") || path.startsWith("/admin")) return NextResponse.json({ ok: false }, { status: 400 });
   const visitorId = clean(body.visitorId, 80);
