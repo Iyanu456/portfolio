@@ -13,6 +13,25 @@ import MotionReveal from "@/components/motion-reveal";
 export const dynamic = "force-dynamic";
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://localhost:3000";
 
+// Social crawlers are more reliable with a predictable JPEG than a negotiated
+// AVIF/WebP response. Keep the original optimized URL for on-page rendering.
+function getSocialImageUrl(imageUrl: string) {
+  if (!imageUrl.includes("res.cloudinary.com/")) return imageUrl;
+  if (imageUrl.includes("/upload/q_auto:best,f_auto/")) {
+    return imageUrl.replace(
+      "/upload/q_auto:best,f_auto/",
+      "/upload/f_jpg,q_90,w_1200,h_630,c_fill,g_auto/",
+    );
+  }
+  if (imageUrl.includes("/upload/")) {
+    return imageUrl.replace(
+      "/upload/",
+      "/upload/f_jpg,q_90,w_1200,h_630,c_fill,g_auto/",
+    );
+  }
+  return imageUrl;
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -28,6 +47,7 @@ export async function generateMetadata({
   const url = `${siteUrl.replace(/\/$/, "")}/shelf/${post.slug}`;
   const image =
     post.coverImage || `${siteUrl.replace(/\/$/, "")}/og-default.png`;
+  const socialImage = getSocialImageUrl(image);
   const description = post.excerpt || `Read “${post.title}” by Iyanu Oyerinde.`;
   return {
     title: post.title,
@@ -39,7 +59,7 @@ export async function generateMetadata({
       title: post.title,
       description,
       siteName: "Iyanu Oyerinde",
-      images: [{ url: image, ...(post.coverImage ? {} : { width: 1200, height: 630 }), alt: `${post.title} — Iyanu Oyerinde` }],
+      images: [{ url: socialImage, width: 1200, height: 630, alt: `${post.title} — Iyanu Oyerinde` }],
       publishedTime: post.publishedAt,
       modifiedTime: post.updatedAt || post.publishedAt,
       authors: ["Iyanu Oyerinde"],
@@ -49,7 +69,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: post.title,
       description,
-      images: [{ url: image, alt: `${post.title} — Iyanu Oyerinde` }],
+      images: [{ url: socialImage, alt: `${post.title} — Iyanu Oyerinde` }],
     },
   };
 }
@@ -76,7 +96,7 @@ export default async function ArticlePage({
     author: { "@type": "Person", name: "Iyanu Oyerinde" },
     publisher: { "@type": "Person", name: "Iyanu Oyerinde" },
     mainEntityOfPage: canonicalUrl,
-    image: [post.coverImage || `${siteUrl.replace(/\/$/, "")}/og-default.png`],
+    image: [getSocialImageUrl(post.coverImage || `${siteUrl.replace(/\/$/, "")}/og-default.png`)],
     datePublished: post.publishedAt,
     dateModified: post.updatedAt || post.publishedAt,
     articleSection: post.category,
