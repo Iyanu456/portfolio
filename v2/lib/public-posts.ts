@@ -42,7 +42,7 @@ export async function getPublicPosts() {
   } catch {
     // Starter content remains available while the database is being configured.
   }
-  return getStarterPosts().map((p) => ({ ...p, publishedAt: new Date(p.date).toISOString(), updatedAt: new Date(p.date).toISOString(), coverImage: null, contentHtml: "", actionButtons: [] }));
+  return getStarterPosts().map((p) => ({ ...p, nextReadSlug: null, publishedAt: new Date(p.date).toISOString(), updatedAt: new Date(p.date).toISOString(), coverImage: null, contentHtml: "", actionButtons: [] }));
 }
 
 export async function getPublicPost(slug: string) {
@@ -54,5 +54,5 @@ export async function getPublicPost(slug: string) {
     // Use starter posts until the database is configured.
   }
   const starter = getStarterPost(slug);
-  return starter ? { ...starter, publishedAt: new Date(starter.date).toISOString(), updatedAt: new Date(starter.date).toISOString(), coverImage: null, contentHtml: "", actionButtons: [] } : undefined;
+  return starter ? { ...starter, nextReadSlug: null, publishedAt: new Date(starter.date).toISOString(), updatedAt: new Date(starter.date).toISOString(), coverImage: null, contentHtml: "", actionButtons: [] } : undefined;
 }
