@@ -8,7 +8,10 @@ const substackUrl = "https://substack.com/@byiyanu";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "A little about Iyanu Oyerinde and the ideas behind this space."
+  description: "Learn more about Iyanu Oyerinde, his interests in design, architecture, technology, and the ideas behind this publication.",
+  alternates: { canonical: "/about" },
+  openGraph: { title: "About — Iyanu Oyerinde", description: "Learn more about Iyanu Oyerinde, his interests in design, architecture, technology, and the ideas behind this publication.", url: "/about", type: "website" },
+  twitter: { card: "summary_large_image", title: "About — Iyanu Oyerinde", description: "Learn more about Iyanu Oyerinde, his interests in design, architecture, technology, and the ideas behind this publication." },
 };
 
 export default function AboutPage() {

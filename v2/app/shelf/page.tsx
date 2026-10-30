@@ -4,8 +4,11 @@ import ShelfBrowser from "@/components/shelf-browser";
 import MotionReveal from "@/components/motion-reveal";
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
-  title: "Shelf",
-  description: "Articles, essays, notes, and observations by Iyanu Oyerinde.",
+  title: "The Shelf",
+  description: "Read essays, observations, and explorations by Iyanu Oyerinde on design, architecture, technology, creativity, and culture.",
+  alternates: { canonical: "/shelf" },
+  openGraph: { title: "The Shelf — Iyanu Oyerinde", description: "Read essays, observations, and explorations by Iyanu Oyerinde on design, architecture, technology, creativity, and culture.", url: "/shelf", type: "website" },
+  twitter: { card: "summary_large_image", title: "The Shelf — Iyanu Oyerinde", description: "Read essays, observations, and explorations by Iyanu Oyerinde on design, architecture, technology, creativity, and culture." },
 };
 export default async function ShelfPage() {
   const posts = await getPublicPosts();

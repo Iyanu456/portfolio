@@ -39,7 +39,7 @@ a {
 
 .article-copy {
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(1.12rem, 1.5vw, 1.28rem);
+  font-size: clamp(1.09rem, 1.46vw, 1.25rem);
   line-height: 1.9;
   color: #343434;
 }

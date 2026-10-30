@@ -5,7 +5,10 @@ import MotionReveal from "@/components/motion-reveal";
 
 export const metadata: Metadata = {
   title: "Work",
-  description: "A growing collection of selected projects and experiments by Iyanu Oyerinde."
+  description: "Explore selected creative work, design, architecture, technology projects, and experiments by Iyanu Oyerinde.",
+  alternates: { canonical: "/work" },
+  openGraph: { title: "Work — Iyanu Oyerinde", description: "Explore selected creative work, design, architecture, technology projects, and experiments by Iyanu Oyerinde.", url: "/work", type: "website" },
+  twitter: { card: "summary_large_image", title: "Work — Iyanu Oyerinde", description: "Explore selected creative work, design, architecture, technology projects, and experiments by Iyanu Oyerinde." },
 };
 
 const areas = [

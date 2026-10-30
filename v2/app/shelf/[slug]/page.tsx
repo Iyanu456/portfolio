@@ -11,7 +11,7 @@ import ReadingProgress from "@/components/reading-progress";
 import MotionReveal from "@/components/motion-reveal";
 
 export const dynamic = "force-dynamic";
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://example.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://localhost:3000";
 
 export async function generateMetadata({
   params,
@@ -39,13 +39,17 @@ export async function generateMetadata({
       title: post.title,
       description,
       siteName: "Iyanu Oyerinde",
-      images: [{ url: image, width: 1200, height: 630, alt: post.title }],
+      images: [{ url: image, ...(post.coverImage ? {} : { width: 1200, height: 630 }), alt: `${post.title} — Iyanu Oyerinde` }],
+      publishedTime: post.publishedAt,
+      modifiedTime: post.updatedAt || post.publishedAt,
+      authors: ["Iyanu Oyerinde"],
+      section: post.category,
     },
     twitter: {
       card: "summary_large_image",
       title: post.title,
       description,
-      images: [image],
+      images: [{ url: image, alt: `${post.title} — Iyanu Oyerinde` }],
     },
   };
 }
@@ -65,13 +69,18 @@ export default async function ArticlePage({
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Article",
+    "@id": `${canonicalUrl}#article`,
+    url: canonicalUrl,
     headline: post.title,
     description: plainText,
     author: { "@type": "Person", name: "Iyanu Oyerinde" },
     publisher: { "@type": "Person", name: "Iyanu Oyerinde" },
     mainEntityOfPage: canonicalUrl,
-    image: post.coverImage || `${siteUrl.replace(/\/$/, "")}/og-default.png`,
+    image: [post.coverImage || `${siteUrl.replace(/\/$/, "")}/og-default.png`],
+    datePublished: post.publishedAt,
+    dateModified: post.updatedAt || post.publishedAt,
     articleSection: post.category,
+    inLanguage: "en",
   };
 
   return (

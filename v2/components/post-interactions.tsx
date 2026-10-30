@@ -86,7 +86,7 @@ export default function PostInteractions({ slug, title, excerpt }: { slug: strin
   }
 
   function trackShare(platform: string) {
-    trackAnalytics({ type: "click", path: window.location.pathname, slug, target: "share", label: `Share: ${platform}` });
+    trackAnalytics({ type: "share", path: window.location.pathname, slug, platform, label: `Share: ${platform}` });
   }
 
   async function copyLink() {

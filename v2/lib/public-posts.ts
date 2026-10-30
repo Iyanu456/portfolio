@@ -27,6 +27,8 @@ function toPublicPost(p: PostRecord) {
   return {
     slug: p.slug, title: p.title, excerpt: p.excerpt, category: p.category,
     date: date.toLocaleDateString("en", { month: "long", day: "numeric", year: "numeric" }),
+    publishedAt: date.toISOString(),
+    updatedAt: (p.updatedAt ?? date).toISOString(),
     readTime: `${Math.max(1, Math.ceil(plain.split(/\s+/).filter(Boolean).length / 220))} min read`,
     featured: false, coverImage: p.coverImage, contentHtml: cleanArticleHtml(p.contentHtml || ""), actionButtons: (p.actionButtons || []).filter((a) => a.enabled && a.label && (["support", "like", "comments", "share"].includes(a.kind) || /^https?:\/\//i.test(a.url))), body: [] as never[]
   };
@@ -40,7 +42,7 @@ export async function getPublicPosts() {
   } catch {
     // Starter content remains available while the database is being configured.
   }
-  return getStarterPosts().map((p) => ({ ...p, coverImage: null, contentHtml: "", actionButtons: [] }));
+  return getStarterPosts().map((p) => ({ ...p, publishedAt: new Date(p.date).toISOString(), updatedAt: new Date(p.date).toISOString(), coverImage: null, contentHtml: "", actionButtons: [] }));
 }
 
 export async function getPublicPost(slug: string) {
@@ -52,5 +54,5 @@ export async function getPublicPost(slug: string) {
     // Use starter posts until the database is configured.
   }
   const starter = getStarterPost(slug);
-  return starter ? { ...starter, coverImage: null, contentHtml: "", actionButtons: [] } : undefined;
+  return starter ? { ...starter, publishedAt: new Date(starter.date).toISOString(), updatedAt: new Date(starter.date).toISOString(), coverImage: null, contentHtml: "", actionButtons: [] } : undefined;
 }
