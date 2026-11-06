@@ -50,7 +50,7 @@ a {
 
 @media (max-width: 639px) {
   .article-copy {
-    font-size: 1rem;
+    font-size: 1.0625rem;
   }
 }
 
@@ -423,7 +423,7 @@ a:focus-visible, button:focus-visible {
 
 html.dark {
   color-scheme: dark;
-  --color-ink: #f2eee8;
+  --color-ink: #e7e1d8;
   --color-paper: #171615;
   --color-muted: #aaa49b;
   --color-line: #393632;
@@ -482,6 +482,7 @@ html.dark .site-header-shell {
 }
 
 html.dark .text-ink,
+html.dark .text-white,
 html.dark [class~="text-neutral-900"],
 html.dark [class~="text-neutral-950"],
 html.dark [class~="text-gray-900"],
