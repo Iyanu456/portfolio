@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
 import MotionReveal from "@/components/motion-reveal";
+import { ContactTrigger } from "@/components/contact-modal";
 
-const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL?.trim() || "oyerindei13@gmail.com";
-const substackUrl = "https://substack.com/@byiyanu";
 
 export const metadata: Metadata = {
   title: "About",
@@ -30,9 +27,9 @@ export default function AboutPage() {
             <p>If something here resonates with you, or you want to talk about an idea or a project, I&apos;d be glad to hear from you.</p>
           </div>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-            <a href={`mailto:${contactEmail}`} className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 w-[80%] max-w-[220px] justify-center text-sm text-white transition-colors hover:bg-accent">
-              Get in touch <ArrowUpRight size={14} />
-            </a>
+            <ContactTrigger className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 w-[80%] max-w-[220px] justify-center text-sm text-white transition-colors hover:bg-accent">
+              Get in touch
+            </ContactTrigger>
             {/*<a href={substackUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-line px-5 py-3 text-sm text-ink transition-colors hover:border-ink">
               Read on Substack <ArrowUpRight size={14} />
             </a>*/}

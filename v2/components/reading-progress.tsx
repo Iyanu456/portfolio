@@ -1,12 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { trackAnalytics } from "@/lib/client-analytics";
 
 export default function ReadingProgress({ slug }: { slug: string }) {
   const [progress, setProgress] = useState(0);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const sentMilestones = new Set<number>();
     let frame = 0;
     const update = () => {
@@ -33,7 +36,12 @@ export default function ReadingProgress({ slug }: { slug: string }) {
     };
   }, [slug]);
 
-  return <div aria-hidden="true" className="pointer-events-none fixed inset-x-0 top-0 z-[100] h-[3px] bg-transparent">
-    <div className="h-full origin-left bg-[#F05A28] transition-[width] duration-100 ease-out" style={{ width: `${progress}%` }} />
-  </div>;
+  if (!mounted) return null;
+
+  return createPortal(
+    <div aria-hidden="true" className="pointer-events-none fixed inset-x-0 top-0 z-[41] h-[3px] bg-transparent">
+      <div className="h-full origin-left bg-[#F05A28] transition-[width] duration-100 ease-out" style={{ width: `${progress}%` }} />
+    </div>,
+    document.body,
+  );
 }

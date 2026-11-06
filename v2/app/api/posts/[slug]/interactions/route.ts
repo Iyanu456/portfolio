@@ -48,12 +48,21 @@ export async function GET(_request: Request, { params }: Context) {
     const likes = await getCollection<LikeRecord>("post_likes");
     const comments = await getCollection<CommentRecord>("post_comments");
     await Promise.all([ensureLikeIndexes(likes), ensureCommentIndexes(comments)]);
-    const [likeCount, records] = await Promise.all([
+    const [likeCount, likesList, records] = await Promise.all([
       likes.countDocuments({ slug }),
+      likes.find({ slug }, { projection: { email: 1, _id: 0 } }).sort({ createdAt: -1 }).limit(8).toArray(),
       comments.find({ slug }, { projection: { name: 1, body: 1, createdAt: 1, _id: 0 } }).sort({ createdAt: -1 }).limit(100).toArray()
     ]);
+    const avatarPalette = ["#DCEAFE", "#FCE7D6", "#E9DDFB", "#D9F2E6", "#F8DFE7", "#E7E9F0", "#F5EDC8", "#D8EEF1"];
+    const likeAvatars = likesList.map((item) => {
+      const email = String(item.email || "");
+      const local = email.split("@")[0].replace(/[^a-z0-9]/gi, "");
+      let hash = 0; for (const char of email.toLowerCase()) hash = (hash * 31 + char.charCodeAt(0)) >>> 0;
+      return { initials: (local.slice(0, 2) || "R").toUpperCase(), color: avatarPalette[hash % avatarPalette.length] };
+    });
     return NextResponse.json({
       likeCount,
+      likeAvatars,
       comments: records.map((item) => ({
         name: String(item.name || ""),
         body: String(item.body || ""),

@@ -12,6 +12,9 @@ export async function POST(request: Request) {
   if (String(body.website || "").trim()) return NextResponse.json({ ok: true, subscribed: true, message: "Thanks for your interest." });
   const name = clean(body.name, 80);
   const email = clean(body.email, 254).toLowerCase();
+  const allowedGenres = ["Architecture & space", "Technology & the future", "Faith", "Fiction", "Design & creativity", "Ideas & observations", "Culture", "Personal notes"];
+  const interests = Array.isArray(body.interests) ? [...new Set(body.interests.map((item: unknown) => clean(item, 60)).filter((item: string) => allowedGenres.includes(item)))] : [];
+  if (!interests.length) return NextResponse.json({ error: "Choose at least one topic you are interested in." }, { status: 400 });
   if (!validEmail(email)) return NextResponse.json({ error: "Enter a valid email address." }, { status: 400 });
   if (name.length > 0 && name.length < 2) return NextResponse.json({ error: "Your name should be at least two characters, or leave it blank." }, { status: 400 });
   try {
@@ -21,7 +24,7 @@ export async function POST(request: Request) {
     const now = new Date();
     await subscribers.updateOne(
       { normalizedEmail: email },
-      { $set: { email, name, normalizedEmail: email, status: "ACTIVE", unsubscribeToken: token, updatedAt: now, subscribedAt: now }, $setOnInsert: { createdAt: now } },
+      { $set: { email, name, normalizedEmail: email, interests, status: "ACTIVE", unsubscribeToken: token, updatedAt: now, subscribedAt: now }, $setOnInsert: { createdAt: now } },
       { upsert: true }
     );
     let welcomeEmailSent: boolean | null = null;

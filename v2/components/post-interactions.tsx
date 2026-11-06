@@ -5,10 +5,12 @@ import { Check, Copy, Heart, MessageCircle, Share2, X, ExternalLink } from "luci
 import { trackAnalytics } from "@/lib/client-analytics";
 
 type CommentItem = { name: string; body: string; createdAt: string };
+type LikeAvatar = { initials: string; color: string };
 type ModalMode = "like" | "comments" | "share" | null;
 
 export default function PostInteractions({ slug, title, excerpt }: { slug: string; title: string; excerpt?: string }) {
   const [likeCount, setLikeCount] = useState(0);
+  const [likeAvatars, setLikeAvatars] = useState<LikeAvatar[]>([]);
   const [comments, setComments] = useState<CommentItem[]>([]);
   const [name, setName] = useState("");
   const [likeName, setLikeName] = useState("");
@@ -29,6 +31,7 @@ export default function PostInteractions({ slug, title, excerpt }: { slug: strin
       const data = await response.json();
       if (response.ok) {
         setLikeCount(Number(data.likeCount || 0));
+        setLikeAvatars(Array.isArray(data.likeAvatars) ? data.likeAvatars : []);
         setComments(Array.isArray(data.comments) ? data.comments : []);
       }
     } catch { /* Keep the article readable if interactions are unavailable. */ }
@@ -107,6 +110,10 @@ export default function PostInteractions({ slug, title, excerpt }: { slug: strin
 
   return (
     <section className="mx-auto mt-12 max-w-[760px] border-t border-line pt-6" aria-label="Article interactions">
+      {likeCount > 0 && <div className="mb-5 flex items-center gap-3" aria-label={`${likeCount} people liked this article`}>
+        <div className="flex -space-x-2">{likeAvatars.map((avatar, index) => <span key={`${avatar.initials}-${index}`} title="Reader" className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-white text-[10px] font-semibold text-neutral-800 shadow-sm" style={{ backgroundColor: avatar.color }}>{avatar.initials}</span>)}</div>
+        <span className="text-xs text-neutral-500">{likeCount} {likeCount === 1 ? "like" : "likes"}</span>
+      </div>}
       <div className="flex items-center justify-between gap-4">
         <p className="text-sm font-medium text-neutral-700">Keep the conversation going</p>
         <div className="flex items-center gap-1 sm:gap-2">

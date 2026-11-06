@@ -10,6 +10,7 @@ type SupportPayment = Document & {
   currency: "NGN" | "USD";
   email: string;
   purpose: string;
+  source?: "website" | "substack";
   slug: string;
   postTitle: string;
   tierLabel: string;
@@ -61,7 +62,7 @@ export async function verifyAndRecordPayment(reference: string) {
     id?: number;
     paid_at?: string;
     customer?: { email?: string };
-    metadata?: { purpose?: string; slug?: string; postTitle?: string; tierLabel?: string };
+    metadata?: { purpose?: string; source?: "website" | "substack"; slug?: string; postTitle?: string; tierLabel?: string };
   };
 
   if (transaction.reference !== reference) {
@@ -93,6 +94,7 @@ export async function verifyAndRecordPayment(reference: string) {
       currency,
       email,
       purpose: metadata.purpose === "article" ? "article" : "publication",
+      source: metadata.source === "substack" ? "substack" : "website",
       slug: String(metadata.slug || "").slice(0, 180),
       postTitle: String(metadata.postTitle || "").slice(0, 180),
       tierLabel: String(metadata.tierLabel || "Contribution").slice(0, 80),
@@ -174,5 +176,5 @@ export async function verifyAndRecordPayment(reference: string) {
   }
 
   const finalPayment = await payments.findOne({ reference }, { projection: { thankYouEmailSent: 1 } });
-  return { success: true, amount: payment.amount, currency: payment.currency, purpose: payment.purpose, postTitle: payment.postTitle, thankYouEmailSent: finalPayment?.thankYouEmailSent === true };
+  return { success: true, amount: payment.amount, currency: payment.currency, purpose: payment.purpose, source: payment.source || "website", postTitle: payment.postTitle, thankYouEmailSent: finalPayment?.thankYouEmailSent === true };
 }

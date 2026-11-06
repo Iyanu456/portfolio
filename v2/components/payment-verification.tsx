@@ -13,10 +13,14 @@ type Result = {
   thankYouEmailSent?: boolean;
 };
 
-export default function PaymentVerification({ reference }: { reference: string }) {
+export default function PaymentVerification({
+  reference,
+  returnTo,
+}: { reference: string; returnTo?: string }) {
   const [result, setResult] = useState<Result | null>(null);
   const [loading, setLoading] = useState(true);
   const [retryCount, setRetryCount] = useState(0);
+  const [redirectCountdown, setRedirectCountdown] = useState(5);
 
   useEffect(() => {
     if (!reference) {
@@ -68,6 +72,18 @@ export default function PaymentVerification({ reference }: { reference: string }
 
   const notConfirmed = !loading && !result?.success;
 
+  useEffect(() => {
+    if (!returnTo || !result?.success) return;
+    if (redirectCountdown <= 0) {
+      window.location.assign(returnTo);
+      return;
+    }
+    const timer = window.setTimeout(() => {
+      setRedirectCountdown((seconds) => seconds - 1);
+    }, 1000);
+    return () => window.clearTimeout(timer);
+  }, [returnTo, result?.success, redirectCountdown]);
+
   return (
     <div className="mx-auto flex min-h-[65vh] max-w-xl flex-col items-center justify-center px-5 py-16 text-center">
       {loading ? (
@@ -84,7 +100,7 @@ export default function PaymentVerification({ reference }: { reference: string }
             <CheckCircle2 size={42} />
           </div>
           <p className="mt-6 text-xs font-semibold uppercase tracking-[0.16em] text-[#F05A28]">Payment confirmed</p>
-          <h1 className="mt-3 text-3xl font-semibold tracking-tight">You’re funding the lore. ✨</h1>
+          <h1 className="mt-3 text-3xl font-semibold tracking-tight">{returnTo ? "Thank you for supporting the writing." : "You’re funding the lore. ✨"}</h1>
           <p className="mt-3 text-sm leading-7 text-neutral-600">
             Thank you for contributing {money}. Your support means a lot and helps keep the writing going.
           </p>
@@ -94,6 +110,9 @@ export default function PaymentVerification({ reference }: { reference: string }
               : "Your payment is confirmed. If the thank-you email doesn't arrive shortly, please check your spam folder."}
           </p>
           <p className="mt-3 break-all text-xs text-neutral-400">Reference: {reference}</p>
+          {returnTo && (
+            <p className="mt-4 text-xs text-neutral-500">Returning you to Substack in {redirectCountdown} seconds…</p>
+          )}
         </>
       ) : (
         <>
@@ -123,12 +142,17 @@ export default function PaymentVerification({ reference }: { reference: string }
         </>
       )}
 
-      <Link
+      {returnTo && result?.success ? (
+        <a href={returnTo}
+          className="mt-8 rounded-full bg-ink px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-[#F05A28]">
+          Return to Substack now
+        </a>
+      ) : <Link
         href="/shelf"
         className="mt-8 rounded-full bg-ink px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-[#F05A28]"
       >
         Back to the shelf
-      </Link>
+      </Link>}
     </div>
   );
 }

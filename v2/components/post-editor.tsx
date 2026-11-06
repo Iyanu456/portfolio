@@ -194,6 +194,7 @@ export default function PostEditor({ postId }: { postId?: string }) {
   const [coverUploading, setCoverUploading] = useState(false);
   const [showActions, setShowActions] = useState(true);
   const [focusMode, setFocusMode] = useState(false);
+  const [previewOpen, setPreviewOpen] = useState(false);
   const [animationBuilderOpen, setAnimationBuilderOpen] = useState(false);
   const [editingAnimationPosition, setEditingAnimationPosition] = useState<
     number | null
@@ -984,17 +985,17 @@ export default function PostEditor({ postId }: { postId?: string }) {
     <div
       className={`mx-auto ${focusMode ? "max-w-4xl" : "max-w-6xl"} px-5 py-7 sm:px-8 sm:py-10`}
     >
-      <header className="mb-8 flex flex-wrap items-center justify-between gap-4">
+      <header className="sticky top-[68px] z-40 -mx-5 mb-8 flex flex-col items-stretch gap-2 border-b border-neutral-200 bg-[#FAF9F6]/95 px-5 py-2 backdrop-blur sm:top-[76px] sm:-mx-8 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:gap-3 sm:px-8 sm:py-3">
         <Link
           href="/admin"
           className="inline-flex items-center gap-2 text-sm text-neutral-600 hover:text-ink"
         >
           <ArrowLeft size={15} /> All posts
         </Link>
-        <div className="flex flex-wrap items-center gap-2">
-          <button
-            onClick={() => setFocusMode((v) => !v)}
-            className="inline-flex items-center gap-2 rounded-full border border-neutral-300 bg-white px-4 py-2.5 text-sm"
+        <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:items-center">
+          <button type="button" onClick={() => setPreviewOpen(true)} className="inline-flex items-center justify-center gap-2 rounded-full border border-neutral-300 bg-white px-2 py-2 text-xs sm:px-4 sm:py-2.5 sm:text-sm"><Eye size={14}/> Preview</button>
+          <button type="button" onClick={() => setFocusMode((v) => !v)}
+            className="inline-flex items-center justify-center gap-2 rounded-full border border-neutral-300 bg-white px-2 py-2 text-xs sm:px-4 sm:py-2.5 sm:text-sm"
           >
             <Type size={14} />
             {focusMode ? "Exit focus" : "Focus mode"}
@@ -1002,14 +1003,14 @@ export default function PostEditor({ postId }: { postId?: string }) {
           <button
             onClick={() => save("DRAFT")}
             disabled={saving || uploading}
-            className="inline-flex items-center gap-2 rounded-full border border-neutral-300 bg-white px-4 py-2.5 text-sm disabled:opacity-50"
+            className="inline-flex items-center justify-center gap-2 rounded-full border border-neutral-300 bg-white px-2 py-2 text-xs sm:px-4 sm:py-2.5 sm:text-sm disabled:opacity-50"
           >
             <Save size={14} /> Save draft
           </button>
           <button
             onClick={() => save("PUBLISHED")}
             disabled={saving || uploading}
-            className="inline-flex items-center gap-2 rounded-full bg-ink px-4 py-2.5 text-sm text-white hover:bg-[#F05A28] disabled:opacity-50"
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-ink px-2 py-2 text-xs text-white hover:bg-[#F05A28] disabled:opacity-50 sm:px-4 sm:py-2.5 sm:text-sm"
           >
             {saving ? (
               <LoaderCircle size={14} className="animate-spin" />
@@ -1029,16 +1030,15 @@ export default function PostEditor({ postId }: { postId?: string }) {
         />
         <span>
           <span className="block font-medium text-neutral-800">
-            Email this post to all active subscribers
+            Email this post to subscribers interested in this category
           </span>
           <span className="mt-1 block text-xs leading-5 text-neutral-500">
-            When enabled, the article is emailed once when it is first
-            published. You can turn this off for any post.
+            When enabled, the article is emailed once to active subscribers who selected this category. You can turn this off for any post.
           </span>
         </span>
       </label>
-      <div className="space-y-6">
-        <section className="min-w-0 overflow-visible rounded-xl border border-neutral-200 bg-white">
+      <div className="flex flex-col gap-6">
+        <section className="order-2 min-w-0 overflow-visible rounded-xl border border-neutral-200 bg-white">
           <div className="border-b border-neutral-200 px-5 py-4">
             <p className="text-[11px] uppercase tracking-[0.15em] text-[#F05A28]">
               {postId ? "Edit article" : "New article"}
@@ -1088,7 +1088,7 @@ export default function PostEditor({ postId }: { postId?: string }) {
               className="w-full resize-y border-0 border-b border-neutral-100 bg-transparent pb-5 text-base leading-7 text-neutral-600 outline-none placeholder:text-neutral-300"
             />
           </div>
-          <div className="sticky top-[76px] z-30 flex flex-wrap items-center gap-1 border-y border-neutral-200 bg-[#FAF9F6]/95 p-2 shadow-sm backdrop-blur">
+          <div className="sticky top-[198px] z-30 flex flex-wrap items-center gap-1 border-y border-neutral-200 bg-[#FAF9F6]/95 p-2 shadow-sm backdrop-blur sm:top-[148px]">
             {tools.map(({ label, icon: Icon, action, active }) => (
               <button
                 key={label}
@@ -1181,7 +1181,7 @@ export default function PostEditor({ postId }: { postId?: string }) {
           </div>
           <>
             {selectedImageActive && (
-              <div className="sticky top-[160px] z-20 flex flex-col gap-3 border-b border-orange-200 bg-orange-50/95 px-4 py-3 shadow-sm backdrop-blur sm:flex-row sm:items-end">
+              <div className="sticky top-[338px] z-20 flex flex-col gap-3 border-b border-orange-200 bg-orange-50/95 px-4 py-3 shadow-sm backdrop-blur sm:top-[204px] sm:flex-row sm:items-end">
                 <div className="min-w-0 flex-1">
                   <label
                     htmlFor="selected-image-alt"
@@ -1280,8 +1280,8 @@ export default function PostEditor({ postId }: { postId?: string }) {
           </div>
         </section>
         {!focusMode && (
-          <aside className="space-y-5">
-            <details className="rounded-xl border border-neutral-200 bg-white p-5">
+          <aside className="order-1 space-y-5">
+            <details open className="rounded-xl border border-neutral-200 bg-white p-5">
               <summary className="cursor-pointer list-none font-semibold">
                 Post settings{" "}
                 <span className="ml-2 text-xs font-normal text-neutral-400">
@@ -1289,46 +1289,6 @@ export default function PostEditor({ postId }: { postId?: string }) {
                 </span>
               </summary>
               <div className="pt-4">
-                <label className="mt-5 block text-xs font-medium text-neutral-600">
-                  Category
-                  <div className="mt-2">
-                    <CustomDropdown
-                      ariaLabel="Article category"
-                      value={data.category}
-                      onChange={(value) => setField("category", value)}
-                      options={[
-                        {
-                          value: "Ideas & observations",
-                          label: "Ideas & observations",
-                        },
-                        {
-                          value: "Design & creativity",
-                          label: "Design & creativity",
-                        },
-                        {
-                          value: "Architecture & space",
-                          label: "Architecture & space",
-                        },
-                        {
-                          value: "Technology & the future",
-                          label: "Technology & the future",
-                        },
-                        { value: "Culture", label: "Culture" },
-                        { value: "Personal notes", label: "Personal notes" },
-                        { value: "Faith", label: "Faith" },
-                        { value: "Fiction", label: "Fiction" },
-                      ]}
-                    />
-                  </div>
-                </label>
-                <div className="mt-5">
-                  <label htmlFor="next-read" className="block text-xs font-medium text-neutral-600">Recommended next read <span className="font-normal text-neutral-400">(optional)</span></label>
-                  <select id="next-read" value={data.nextReadSlug || ""} onChange={(event) => setData((prev) => ({ ...prev, nextReadSlug: event.target.value || null }))} className="mt-2 w-full rounded-lg border border-neutral-200 bg-white px-3 py-3 text-sm outline-none focus:border-neutral-500">
-                    <option value="">Automatic recommendation</option>
-                    {availablePosts.filter((item) => item.slug !== data.slug && item.status === "PUBLISHED").map((item) => <option key={item.slug} value={item.slug}>{item.title}</option>)}
-                  </select>
-                  <p className="mt-1 text-[11px] leading-5 text-neutral-500">Choose a specific published article, or leave this on automatic to recommend the next available post.</p>
-                </div>
                 <div className="mt-5">
                   <div className="flex items-center justify-between gap-3">
                     <label className="text-xs font-medium text-neutral-700">
@@ -1433,6 +1393,47 @@ export default function PostEditor({ postId }: { postId?: string }) {
                       </div>
                     </div>
                   )}
+                </div>
+
+                <label className="mt-5 block text-xs font-medium text-neutral-600">
+                  Category
+                  <div className="mt-2">
+                    <CustomDropdown
+                      ariaLabel="Article category"
+                      value={data.category}
+                      onChange={(value) => setField("category", value)}
+                      options={[
+                        {
+                          value: "Ideas & observations",
+                          label: "Ideas & observations",
+                        },
+                        {
+                          value: "Design & creativity",
+                          label: "Design & creativity",
+                        },
+                        {
+                          value: "Architecture & space",
+                          label: "Architecture & space",
+                        },
+                        {
+                          value: "Technology & the future",
+                          label: "Technology & the future",
+                        },
+                        { value: "Culture", label: "Culture" },
+                        { value: "Personal notes", label: "Personal notes" },
+                        { value: "Faith", label: "Faith" },
+                        { value: "Fiction", label: "Fiction" },
+                      ]}
+                    />
+                  </div>
+                </label>
+                <div className="mt-5">
+                  <label htmlFor="next-read" className="block text-xs font-medium text-neutral-600">Recommended next read <span className="font-normal text-neutral-400">(optional)</span></label>
+                  <select id="next-read" value={data.nextReadSlug || ""} onChange={(event) => setData((prev) => ({ ...prev, nextReadSlug: event.target.value || null }))} className="mt-2 w-full rounded-lg border border-neutral-200 bg-white px-3 py-3 text-sm outline-none focus:border-neutral-500">
+                    <option value="">Automatic recommendation</option>
+                    {availablePosts.filter((item) => item.slug !== data.slug && item.status === "PUBLISHED").map((item) => <option key={item.slug} value={item.slug}>{item.title}</option>)}
+                  </select>
+                  <p className="mt-1 text-[11px] leading-5 text-neutral-500">Choose a specific published article, or leave this on automatic to recommend the next available post.</p>
                 </div>
                 <div className="mt-5 rounded-lg bg-neutral-50 p-3">
                   <p className="text-xs font-medium">Visibility</p>
@@ -1760,6 +1761,21 @@ export default function PostEditor({ postId }: { postId?: string }) {
               </button>
             </footer>
           </section>
+        </div>
+      )}
+      {previewOpen && (
+        <div className="fixed inset-0 z-[120] overflow-y-auto bg-[#f8f7f3]" role="dialog" aria-modal="true" aria-label="Article preview">
+          <div className="sticky top-0 z-10 flex items-center justify-between border-b border-neutral-200 bg-white/95 px-4 py-3 backdrop-blur sm:px-8">
+            <div><p className="text-xs font-semibold uppercase tracking-wider text-accent">Preview · Not published</p><p className="text-xs text-neutral-500">Live preview of your current draft.</p></div>
+            <button type="button" onClick={() => setPreviewOpen(false)} className="rounded-full border border-neutral-300 px-4 py-2 text-sm font-medium">Back to editor</button>
+          </div>
+          <article className="mx-auto max-w-3xl px-5 py-12 sm:py-20">
+            {data.coverImage && <img src={data.coverImage} alt="" className="mb-10 max-h-[440px] w-full rounded-xl object-cover"/>}
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent">{data.category}</p>
+            <h1 className="mt-4 text-4xl font-semibold leading-tight tracking-[-0.055em] text-ink sm:text-6xl">{data.title || "Your article title"}</h1>
+            {data.excerpt && <p className="mt-6 text-lg leading-8 text-neutral-600">{data.excerpt}</p>}
+            <div className="article-copy mt-12" dangerouslySetInnerHTML={{ __html: editor?.getHTML() || "<p></p>" }}/>
+          </article>
         </div>
       )}
       {animationBuilderOpen && (

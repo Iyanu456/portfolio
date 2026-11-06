@@ -42,7 +42,7 @@ export async function POST(request: Request) {
     const result = await posts.insertOne(record);
     let emailBroadcast: { total: number; sent: number; configured: boolean } | null = null;
     if (status === "PUBLISHED" && body.sendToSubscribers === true) {
-      try { emailBroadcast = await sendNewPostToSubscribers({ title: record.title, excerpt: record.excerpt, slug: record.slug, contentHtml: record.contentHtml }); }
+      try { emailBroadcast = await sendNewPostToSubscribers({ title: record.title, excerpt: record.excerpt, slug: record.slug, category: record.category, contentHtml: record.contentHtml }); }
       catch (error) { console.error("[publish] Subscriber email broadcast failed:", error); emailBroadcast = { total: 0, sent: 0, configured: false }; }
     }
     return NextResponse.json({ ...record, id: result.insertedId.toString(), emailBroadcast }, { status: 201 });

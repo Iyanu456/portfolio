@@ -14,6 +14,7 @@ export async function POST(request: Request) {
   const currency = body.currency === "USD" ? ("USD" as const) : body.currency === "NGN" ? ("NGN" as const) : null;
   const amount = Number(body.amount);
   const purpose = body.purpose === "article" ? "article" : "publication";
+  const source = body.source === "substack" ? "substack" : "website";
   const slug = clean(body.slug, 180);
   const postTitle = clean(body.postTitle, 180);
   const tierLabel = clean(body.tierLabel, 80);
@@ -31,7 +32,7 @@ export async function POST(request: Request) {
   }
   const siteUrl = configuredSiteUrl.replace(/\/$/, "");
   let payments: Awaited<ReturnType<typeof getSupportPayments>> | undefined;
-  const record = { reference, status: "PENDING" as const, amount, currency, email, purpose, slug, postTitle, tierLabel, createdAt: new Date() };
+  const record = { reference, status: "PENDING" as const, amount, currency, email, purpose, source, slug, postTitle, tierLabel, createdAt: new Date() };
   try {
     payments = await getSupportPayments();
     await payments.insertOne(record);
@@ -39,8 +40,8 @@ export async function POST(request: Request) {
       method: "POST", headers: { Authorization: `Bearer ${secret}`, "Content-Type": "application/json" }, cache: "no-store",
       body: JSON.stringify({
         email, amount: Math.round(amount * 100), currency, reference,
-        callback_url: `${siteUrl}/support/verify?reference=${encodeURIComponent(reference)}`,
-        metadata: { purpose, slug, postTitle, tierLabel, custom_fields: [
+        callback_url: `${siteUrl}/support/verify?reference=${encodeURIComponent(reference)}${source === "substack" ? "&source=substack" : ""}`,
+        metadata: { purpose, source, slug, postTitle, tierLabel, custom_fields: [
           { display_name: "Contribution", variable_name: "contribution_tier", value: tierLabel || "Custom amount" },
           { display_name: "Publication", variable_name: "publication", value: "Iyanu Oyerinde — A place for ideas to take shape" }
         ] }

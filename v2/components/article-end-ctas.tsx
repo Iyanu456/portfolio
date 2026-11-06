@@ -1,5 +1,6 @@
 "use client";
 import { FormEvent, useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { ArrowUpRight, Check, Coffee, Mail, X } from "lucide-react";
 import { openSupportModal } from "@/components/support-payment-modal";
 
@@ -10,6 +11,8 @@ export default function ArticleEndCtas() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [website, setWebsite] = useState("");
+  const genres = ["Architecture & space", "Technology & the future", "Faith", "Fiction", "Design & creativity", "Ideas & observations", "Culture", "Personal notes"];
+  const [interests, setInterests] = useState<string[]>(["Ideas & observations"]);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
@@ -39,7 +42,7 @@ export default function ArticleEndCtas() {
       const response = await fetch("/api/subscriptions", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, website }),
+        body: JSON.stringify({ name, email, website, interests }),
       });
       const result = await response.json();
       if (!response.ok)
@@ -71,11 +74,11 @@ export default function ArticleEndCtas() {
   }
   return (
     <section
-      className="article-end-ctas mx-auto mt-16 max-w-[760px] border-y border-line py-7 sm:py-9"
+      className="article-end-ctas mx-auto mt-3 max-w-[760px]"
       aria-label="Stay connected"
     >
-      <div className="overflow-hidden rounded-2xl bg-[#F3F4F6] px-5 py-9 text-center sm:px-10 sm:py-11">
-        <h2 className="mt-4 text-2xl font-bold tracking-[-0.04em] text-[#171923] sm:text-3xl">
+      <div className="overflow-hidden rounded-2xl px-5 py-9 text-center sm:px-10 sm:py-11">
+        <h2 className="mt-4 text-2xl font-bold tracking-[-0.04em] text-[#11131a] sm:text-3xl">
           Enjoyed your read?
         </h2>
         <p className="mx-auto mt-2 max-w-lg text-sm leading-6 text-[#697386] sm:text-base">
@@ -83,7 +86,7 @@ export default function ArticleEndCtas() {
         </p>
         <button
           type="button"
-          onClick={openSupportModal}
+          onClick={() => openSupportModal()}
           className="mt-6 inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-neutral-950 px-6 py-3 text-sm font-bold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-accent hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D4B900] focus-visible:ring-offset-2"
         >
           <Coffee size={18} /> Buy me a coffee <ArrowUpRight size={15} />
@@ -133,14 +136,16 @@ export default function ArticleEndCtas() {
           </button>
         )}
       </div>
-      {open && (
-        <div
-          className="fixed inset-0 z-[130] flex items-end justify-center bg-neutral-950/50 p-0 backdrop-blur-sm sm:items-center sm:p-5"
-          role="presentation"
-          onMouseDown={(event) => {
-            if (event.target === event.currentTarget && !busy) setOpen(false);
-          }}
-        >
+      {open &&
+        typeof document !== "undefined" &&
+        createPortal(
+          <div
+            className="fixed inset-0 z-[5000] flex items-end justify-center bg-neutral-950/50 p-0 backdrop-blur-sm sm:items-center sm:p-5"
+            role="presentation"
+            onMouseDown={(event) => {
+              if (event.target === event.currentTarget && !busy) setOpen(false);
+            }}
+          >
           <section
             role="dialog"
             aria-modal="true"
@@ -223,6 +228,13 @@ export default function ArticleEndCtas() {
                     placeholder="you@example.com"
                   />
                 </label>
+                <fieldset className="rounded-xl border border-neutral-200 p-3">
+                  <legend className="px-1 text-xs font-medium text-neutral-700">What would you like to read about?</legend>
+                  <p className="mb-3 text-[11px] text-neutral-500">Choose the topics you want in your inbox.</p>
+                  <div className="flex flex-wrap gap-2">
+                    {genres.map((genre) => { const checked = interests.includes(genre); return <button key={genre} type="button" aria-pressed={checked} onClick={() => setInterests((current: string[]) => checked ? current.filter(item => item !== genre) : [...current, genre])} className={`rounded-full border px-3 py-2 text-xs transition ${checked ? "border-neutral-900 bg-neutral-900 text-white" : "border-neutral-200 bg-white text-neutral-600 hover:border-neutral-400"}`}>{genre}</button>; })}
+                  </div>
+                </fieldset>
                 {error && (
                   <p
                     role="alert"
@@ -246,8 +258,9 @@ export default function ArticleEndCtas() {
               </form>
             )}
           </section>
-        </div>
-      )}
+          </div>,
+          document.body,
+        )}
     </section>
   );
 }

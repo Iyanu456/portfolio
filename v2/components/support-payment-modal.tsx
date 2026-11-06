@@ -12,15 +12,23 @@ import {
 } from "lucide-react";
 
 type Currency = "NGN" | "USD";
-const PRESETS = [1];
+type SupportPaymentModalProps = {
+  source?: "publication" | "substack";
+  title?: string;
+  description?: string;
+};
 const MAX_COFFEES = 100;
-export function openSupportModal() {
-  if (typeof window !== "undefined")
-    window.dispatchEvent(new CustomEvent("iyanu:open-support"));
+export function openSupportModal(source: "publication" | "substack" = "publication") {
+  if (typeof window !== "undefined") window.dispatchEvent(new CustomEvent("iyanu:open-support", { detail: { source } }));
 }
 
-export default function SupportPaymentModal() {
+export default function SupportPaymentModal({
+  source = "publication",
+  title = "Buy me a coffee",
+  description = "Thank you for being here. Pick a coffee (or a few) and help fuel the next thing I write!",
+}: SupportPaymentModalProps) {
   const [open, setOpen] = useState(false);
+  const [activeSource, setActiveSource] = useState<"publication" | "substack">(source);
   const [currency, setCurrency] = useState<Currency>("NGN");
   const [currencyReady, setCurrencyReady] = useState(false);
   const [coffeeCount, setCoffeeCount] = useState(1);
@@ -52,7 +60,9 @@ export default function SupportPaymentModal() {
   );
 
   useEffect(() => {
-    const handleOpen = () => {
+    const handleOpen = (event: Event) => {
+      const requested = (event as CustomEvent<{ source?: "publication" | "substack" }>).detail?.source;
+      setActiveSource(requested === "substack" ? "substack" : "publication");
       setOpen(true);
       setError("");
       setBusy(false);
@@ -118,6 +128,7 @@ export default function SupportPaymentModal() {
           currency,
           amount: finalAmount,
           purpose: "publication",
+          source: activeSource,
           slug: "",
           postTitle: "",
           tierLabel: label,
@@ -180,7 +191,7 @@ export default function SupportPaymentModal() {
                 id="support-modal-title"
                 className="mt-1 text-lg lg:text-2xl font-extrabold leading-tight tracking-[-0.055em] text-[#171923]"
               >
-                Buy me a coffee
+                {title}
               </h2>
           
           </div>
@@ -188,7 +199,7 @@ export default function SupportPaymentModal() {
             id="support-modal-description"
             className="mt-4 max-w-[82%] text-[0.86em] leading-[1.3em] text-neutral-500"
           >
-            {`Thank you for being here. Pick a coffee (or a few) and help fuel the next thing I write!`}
+            {description}
           </p>
 
           <div className="mt-5 rounded-2xl border border-neutral-200 bg-[#F8F8F6] p-4 sm:p-5">
@@ -255,7 +266,7 @@ export default function SupportPaymentModal() {
                 htmlFor="support-custom-amount"
                 className="mb-1.5 block text-xs mt-4 font-bold text-neutral-800"
               >
-                Custom amount{" "}
+                Or enter your preferred amount{" "}
                 <span className="font-normal text-neutral-400">(optional)</span>
               </label>
               <div
@@ -338,7 +349,7 @@ export default function SupportPaymentModal() {
           </button>
           <p className="mt-3 flex items-center justify-center gap-1.5 text-[10px] text-neutral-400">
             <LockKeyhole size={11} /> Secure checkout by Paystack{" "}
-            <span aria-hidden="true">·</span> One-time payment
+            
           </p>
         </form>
       </section>

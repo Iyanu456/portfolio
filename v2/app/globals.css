@@ -40,12 +40,12 @@ a {
 .article-copy {
   font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(1.09rem, 1.46vw, 1.25rem);
-  line-height: 1.9;
+  line-height: 1.78;
   color: #343434;
 }
 
 .article-copy p {
-  margin: 0 0 1.6em;
+  margin: 0 0 1.35em;
 }
 
 .article-copy h2 {
@@ -56,6 +56,9 @@ a {
   line-height: 1.25;
   margin: 2.2em 0 0.8em;
 }
+
+.article-copy hr { margin: 2.6rem 0; }
+.article-copy hr + p { margin-top: 0; padding-top: 1.25rem; }
 
 .article-copy blockquote {
   margin: 2rem 0;

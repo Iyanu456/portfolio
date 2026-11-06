@@ -7,7 +7,7 @@ const senderEmail = process.env.BREVO_SENDER_EMAIL || "";
 const senderName = process.env.BREVO_SENDER_NAME || siteName;
 
 type EmailAddress = { email: string; name?: string };
-export async function sendEmail(to: EmailAddress | EmailAddress[], subject: string, htmlContent: string, textContent?: string) {
+export async function sendEmail(to: EmailAddress | EmailAddress[], subject: string, htmlContent: string, textContent?: string, options?: { replyTo?: EmailAddress }) {
   const apiKey = process.env.BREVO_API_KEY;
   if (!apiKey || !senderEmail) {
     console.warn(`[email] Skipped "${subject}": BREVO_API_KEY and BREVO_SENDER_EMAIL must be configured.`);
@@ -17,7 +17,7 @@ export async function sendEmail(to: EmailAddress | EmailAddress[], subject: stri
     const response = await fetch("https://api.brevo.com/v3/smtp/email", {
       method: "POST", cache: "no-store", signal: AbortSignal.timeout(8000),
       headers: { "api-key": apiKey, "Content-Type": "application/json", accept: "application/json" },
-      body: JSON.stringify({ sender: { email: senderEmail, name: senderName }, to: Array.isArray(to) ? to : [to], subject, htmlContent, ...(textContent ? { textContent } : {}) })
+      body: JSON.stringify({ sender: { email: senderEmail, name: senderName }, to: Array.isArray(to) ? to : [to], subject, htmlContent, ...(textContent ? { textContent } : {}), ...(options?.replyTo ? { replyTo: options.replyTo } : {}) })
     });
     if (!response.ok) {
       const detail = await response.text().catch(() => "");
@@ -43,7 +43,7 @@ export async function notifyOwner(subject: string, htmlContent: string, textCont
   return sendEmail({ email: owner, name: siteName }, subject, htmlContent, textContent);
 }
 
-export type SubscriberRecord = Document & { email: string; name: string; normalizedEmail: string; status: "ACTIVE" | "UNSUBSCRIBED"; unsubscribeToken: string; createdAt: Date; updatedAt: Date; subscribedAt?: Date };
+export type SubscriberRecord = Document & { email: string; name: string; normalizedEmail: string; interests?: string[]; status: "ACTIVE" | "UNSUBSCRIBED"; unsubscribeToken: string; createdAt: Date; updatedAt: Date; subscribedAt?: Date };
 export async function getSubscribers() {
   const subscribers = await getCollection<SubscriberRecord>("subscribers");
   await subscribers.createIndex({ normalizedEmail: 1 }, { unique: true });
@@ -77,9 +77,11 @@ function createArticlePreview(contentHtml: string, fallbackExcerpt: string, maxL
   return { text: source.slice(0, boundary > maxLength * 0.7 ? boundary : maxLength).trim(), truncated: true };
 }
 
-export async function sendNewPostToSubscribers(post: { title: string; excerpt: string; slug: string; contentHtml?: string }) {
+export async function sendNewPostToSubscribers(post: { title: string; excerpt: string; slug: string; category?: string; contentHtml?: string }) {
   const subscribers = await getSubscribers();
-  const active = await subscribers.find({ status: "ACTIVE" }, { projection: { email: 1, name: 1, unsubscribeToken: 1 } }).toArray();
+  const allActive = await subscribers.find({ status: "ACTIVE" }, { projection: { email: 1, name: 1, unsubscribeToken: 1, interests: 1 } }).toArray();
+  // Legacy subscribers without preferences continue receiving all topics.
+  const active = allActive.filter((subscriber) => !Array.isArray(subscriber.interests) || subscriber.interests.length === 0 || subscriber.interests.includes(post.category || ""));
   if (!process.env.BREVO_API_KEY || !senderEmail) {
     console.warn(`[email] Skipped subscriber broadcast for "${post.title}": Brevo sender settings are not configured.`);
     return { total: active.length, sent: 0, configured: false };

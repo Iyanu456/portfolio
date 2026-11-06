@@ -4,6 +4,8 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import SiteAnalytics from "@/components/site-analytics";
 import SubscriptionStatusSync from "@/components/subscription-status-sync";
+import SupportPaymentModal from "@/components/support-payment-modal";
+import ContactModal from "@/components/contact-modal";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://localhost:3000";
 
@@ -61,6 +63,8 @@ export default function RootLayout({
         <SiteHeader />
         <main>{children}</main>
         <SiteFooter />
+        <SupportPaymentModal />
+        <ContactModal />
       </body>
     </html>
   );

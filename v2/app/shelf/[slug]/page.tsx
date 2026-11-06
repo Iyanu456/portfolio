@@ -6,7 +6,6 @@ import { getPublicPost, getPublicPosts } from "@/lib/public-posts";
 import PostInteractions from "@/components/post-interactions";
 import ArticleInlineActionBridge from "@/components/article-inline-action-bridge";
 import ArticleEndCtas from "@/components/article-end-ctas";
-import SupportPaymentModal from "@/components/support-payment-modal";
 import ReadingProgress from "@/components/reading-progress";
 import MotionReveal from "@/components/motion-reveal";
 
@@ -187,7 +186,6 @@ export default async function ArticlePage({
         title={post.title}
         excerpt={post.excerpt}
       />
-      <SupportPaymentModal />
       {nextRead && (
         <MotionReveal className="mx-auto mt-12 max-w-[760px]">
           <aside
