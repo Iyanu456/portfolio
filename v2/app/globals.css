@@ -44,6 +44,12 @@ a {
   color: #343434;
 }
 
+@media (max-width: 639px) {
+  .article-copy {
+    font-size: 1rem;
+  }
+}
+
 .article-copy p {
   margin: 0 0 1.35em;
 }

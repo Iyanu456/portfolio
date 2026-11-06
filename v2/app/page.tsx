@@ -4,6 +4,8 @@ import { getPublicPosts } from "@/lib/public-posts";
 import { PostCard } from "@/components/post-card";
 import MotionReveal from "@/components/motion-reveal";
 
+export const dynamic = "force-dynamic";
+
 export default async function HomePage() {
   const posts = await getPublicPosts();
   const featured = posts[0];
