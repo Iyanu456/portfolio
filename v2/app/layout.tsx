@@ -6,8 +6,22 @@ import SiteAnalytics from "@/components/site-analytics";
 import SubscriptionStatusSync from "@/components/subscription-status-sync";
 import SupportPaymentModal from "@/components/support-payment-modal";
 import ContactModal from "@/components/contact-modal";
+import { Lexend } from "next/font/google";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://localhost:3000";
+const lexend = Lexend({ subsets: ["latin"], variable: "--font-lexend", display: "swap" });
+const themeInitializationScript = `(() => {
+  const isArticlePage = /^\\/shelf\\/[^/]+\\/?$/.test(location.pathname);
+  let savedTheme = null;
+  if (isArticlePage) {
+    try {
+      savedTheme = localStorage.getItem("iyanu-theme");
+    } catch {}
+  }
+  const isDark = isArticlePage && (savedTheme ? savedTheme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches);
+  document.documentElement.classList.toggle("dark", isDark);
+  document.documentElement.style.colorScheme = isDark ? "dark" : "light";
+})();`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -56,8 +70,11 @@ export default function RootLayout({
   children
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
-      <body>
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitializationScript }} />
+      </head>
+      <body className={lexend.variable}>
         <SiteAnalytics />
         <SubscriptionStatusSync />
         <SiteHeader />

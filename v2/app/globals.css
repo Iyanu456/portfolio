@@ -4,6 +4,10 @@
 
 :root {
   color-scheme: light;
+  --color-ink: #171717;
+  --color-paper: #faf9f6;
+  --color-muted: #737373;
+  --color-line: #e8e5df;
 }
 
 * {
@@ -16,8 +20,8 @@ html {
 
 body {
   margin: 0;
-  background: #faf9f6;
-  color: #171717;
+  background: var(--color-paper);
+  color: var(--color-ink);
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
@@ -38,7 +42,7 @@ a {
 }
 
 .article-copy {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-lexend), sans-serif;
   font-size: clamp(1.09rem, 1.46vw, 1.25rem);
   line-height: 1.78;
   color: #343434;
@@ -415,4 +419,182 @@ a:focus-visible, button:focus-visible {
   .article-copy .stop-motion-public-controls { gap: 8px; padding: 9px 10px; }
   .article-copy .stop-motion-play-button { min-height: 30px; padding: 6px 10px; }
   .article-copy .stop-motion-public-label { font-size: 10px; }
+}
+
+html.dark {
+  color-scheme: dark;
+  --color-ink: #f2eee8;
+  --color-paper: #171615;
+  --color-muted: #aaa49b;
+  --color-line: #393632;
+  --color-surface: #211f1d;
+  --color-surface-raised: #2a2825;
+  --color-text-secondary: #c9c3ba;
+  --color-text-muted: #a7a198;
+}
+
+html.dark body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
+html.dark ::selection {
+  color: #fff;
+  background: #c9471b;
+}
+
+html.dark .bg-white,
+html.dark [class*="bg-white/"],
+html.dark .bg-paper,
+html.dark [class*="bg-paper/"],
+html.dark [class*="bg-[#FAF9F6]"],
+html.dark [class*="bg-[#FCFBF8]"],
+html.dark [class*="bg-[#fffefa]"],
+html.dark [class*="bg-[#FAFAF8]"] {
+  background-color: var(--color-surface) !important;
+}
+
+html.dark .bg-neutral-50,
+html.dark .bg-neutral-100,
+html.dark .bg-gray-50,
+html.dark .bg-gray-100,
+html.dark .bg-stone-50,
+html.dark [class*="bg-[#F3F4F6]"],
+html.dark [class*="bg-[#F8F8F6]"],
+html.dark [class*="bg-[#FAFAF9]"] {
+  background-color: var(--color-surface-raised) !important;
+}
+
+html.dark [class~="border-line"],
+html.dark [class~="border-neutral-100"],
+html.dark [class~="border-neutral-200"],
+html.dark [class~="border-neutral-300"],
+html.dark [class~="border-gray-100"],
+html.dark [class~="border-gray-200"],
+html.dark [class~="border-gray-300"],
+html.dark [class~="border-white"],
+html.dark [class*="border-white/"] {
+  border-color: var(--color-line) !important;
+}
+
+html.dark .site-header-shell {
+  border-color: var(--color-line) !important;
+}
+
+html.dark .text-ink,
+html.dark [class~="text-neutral-900"],
+html.dark [class~="text-neutral-950"],
+html.dark [class~="text-gray-900"],
+html.dark [class~="text-gray-950"],
+html.dark [class~="text-stone-900"],
+html.dark [class~="text-[#171717]"],
+html.dark [class~="text-[#171923]"],
+html.dark [class~="text-[#22231F]"],
+html.dark [class~="text-[#292524]"],
+html.dark [class~="text-[#343434]"],
+html.dark [class~="text-[#404040]"] {
+  color: var(--color-ink) !important;
+}
+
+html.dark [class~="text-neutral-700"],
+html.dark [class~="text-neutral-800"],
+html.dark [class~="text-gray-700"],
+html.dark [class~="text-gray-800"],
+html.dark [class~="text-stone-700"],
+html.dark [class~="text-stone-800"],
+html.dark [class~="text-[#525252]"],
+html.dark [class~="text-[#57534e]"],
+html.dark [class~="text-[#626262]"],
+html.dark [class~="text-[#697386]"] {
+  color: var(--color-text-secondary) !important;
+}
+
+html.dark [class~="text-neutral-400"],
+html.dark [class~="text-neutral-500"],
+html.dark [class~="text-neutral-600"],
+html.dark [class~="text-gray-400"],
+html.dark [class~="text-gray-500"],
+html.dark [class~="text-gray-600"],
+html.dark [class~="text-stone-400"],
+html.dark [class~="text-stone-500"],
+html.dark [class~="text-stone-600"],
+html.dark [class~="text-[#737373]"],
+html.dark [class~="text-[#78716c]"] {
+  color: var(--color-text-muted) !important;
+}
+
+html.dark input:not([type="checkbox"]):not([type="radio"]),
+html.dark textarea,
+html.dark select {
+  color: var(--color-ink);
+  color-scheme: dark;
+}
+
+html.dark .article-copy,
+html.dark .article-copy h2,
+html.dark .article-copy blockquote,
+html.dark .article-editor,
+html.dark .article-editor h1,
+html.dark .article-editor h2,
+html.dark .article-editor h3 {
+  color: var(--color-ink);
+}
+
+html.dark .article-copy figure.stop-motion-figure,
+html.dark .article-copy figure[data-stop-motion="true"],
+html.dark .article-copy .stop-motion-public-controls,
+html.dark .article-copy .stop-motion-caption,
+html.dark .stop-motion-editor-card,
+html.dark .stop-motion-editor-controls,
+html.dark .stop-motion-editor-settings {
+  border-color: var(--color-line);
+  background-color: var(--color-surface-raised);
+  color: var(--color-text-secondary);
+}
+
+html.dark .article-copy .stop-motion-play-button,
+html.dark .stop-motion-editor-buttons button,
+html.dark .stop-motion-alt-label input {
+  border-color: var(--color-line);
+  background-color: var(--color-surface);
+  color: var(--color-ink);
+}
+
+html.dark .inline-reader-action {
+  background: linear-gradient(120deg, #30231e, #211f1d);
+  color: var(--color-ink);
+}
+
+html.dark .inline-reader-action__title {
+  color: var(--color-ink);
+}
+
+html.dark .inline-reader-action__description {
+  color: var(--color-text-secondary);
+}
+
+html.dark .article-end-ctas h2 {
+  color: var(--color-ink) !important;
+}
+
+html.dark .article-end-ctas p {
+  color: var(--color-text-secondary) !important;
+}
+
+html.dark .article-end-ctas > div:first-child > button {
+  background-color: #f05a28;
+  color: #fff;
+}
+
+html.dark .article-end-ctas > div:first-child > button:hover {
+  background-color: #d94d20;
+}
+
+html.dark .bg-emerald-50,
+html.dark .bg-orange-50,
+html.dark .bg-red-50,
+html.dark .bg-amber-50,
+html.dark .bg-blue-50,
+html.dark .bg-indigo-50 {
+  background-color: #302a25 !important;
 }
