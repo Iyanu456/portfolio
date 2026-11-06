@@ -13,7 +13,12 @@ export async function POST(request: Request) {
   const name = clean(body.name, 80);
   const email = clean(body.email, 254).toLowerCase();
   const allowedGenres = ["Architecture & space", "Technology & the future", "Faith", "Fiction", "Design & creativity", "Ideas & observations", "Culture", "Personal notes"];
-  const interests = Array.isArray(body.interests) ? [...new Set(body.interests.map((item: unknown) => clean(item, 60)).filter((item: string) => allowedGenres.includes(item)))] : [];
+  const selectedInterests: string[] = Array.isArray(body.interests)
+    ? body.interests
+        .filter((item: unknown): item is string => typeof item === "string")
+        .map((item: string) => clean(item, 60))
+    : [];
+  const interests = [...new Set(selectedInterests.filter((item) => allowedGenres.includes(item)))];
   if (!interests.length) return NextResponse.json({ error: "Choose at least one topic you are interested in." }, { status: 400 });
   if (!validEmail(email)) return NextResponse.json({ error: "Enter a valid email address." }, { status: 400 });
   if (name.length > 0 && name.length < 2) return NextResponse.json({ error: "Your name should be at least two characters, or leave it blank." }, { status: 400 });

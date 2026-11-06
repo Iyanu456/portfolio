@@ -14,7 +14,7 @@ export async function POST(request: Request) {
   const currency = body.currency === "USD" ? ("USD" as const) : body.currency === "NGN" ? ("NGN" as const) : null;
   const amount = Number(body.amount);
   const purpose = body.purpose === "article" ? "article" : "publication";
-  const source = body.source === "substack" ? "substack" : "website";
+  const source: "substack" | "website" = body.source === "substack" ? "substack" : "website";
   const slug = clean(body.slug, 180);
   const postTitle = clean(body.postTitle, 180);
   const tierLabel = clean(body.tierLabel, 80);
