@@ -28,11 +28,11 @@ const themeInitializationScript = `(() => {
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Iyanu Oyerinde — A place for ideas to take shape",
+    default: "Iyanu Oyerinde — Designer, writer & curious maker",
     template: "%s — Iyanu Oyerinde",
   },
   description:
-    "Explore essays, ideas, observations, and creative work by Iyanu Oyerinde across design, architecture, technology, and culture.",
+    "Iyanu Oyerinde is a designer and writer exploring ideas through visual identity, digital experiences, architecture, and culture.",
   applicationName: "Iyanu Oyerinde",
   authors: [{ name: "Iyanu Oyerinde", url: siteUrl }],
   creator: "Iyanu Oyerinde",
@@ -44,9 +44,9 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Iyanu Oyerinde — A place for ideas to take shape",
+    title: "Iyanu Oyerinde — Designer, writer & curious maker",
     description:
-      "Essays, ideas, observations, and creative work across design, architecture, technology, and culture.",
+      "A designer and writer exploring ideas through visual identity, digital experiences, architecture, and culture.",
     url: "/",
     siteName: "Iyanu Oyerinde",
     locale: "en_US",
@@ -61,8 +61,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Iyanu Oyerinde — A place for ideas to take shape",
-    description: "Essays, ideas, observations, and creative work by Iyanu Oyerinde.",
+    title: "Iyanu Oyerinde — Designer, writer & curious maker",
+    description:
+      "A designer and writer exploring ideas through technology, visual identity, digital experiences, architecture, and culture.",
     images: [{ url: "/og-default.png", alt: "Iyanuoluwa" }],
   },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 } },
