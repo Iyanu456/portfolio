@@ -6,12 +6,14 @@ type MotionRevealProps = {
   children: ReactNode;
   className?: string;
   delay?: number;
+  id?: string;
 };
 
 export default function MotionReveal({
   children,
   className = "",
   delay = 0,
+  id,
 }: MotionRevealProps) {
   const elementRef = useRef<HTMLDivElement | null>(null);
 
@@ -45,6 +47,7 @@ export default function MotionReveal({
   return (
     <div
       ref={elementRef}
+      id={id}
       className={`motion-reveal ${className}`.trim()}
       style={{ "--motion-delay": `${Math.max(0, Math.min(delay, 500))}ms` } as CSSProperties}
     >

@@ -26,6 +26,23 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Improve body readability while preserving article and utility text sizing. */
+body:not(:has(.article-copy)) main p.text-sm {
+  font-size: 1rem;
+  line-height: 1.7;
+}
+body:not(:has(.article-copy)) main p.text-base {
+  font-size: 1.125rem;
+  line-height: 1.75;
+}
+body:not(:has(.article-copy)) main p.text-lg {
+  font-size: 1.25rem;
+  line-height: 1.7;
+}
+body:not(:has(.article-copy)) main h2.text-2xl {
+  font-size: 1.625rem;
+}
+
 ::selection {
   color: #fff;
   background: #f05a28;
@@ -598,4 +615,80 @@ html.dark .bg-amber-50,
 html.dark .bg-blue-50,
 html.dark .bg-indigo-50 {
   background-color: #302a25 !important;
+}
+
+
+/* Design portfolio motion polish: subtle entrances, responsive hover feedback,
+   and gentle state changes that match the rest of the editorial site. */
+.design-portfolio-browser {
+  animation: editorial-fade 520ms ease both;
+}
+.design-filter-chip {
+  position: relative;
+  transition: color 200ms ease, border-color 200ms ease, opacity 200ms ease;
+}
+.design-filter-chip::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -2px;
+  left: 0;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 240ms cubic-bezier(.2,.7,.2,1);
+}
+.design-filter-chip.is-active::after { transform: scaleX(1); }
+.design-project-card {
+  animation: editorial-rise 560ms cubic-bezier(.2,.7,.2,1) both;
+  transition: transform 280ms cubic-bezier(.2,.7,.2,1), opacity 240ms ease;
+}
+.design-project-card__media {
+  isolation: isolate;
+  transition: background-color 260ms ease, box-shadow 300ms ease;
+}
+.design-project-card__media img {
+  transition: transform 700ms cubic-bezier(.2,.7,.2,1), filter 500ms ease;
+  will-change: transform;
+}
+.design-project-card:hover .design-project-card__media {
+  box-shadow: 0 14px 34px rgba(23,23,23,.10);
+}
+.design-project-card:hover .design-project-card__media img {
+  transform: scale(1.035);
+}
+.design-project-card__title {
+  transition: color 220ms ease, transform 220ms cubic-bezier(.2,.7,.2,1);
+}
+.design-project-card:hover .design-project-card__title {
+  transform: translateX(2px);
+}
+.design-project-cover img {
+  animation: editorial-fade 850ms ease both;
+}
+.design-project-page .motion-reveal {
+  will-change: opacity, transform;
+}
+.design-contact-cta {
+  transition: box-shadow 280ms ease, border-color 280ms ease, transform 280ms cubic-bezier(.2,.7,.2,1);
+}
+.design-contact-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 38px rgba(23,23,23,.07);
+}
+@media (hover: none) {
+  .design-project-card:hover .design-project-card__media img,
+  .design-project-card:hover .design-project-card__title,
+  .design-contact-cta:hover { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .design-portfolio-browser, .design-project-card, .design-project-cover img {
+    animation: none !important;
+  }
+  .design-filter-chip, .design-filter-chip::after, .design-project-card,
+  .design-project-card__media, .design-project-card__media img,
+  .design-project-card__title, .design-contact-cta {
+    transition: none !important;
+  }
 }

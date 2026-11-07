@@ -29,7 +29,7 @@ export function PostCard({ post, index = 0 }: { post: ShelfPost; index?: number 
           </h3>
           <ArrowUpRight className="mt-1 shrink-0 text-neutral-400 transition-all group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-accent" size={17} />
         </div>
-        <p className="mt-2 line-clamp-3 max-w-xl text-[13px] leading-5 text-neutral-600 sm:mt-3 sm:text-sm sm:leading-6">{post.excerpt}</p>
+        <p className="mt-2 line-clamp-3 max-w-xl text-sm leading-6 text-neutral-600 sm:mt-3">{post.excerpt}</p>
         <p className="mt-3 text-[11px] text-neutral-400 sm:mt-5 sm:text-xs">{post.date}</p>
       </div>
     </article>

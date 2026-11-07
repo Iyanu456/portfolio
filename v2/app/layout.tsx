@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -6,6 +7,7 @@ import SiteAnalytics from "@/components/site-analytics";
 import SubscriptionStatusSync from "@/components/subscription-status-sync";
 import SupportPaymentModal from "@/components/support-payment-modal";
 import ContactModal from "@/components/contact-modal";
+import DesignContactModal from "@/components/design-contact-modal";
 import { Lexend } from "next/font/google";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://localhost:3000";
@@ -72,7 +74,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <script dangerouslySetInnerHTML={{ __html: themeInitializationScript }} />
+        <Script id="theme-initialization" strategy="beforeInteractive">
+          {themeInitializationScript}
+        </Script>
       </head>
       <body className={lexend.variable}>
         <SiteAnalytics />
@@ -82,6 +86,7 @@ export default function RootLayout({
         <SiteFooter />
         <SupportPaymentModal />
         <ContactModal />
+        <DesignContactModal />
       </body>
     </html>
   );

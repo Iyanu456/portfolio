@@ -31,13 +31,27 @@ export default function WorkPage() {
       </MotionReveal>
       <div className="mt-16 divide-y divide-line border-t border-line pt-5 sm:mt-12">
         {areas.map(({ icon: Icon, title, copy }, i) => (
-          <MotionReveal key={title} delay={i * 60} className="py-6">
-            <div className="flex items-center justify-between">
-              <span className="text-xs text-neutral-400">0{i + 1}</span>
-              <Icon size={18} strokeWidth={1.5} className="text-accent" />
-            </div>
-            <h2 className="mt-8 text-2xl font-medium tracking-editorial">{title}</h2>
-            <p className="mt-3 text-sm leading-6 text-neutral-600">{copy}</p>
+          <MotionReveal key={title} delay={i * 60} className="py-6" id={title === "Architecture" ? "architecture" : title === "Technology & making" ? "technology" : "design"}>
+            {title === "Design" ? (
+              <Link href="/design" className="group block rounded-xl outline-none transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs text-neutral-400">0{i + 1}</span>
+                  <span className="flex items-center gap-3 text-neutral-400 transition-colors group-hover:text-accent"><Icon size={18} strokeWidth={1.5} className="text-accent" /><ArrowUpRight size={15} className="opacity-0 transition-all group-hover:translate-x-0.5 group-hover:opacity-100" /></span>
+                </div>
+                <h2 className="mt-8 text-2xl font-medium tracking-editorial transition-colors group-hover:text-accent">{title}</h2>
+                <p className="mt-3 text-sm leading-6 text-neutral-600">{copy}</p>
+                <span className="mt-5 inline-flex items-center gap-2 text-xs font-medium text-neutral-400 transition-colors group-hover:text-accent">Explore design work <ArrowUpRight size={13}/></span>
+              </Link>
+            ) : (
+              <div>
+                <div className="flex items-center justify-between">
+                  <span className="text-xs text-neutral-400">0{i + 1}</span>
+                  <Icon size={18} strokeWidth={1.5} className="text-accent" />
+                </div>
+                <h2 className="mt-8 text-2xl font-medium tracking-editorial">{title}</h2>
+                <p className="mt-3 text-sm leading-6 text-neutral-600">{copy}</p>
+              </div>
+            )}
           </MotionReveal>
         ))}
       </div>
