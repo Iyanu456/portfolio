@@ -88,9 +88,9 @@ export default async function DesignProjectPage({ params }: Context) {
         <MotionReveal delay={110}><div className="pt-3 sm:pt-5">
           <DesignProjectGallery images={galleryImages.map((src: string, index: number) => ({ src, alt: `${project.title} — image ${index + 2}` }))}/>
         </div></MotionReveal>
-        <MotionReveal delay={130}><div className="design-contact-cta mt-16 flex flex-col gap-5 rounded-2xl border border-neutral-200 bg-[#f3f0e9] p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
-          <div><p className="text-xl font-semibold tracking-tight text-neutral-900 sm:text-2xl">Interested in working together?</p><p className="mt-2 text-base leading-7 text-neutral-600">Have a project in mind? Let’s make something meaningful.</p></div>
-          <DesignContactTrigger className="inline-flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-full bg-ink px-6 text-sm font-semibold text-white transition hover:bg-accent">Get in touch <ArrowUpRight size={16}/></DesignContactTrigger>
+        <MotionReveal delay={130}><div className="design-contact-cta mt-16 flex flex-col gap-4 rounded-2xl border border-neutral-200 bg-[#f3f0e9] p-5 sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:p-7">
+          <div><p className="text-lg font-semibold tracking-tight text-neutral-900 sm:text-xl">Interested in working together?</p><p className="mt-1.5 text-sm leading-6 text-neutral-600 sm:text-base">Have a project in mind? Let’s make something meaningful.</p></div>
+          <DesignContactTrigger className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 self-start rounded-full bg-ink px-5 text-sm font-semibold text-white transition hover:bg-accent sm:self-auto">Get in touch <ArrowUpRight size={15}/></DesignContactTrigger>
         </div></MotionReveal>
       </article>
     </main>

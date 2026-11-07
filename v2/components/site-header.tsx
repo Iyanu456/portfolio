@@ -40,6 +40,7 @@ export function SiteHeader() {
             </button>
           </div>
           <Link href="/about" className="text-sm text-neutral-600 transition-colors hover:text-accent">About</Link>
+          <Link href="/contact" className="text-sm text-neutral-600 transition-colors hover:text-accent">Contact</Link>
           <ThemeToggle />
         </nav>
 
@@ -81,6 +82,7 @@ export function SiteHeader() {
           </div>}
         </div>
         <Link href="/about" onClick={closeMenus} className="block rounded-lg px-3 py-3 text-sm text-neutral-700 hover:bg-neutral-100 hover:text-accent">About</Link>
+        <Link href="/contact" onClick={closeMenus} className="block rounded-lg px-3 py-3 text-sm text-neutral-700 hover:bg-neutral-100 hover:text-accent">Contact</Link>
       </nav>}
     </header>
   );

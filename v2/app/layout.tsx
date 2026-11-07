@@ -56,14 +56,14 @@ export const metadata: Metadata = {
       width: 1200,
       height: 630,
       type: "image/png",
-      alt: "Iyanu Oyerinde — A place for ideas to take shape",
+      alt: "Iyanuoluwa",
     }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Iyanu Oyerinde — A place for ideas to take shape",
     description: "Essays, ideas, observations, and creative work by Iyanu Oyerinde.",
-    images: [{ url: "/og-default.png", alt: "Iyanu Oyerinde" }],
+    images: [{ url: "/og-default.png", alt: "Iyanuoluwa" }],
   },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 } },
 };
