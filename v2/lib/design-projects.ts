@@ -21,7 +21,23 @@ export type DesignProject = Document & {
   publishedAt: Date | null;
 };
 
-const starterProjects: Omit<DesignProject, "_id" | "createdAt" | "updatedAt" | "publishedAt">[] = [
+export type DesignProjectData = {
+  title: string;
+  slug: string;
+  category: string;
+  categories?: string[];
+  year: string;
+  summary: string;
+  description: string;
+  coverImage: string;
+  gallery: string[];
+  tags: string[];
+  featured: boolean;
+  status: "DRAFT" | "PUBLISHED";
+  sortOrder: number;
+};
+
+const starterProjects: DesignProjectData[] = [
   {
     title: "Form & Feeling",
     slug: "form-and-feeling",
@@ -94,10 +110,11 @@ export async function ensureStarterDesignProjects() {
   if (count === 0) {
     const now = new Date();
     try {
-      await collection.insertMany(starterProjects.map((project) => ({
+      const projects: DesignProject[] = starterProjects.map((project) => ({
         ...project, createdAt: now, updatedAt: now,
         publishedAt: project.status === "PUBLISHED" ? now : null
-      })));
+      }));
+      await collection.insertMany(projects);
     } catch (error) {
       // Another first visitor may have seeded the collection at the same time.
       if (!(error && typeof error === "object" && "code" in error && error.code === 11000)) throw error;
@@ -108,10 +125,11 @@ export async function ensureStarterDesignProjects() {
 
 export function serializeDesignProject(project: DesignProject) {
   const { _id, ...rest } = project;
+  if (!_id) throw new Error("Cannot serialize a design project without a database ID.");
   const categories = Array.isArray(project.categories) && project.categories.length
     ? project.categories
     : [project.category || "Others"];
-  return { ...rest, categories, id: _id?.toString() };
+  return { ...rest, categories, id: _id.toString() };
 }
 
 export function asDesignProjectId(id: string) {

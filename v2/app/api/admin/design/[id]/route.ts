@@ -1,13 +1,13 @@
 import { NextResponse } from "next/server";
 import { isAdmin } from "@/lib/auth";
-import { asDesignProjectId, getDesignProjectsCollection, serializeDesignProject, type DesignProject } from "@/lib/design-projects";
+import { asDesignProjectId, getDesignProjectsCollection, serializeDesignProject, type DesignProject, type DesignProjectData } from "@/lib/design-projects";
 
 export const runtime = "nodejs";
 type Context = { params: Promise<{ id: string }> };
 const clean = (value: unknown, max = 5000) => String(value ?? "").trim().slice(0, max);
 const slugify = (value: string) => value.toLowerCase().normalize("NFKD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
-function normalize(body: Record<string, unknown>) {
+function normalize(body: Record<string, unknown>): DesignProjectData {
   const title = clean(body.title, 140);
   const slug = slugify(clean(body.slug || title, 160));
   const gallery = Array.isArray(body.gallery) ? body.gallery.map((item) => clean(item, 2048)).filter(Boolean).slice(0, 20) : [];
