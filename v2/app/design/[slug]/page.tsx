@@ -62,9 +62,9 @@ export default async function DesignProjectPage({ params }: Context) {
         <Link href="/design" className="inline-flex items-center gap-2 text-xs text-neutral-500 transition hover:text-ink"><ArrowLeft size={14}/> All projects</Link>
         <MotionReveal>
           <header className="mx-auto max-w-3xl py-12 text-center sm:py-20">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-accent">{(project.categories?.length ? project.categories : [project.category]).join(" · ")} · {project.year}</p>
+            {/*<p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-accent">{(project.categories?.length ? project.categories : [project.category]).join(" · ")} · {project.year}</p>*/}
             <h1 className="mt-5 text-balance text-4xl font-medium leading-[0.98] tracking-[-0.06em] sm:text-6xl lg:text-7xl">{project.title}</h1>
-            <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-neutral-600 sm:text-lg">{project.summary}</p>
+            {/*<p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-neutral-600 sm:text-lg">///{project.summary}</p>*/}
           </header>
         </MotionReveal>
         {project.coverImage && (
