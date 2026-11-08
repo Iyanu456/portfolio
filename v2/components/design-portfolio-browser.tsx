@@ -114,7 +114,7 @@ export default function DesignPortfolioBrowser({ projects }: { projects: Portfol
                 <div className="mt-3 flex items-start justify-between gap-3">
                   <div className="min-w-0">
                     <h2 className="design-project-card__title text-lg font-semibold tracking-tight transition-colors group-hover:text-accent">{project.title}</h2>
-                    <p className="mt-1 text-[10px] leading-5 text-neutral-500">{projectCategories.join(" · ")}</p>
+                    {/*<p className="mt-1 text-[10px] leading-5 text-neutral-500">{projectCategories.join(" · ")}</p>*/}
                   </div>
                   <span className="shrink-0 pt-0.5 text-xs text-neutral-400">{project.year}</span>
                 </div>
