@@ -75,14 +75,14 @@ export default async function DesignProjectPage({ params }: Context) {
           </MotionReveal>
         )}
         <MotionReveal delay={90}><div className="mx-auto grid max-w-5xl gap-10 py-12 sm:grid-cols-[0.7fr_1.3fr] sm:py-16">
-          <aside>
+          {/*<aside>
             <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-neutral-400">Project details</p>
             <dl className="mt-5 space-y-4 text-sm">
               <div><dt className="text-xs text-neutral-400">Categories</dt><dd className="mt-1 leading-6">{(project.categories?.length ? project.categories : [project.category]).join(" · ")}</dd></div>
               <div><dt className="text-xs text-neutral-400">Year</dt><dd className="mt-1">{project.year}</dd></div>
               {project.tags?.length > 0 && <div><dt className="text-xs text-neutral-400">Focus</dt><dd className="mt-1 leading-6">{project.tags.join(" · ")}</dd></div>}
             </dl>
-          </aside>
+          </aside>*/}
           <div className="max-w-2xl whitespace-pre-wrap text-[15px] leading-8 text-neutral-600">{project.description}</div>
         </div></MotionReveal>
         <MotionReveal delay={110}><div className="pt-3 sm:pt-5">
