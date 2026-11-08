@@ -34,6 +34,12 @@ const categories = [
 export default function DesignPortfolioBrowser({ projects }: { projects: PortfolioProject[] }) {
   const [query, setQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
+  const availableCategories = categories.filter((category) =>
+    category === "All" ||
+    projects.some((project) =>
+      (project.categories?.length ? project.categories : [project.category || "Others"]).includes(category),
+    ),
+  );
 
   const visibleProjects = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase();
@@ -62,11 +68,8 @@ export default function DesignPortfolioBrowser({ projects }: { projects: Portfol
     <section className="design-portfolio-browser pt-6 sm:pt-8" aria-label="Browse design projects">
       <div className="flex flex-col gap-4 border-b border-line pb-5 sm:flex-row sm:items-center sm:justify-between">
         <div className="-mx-1 flex gap-1.5 overflow-x-auto px-1 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          {categories.map((category) => {
+          {availableCategories.map((category) => {
             const active = activeCategory === category;
-            const count = category === "All"
-              ? projects.length
-              : projects.filter((project) => (project.categories?.length ? project.categories : [project.category || "Others"]).includes(category)).length;
             return (
               <button
                 key={category}
@@ -75,7 +78,7 @@ export default function DesignPortfolioBrowser({ projects }: { projects: Portfol
                 aria-pressed={active}
                 className={`design-filter-chip shrink-0 border-b-2 px-2.5 py-2 text-xs transition-colors ${active ? "is-active border-ink font-semibold text-ink" : "border-transparent text-neutral-500 hover:text-ink"}`}
               >
-                {category}<span className="ml-1.5 text-[10px] text-neutral-400">{count}</span>
+                {category}
               </button>
             );
           })}
@@ -94,8 +97,7 @@ export default function DesignPortfolioBrowser({ projects }: { projects: Portfol
         </label>
       </div>
 
-      <div className="flex items-center justify-between py-4">
-        <p className="text-xs text-neutral-500">{visibleProjects.length} {visibleProjects.length === 1 ? "project" : "projects"}</p>
+      <div className="flex justify-end py-4">
         {(query || activeCategory !== "All") && (
           <button type="button" onClick={() => { setQuery(""); setActiveCategory("All"); }} className="text-xs text-neutral-500 underline underline-offset-4 hover:text-ink">Clear filters</button>
         )}
@@ -104,7 +106,6 @@ export default function DesignPortfolioBrowser({ projects }: { projects: Portfol
       {visibleProjects.length ? (
         <div className="grid grid-cols-1 gap-x-5 gap-y-9 sm:grid-cols-2 lg:grid-cols-3">
           {visibleProjects.map((project) => {
-            const projectCategories = project.categories?.length ? project.categories : [project.category || "Others"];
             return (
               <Link key={project.id} href={`/design/${project.slug}`} className={`design-project-card group block motion-stagger motion-stagger-${visibleProjects.indexOf(project) % 9}`}>
                 <div className="design-project-card__media relative aspect-[1.618/1] overflow-hidden bg-[#efeee9]">
